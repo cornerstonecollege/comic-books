@@ -13,6 +13,8 @@
 		1CE7C61F1C8F8C220003A63D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CE7C61D1C8F8C220003A63D /* Main.storyboard */; };
 		1CE7C6211C8F8C220003A63D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CE7C6201C8F8C220003A63D /* Assets.xcassets */; };
 		1CE7C6241C8F8C220003A63D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CE7C6221C8F8C220003A63D /* LaunchScreen.storyboard */; };
+		1CE7C62E1C8FA86E0003A63D /* ImageFilterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7C62D1C8FA86E0003A63D /* ImageFilterHelper.m */; };
+		1CE7C6301C8FAACA0003A63D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE7C62F1C8FAACA0003A63D /* CoreImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,9 @@
 		1CE7C6201C8F8C220003A63D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CE7C6231C8F8C220003A63D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CE7C6251C8F8C220003A63D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CE7C62C1C8FA86E0003A63D /* ImageFilterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageFilterHelper.h; path = Utilities/ImageFilterHelper.h; sourceTree = "<group>"; };
+		1CE7C62D1C8FA86E0003A63D /* ImageFilterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageFilterHelper.m; path = Utilities/ImageFilterHelper.m; sourceTree = "<group>"; };
+		1CE7C62F1C8FAACA0003A63D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CE7C6301C8FAACA0003A63D /* CoreImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +48,7 @@
 		1CE7C6081C8F8C220003A63D = {
 			isa = PBXGroup;
 			children = (
+				1CE7C62F1C8FAACA0003A63D /* CoreImage.framework */,
 				1CE7C6131C8F8C220003A63D /* comic-books */,
 				1CE7C6121C8F8C220003A63D /* Products */,
 			);
@@ -58,6 +65,7 @@
 		1CE7C6131C8F8C220003A63D /* comic-books */ = {
 			isa = PBXGroup;
 			children = (
+				1CE7C62B1C8FA7AF0003A63D /* Utilities */,
 				1CE7C6171C8F8C220003A63D /* AppDelegate.h */,
 				1CE7C6181C8F8C220003A63D /* AppDelegate.m */,
 				1CE7C61A1C8F8C220003A63D /* ViewController.h */,
@@ -77,6 +85,15 @@
 				1CE7C6151C8F8C220003A63D /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1CE7C62B1C8FA7AF0003A63D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1CE7C62C1C8FA86E0003A63D /* ImageFilterHelper.h */,
+				1CE7C62D1C8FA86E0003A63D /* ImageFilterHelper.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +169,7 @@
 				1CE7C61C1C8F8C220003A63D /* ViewController.m in Sources */,
 				1CE7C6191C8F8C220003A63D /* AppDelegate.m in Sources */,
 				1CE7C6161C8F8C220003A63D /* main.m in Sources */,
+				1CE7C62E1C8FA86E0003A63D /* ImageFilterHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

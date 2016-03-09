@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,11 +17,39 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Heroes" translatesAutoresizingMaskIntoConstraints="NO" id="Px6-Ap-JYs">
+                                <rect key="frame" x="20" y="28" width="560" height="270"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="270" id="yPa-Vl-0Pw"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yKv-tX-gVm">
+                                <rect key="frame" x="20" y="310" width="560" height="270"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="yKv-tX-gVm" secondAttribute="bottom" constant="20" symbolic="YES" id="9VD-cJ-2fE"/>
+                            <constraint firstItem="yKv-tX-gVm" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="CtU-uu-EMv"/>
+                            <constraint firstItem="Px6-Ap-JYs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="JOn-Ou-RqB"/>
+                            <constraint firstItem="yKv-tX-gVm" firstAttribute="leading" secondItem="Px6-Ap-JYs" secondAttribute="leading" id="LIK-zm-nZb"/>
+                            <constraint firstItem="Px6-Ap-JYs" firstAttribute="trailing" secondItem="yKv-tX-gVm" secondAttribute="trailing" id="Q18-dH-D32"/>
+                            <constraint firstItem="Px6-Ap-JYs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Tzk-9k-7JL"/>
+                            <constraint firstItem="yKv-tX-gVm" firstAttribute="top" secondItem="Px6-Ap-JYs" secondAttribute="bottom" constant="12" id="z17-Jh-AIJ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imgView" destination="Px6-Ap-JYs" id="VWg-q0-g3T"/>
+                        <outlet property="imgViewChanged" destination="yKv-tX-gVm" id="btL-oW-5jw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="245" y="399"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Heroes" width="950" height="534"/>
+    </resources>
 </document>
