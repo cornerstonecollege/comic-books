@@ -30,7 +30,9 @@
 {
     CGFloat centerX = self.imgView.bounds.origin.x + self.imgView.bounds.size.width / 2.0;
     CGFloat centerY = self.imgView.bounds.origin.y + self.imgView.bounds.size.height / 2.0;
-    self.imgViewChanged.image = [[ImageFilterHelper sharedInstance] lineOverlayImageWithImage:self.imgView.image];
+    self.imgViewChanged.image = [[ImageFilterHelper sharedInstance] splashDistortionImageWithImage:self.imgView.image andCenter:[CIVector vectorWithX:centerX Y:centerY]];
+    
+    //self.imgViewChanged.image = [[ImageFilterHelper sharedInstance] hueImageWithImage:self.imgView.image];
 }
 
 - (void)didReceiveMemoryWarning {
