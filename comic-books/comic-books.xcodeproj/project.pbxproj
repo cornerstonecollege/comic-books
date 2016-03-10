@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C7006341C910482000E2898 /* Bangers.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006201C910482000E2898 /* Bangers.ttf */; };
+		1C7006351C910482000E2898 /* Bonoci.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006211C910482000E2898 /* Bonoci.ttf */; };
+		1C7006361C910482000E2898 /* Chromium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006221C910482000E2898 /* Chromium.ttf */; };
+		1C7006371C910482000E2898 /* Danger Diabolik.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006231C910482000E2898 /* Danger Diabolik.ttf */; };
+		1C7006381C910482000E2898 /* DCC - Dreamer.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006241C910482000E2898 /* DCC - Dreamer.otf */; };
+		1C7006391C910482000E2898 /* Homer_Simpson.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006251C910482000E2898 /* Homer_Simpson.ttf */; };
+		1C70063A1C910482000E2898 /* IdeaBursts.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006261C910482000E2898 /* IdeaBursts.ttf */; };
+		1C70063B1C910482000E2898 /* KA-BLAMO!.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006271C910482000E2898 /* KA-BLAMO!.ttf */; };
+		1C70063C1C910482000E2898 /* Ka-Boing!.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006281C910482000E2898 /* Ka-Boing!.ttf */; };
+		1C70063D1C910482000E2898 /* KMKDSP__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006291C910482000E2898 /* KMKDSP__.ttf */; };
+		1C70063E1C910482000E2898 /* KMKDSPKW.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C70062A1C910482000E2898 /* KMKDSPKW.ttf */; };
+		1C70063F1C910482000E2898 /* KMKDSPSH.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C70062B1C910482000E2898 /* KMKDSPSH.ttf */; };
+		1C7006401C910482000E2898 /* KOMIKABB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C70062C1C910482000E2898 /* KOMIKABB.ttf */; };
+		1C7006411C910482000E2898 /* KOMIKND_.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C70062D1C910482000E2898 /* KOMIKND_.ttf */; };
+		1C7006421C910482000E2898 /* KOMIKSKT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C70062E1C910482000E2898 /* KOMIKSKT.ttf */; };
+		1C7006431C910482000E2898 /* KOMTITBR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C70062F1C910482000E2898 /* KOMTITBR.ttf */; };
+		1C7006441C910482000E2898 /* KOMTITWR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006301C910482000E2898 /* KOMTITWR.ttf */; };
+		1C7006451C910482000E2898 /* PAINP___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006311C910482000E2898 /* PAINP___.TTF */; };
+		1C7006461C910482000E2898 /* SERIO___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006321C910482000E2898 /* SERIO___.TTF */; };
+		1C7006471C910482000E2898 /* YIKES!__.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006331C910482000E2898 /* YIKES!__.TTF */; };
 		1CE7C6161C8F8C220003A63D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7C6151C8F8C220003A63D /* main.m */; };
 		1CE7C6191C8F8C220003A63D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7C6181C8F8C220003A63D /* AppDelegate.m */; };
 		1CE7C61C1C8F8C220003A63D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7C61B1C8F8C220003A63D /* ViewController.m */; };
@@ -18,6 +38,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C7006201C910482000E2898 /* Bangers.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Bangers.ttf; path = fonts/Bangers.ttf; sourceTree = "<group>"; };
+		1C7006211C910482000E2898 /* Bonoci.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Bonoci.ttf; path = fonts/Bonoci.ttf; sourceTree = "<group>"; };
+		1C7006221C910482000E2898 /* Chromium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Chromium.ttf; path = fonts/Chromium.ttf; sourceTree = "<group>"; };
+		1C7006231C910482000E2898 /* Danger Diabolik.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Danger Diabolik.ttf"; path = "fonts/Danger Diabolik.ttf"; sourceTree = "<group>"; };
+		1C7006241C910482000E2898 /* DCC - Dreamer.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DCC - Dreamer.otf"; path = "fonts/DCC - Dreamer.otf"; sourceTree = "<group>"; };
+		1C7006251C910482000E2898 /* Homer_Simpson.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Homer_Simpson.ttf; path = fonts/Homer_Simpson.ttf; sourceTree = "<group>"; };
+		1C7006261C910482000E2898 /* IdeaBursts.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IdeaBursts.ttf; path = fonts/IdeaBursts.ttf; sourceTree = "<group>"; };
+		1C7006271C910482000E2898 /* KA-BLAMO!.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KA-BLAMO!.ttf"; path = "fonts/KA-BLAMO!.ttf"; sourceTree = "<group>"; };
+		1C7006281C910482000E2898 /* Ka-Boing!.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ka-Boing!.ttf"; path = "fonts/Ka-Boing!.ttf"; sourceTree = "<group>"; };
+		1C7006291C910482000E2898 /* KMKDSP__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KMKDSP__.ttf; path = fonts/KMKDSP__.ttf; sourceTree = "<group>"; };
+		1C70062A1C910482000E2898 /* KMKDSPKW.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KMKDSPKW.ttf; path = fonts/KMKDSPKW.ttf; sourceTree = "<group>"; };
+		1C70062B1C910482000E2898 /* KMKDSPSH.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KMKDSPSH.ttf; path = fonts/KMKDSPSH.ttf; sourceTree = "<group>"; };
+		1C70062C1C910482000E2898 /* KOMIKABB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KOMIKABB.ttf; path = fonts/KOMIKABB.ttf; sourceTree = "<group>"; };
+		1C70062D1C910482000E2898 /* KOMIKND_.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KOMIKND_.ttf; path = fonts/KOMIKND_.ttf; sourceTree = "<group>"; };
+		1C70062E1C910482000E2898 /* KOMIKSKT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KOMIKSKT.ttf; path = fonts/KOMIKSKT.ttf; sourceTree = "<group>"; };
+		1C70062F1C910482000E2898 /* KOMTITBR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KOMTITBR.ttf; path = fonts/KOMTITBR.ttf; sourceTree = "<group>"; };
+		1C7006301C910482000E2898 /* KOMTITWR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KOMTITWR.ttf; path = fonts/KOMTITWR.ttf; sourceTree = "<group>"; };
+		1C7006311C910482000E2898 /* PAINP___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PAINP___.TTF"; path = "fonts/PAINP___.TTF"; sourceTree = "<group>"; };
+		1C7006321C910482000E2898 /* SERIO___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SERIO___.TTF"; path = "fonts/SERIO___.TTF"; sourceTree = "<group>"; };
+		1C7006331C910482000E2898 /* YIKES!__.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "YIKES!__.TTF"; path = "fonts/YIKES!__.TTF"; sourceTree = "<group>"; };
 		1CE7C6111C8F8C220003A63D /* comic-books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "comic-books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CE7C6151C8F8C220003A63D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CE7C6171C8F8C220003A63D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -45,6 +85,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C70061F1C910461000E2898 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1C7006201C910482000E2898 /* Bangers.ttf */,
+				1C7006211C910482000E2898 /* Bonoci.ttf */,
+				1C7006221C910482000E2898 /* Chromium.ttf */,
+				1C7006231C910482000E2898 /* Danger Diabolik.ttf */,
+				1C7006241C910482000E2898 /* DCC - Dreamer.otf */,
+				1C7006251C910482000E2898 /* Homer_Simpson.ttf */,
+				1C7006261C910482000E2898 /* IdeaBursts.ttf */,
+				1C7006271C910482000E2898 /* KA-BLAMO!.ttf */,
+				1C7006281C910482000E2898 /* Ka-Boing!.ttf */,
+				1C7006291C910482000E2898 /* KMKDSP__.ttf */,
+				1C70062A1C910482000E2898 /* KMKDSPKW.ttf */,
+				1C70062B1C910482000E2898 /* KMKDSPSH.ttf */,
+				1C70062C1C910482000E2898 /* KOMIKABB.ttf */,
+				1C70062D1C910482000E2898 /* KOMIKND_.ttf */,
+				1C70062E1C910482000E2898 /* KOMIKSKT.ttf */,
+				1C70062F1C910482000E2898 /* KOMTITBR.ttf */,
+				1C7006301C910482000E2898 /* KOMTITWR.ttf */,
+				1C7006311C910482000E2898 /* PAINP___.TTF */,
+				1C7006321C910482000E2898 /* SERIO___.TTF */,
+				1C7006331C910482000E2898 /* YIKES!__.TTF */,
+			);
+			name = fonts;
+			sourceTree = "<group>";
+		};
 		1CE7C6081C8F8C220003A63D = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +132,7 @@
 		1CE7C6131C8F8C220003A63D /* comic-books */ = {
 			isa = PBXGroup;
 			children = (
+				1C70061F1C910461000E2898 /* fonts */,
 				1CE7C62B1C8FA7AF0003A63D /* Utilities */,
 				1CE7C6171C8F8C220003A63D /* AppDelegate.h */,
 				1CE7C6181C8F8C220003A63D /* AppDelegate.m */,
@@ -153,9 +221,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C70063F1C910482000E2898 /* KMKDSPSH.ttf in Resources */,
+				1C7006431C910482000E2898 /* KOMTITBR.ttf in Resources */,
+				1C7006421C910482000E2898 /* KOMIKSKT.ttf in Resources */,
+				1C7006411C910482000E2898 /* KOMIKND_.ttf in Resources */,
 				1CE7C6241C8F8C220003A63D /* LaunchScreen.storyboard in Resources */,
+				1C70063B1C910482000E2898 /* KA-BLAMO!.ttf in Resources */,
+				1C70063E1C910482000E2898 /* KMKDSPKW.ttf in Resources */,
+				1C7006461C910482000E2898 /* SERIO___.TTF in Resources */,
+				1C7006371C910482000E2898 /* Danger Diabolik.ttf in Resources */,
+				1C7006351C910482000E2898 /* Bonoci.ttf in Resources */,
+				1C7006441C910482000E2898 /* KOMTITWR.ttf in Resources */,
+				1C7006391C910482000E2898 /* Homer_Simpson.ttf in Resources */,
+				1C70063A1C910482000E2898 /* IdeaBursts.ttf in Resources */,
+				1C7006401C910482000E2898 /* KOMIKABB.ttf in Resources */,
+				1C70063C1C910482000E2898 /* Ka-Boing!.ttf in Resources */,
+				1C7006341C910482000E2898 /* Bangers.ttf in Resources */,
 				1CE7C6211C8F8C220003A63D /* Assets.xcassets in Resources */,
+				1C7006361C910482000E2898 /* Chromium.ttf in Resources */,
 				1CE7C61F1C8F8C220003A63D /* Main.storyboard in Resources */,
+				1C7006381C910482000E2898 /* DCC - Dreamer.otf in Resources */,
+				1C7006451C910482000E2898 /* PAINP___.TTF in Resources */,
+				1C7006471C910482000E2898 /* YIKES!__.TTF in Resources */,
+				1C70063D1C910482000E2898 /* KMKDSP__.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +406,7 @@
 				1CE7C62A1C8F8C220003A63D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

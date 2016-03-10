@@ -36,6 +36,29 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Ka-Boing!.ttf</string>
+		<string>YIKES!__.TTF</string>
+		<string>SERIO___.TTF</string>
+		<string>PAINP___.TTF</string>
+		<string>KOMTITWR.ttf</string>
+		<string>KOMTITBR.ttf</string>
+		<string>KOMIKSKT.ttf</string>
+		<string>KOMIKND_.ttf</string>
+		<string>KOMIKABB.ttf</string>
+		<string>KMKDSPSH.ttf</string>
+		<string>KMKDSPKW.ttf</string>
+		<string>KMKDSP__.ttf</string>
+		<string>KA-BLAMO!.ttf</string>
+		<string>IdeaBursts.ttf</string>
+		<string>Homer_Simpson.ttf</string>
+		<string>DCC - Dreamer.otf</string>
+		<string>Danger Diabolik.ttf</string>
+		<string>Chromium.ttf</string>
+		<string>Bonoci.ttf</string>
+		<string>Bangers.ttf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
