@@ -23,7 +23,6 @@
 
 @implementation FrameViewController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -59,6 +58,14 @@
     float moveY = tabBarTop - self.commonView.bounds.size.height*0.15 + layoutView.frame.size.height/2;
     
     [self.commonView addSubview:layoutView];
+    
+    [self createMainView];
+    self.imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(self.mainView.frame.size.width * 0.01,
+                                                              self.mainView.frame.size.height * 0.01,
+                                                              self.mainView.frame.size.width*0.98,
+                                                              self.mainView.frame.size.height*0.98)];
+    self.imgView1.backgroundColor = [UIColor colorWithRed:226.0f/255.0f green:226.0f/255.0f blue:226.0f/255.0f alpha:1.0];
+    [self.mainView addSubview:self.imgView1];
     
     [UIView animateWithDuration:0.5 animations:^{
         layoutView.center = CGPointMake(moveX, moveY);
@@ -101,41 +108,89 @@
 - (void)handleTap:(UITapGestureRecognizer *)recognizer  {
     UIImageView *imageView = (UIImageView *)recognizer.view;
     
-    _mainView = [[UIView alloc] initWithFrame:CGRectMake(self.commonView.bounds.size.width*0.01,
+    [self createMainView];
+    
+    [self createLayouts:self.mainView andType:[imageView tag]];
+}
+
+- (void)createMainView
+{
+    self.mainView = [[UIView alloc] initWithFrame:CGRectMake(self.commonView.bounds.size.width*0.01,
                                                          self.commonView.bounds.size.height*0.15,
                                                          self.commonView.bounds.size.width*0.98,
                                                          self.commonView.bounds.size.width*0.98)];
-    _mainView.backgroundColor = [UIColor colorWithRed:231.0f/255.0f green:231.0f/255.0f blue:230.0f/255.0f alpha:1.0];
-    [self.commonView addSubview:_mainView];
+    self.mainView.backgroundColor = [UIColor whiteColor];
+    [self.commonView addSubview:self.mainView];
     
-    _mainView.center = CGPointMake(_mainView.center.x ,(self.commonView.frame.size.height - (self.commonView.bounds.size.height*0.15 + self.tabBarController.tabBar.frame.size.height)) / 2);
-    
-    [self createLayouts:_mainView andType:[imageView tag]];
+    self.mainView.center = CGPointMake(self.mainView.center.x ,(self.commonView.frame.size.height - (self.commonView.bounds.size.height*0.15 + self.tabBarController.tabBar.frame.size.height)) / 2);
 }
-
-//- (void)
 
 - (void)createLayouts:(UIView*)parent andType:(NSInteger)number
 {
+    float standardSize = parent.frame.size.width;
+    
     switch(number)
     {
         case 1:
-            _imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, parent.bounds.size.width, parent.bounds.size.height/2)];
-            _imgView1.backgroundColor = [UIColor colorWithRed:251.0f/255.0f green:238.0f/255.0f blue:202.0f/255.0f alpha:1.0];
-            [parent addSubview:_imgView1];
+            self.imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.98, standardSize*0.98)];
+            self.imgView1.backgroundColor = [UIColor colorWithRed:226.0f/255.0f green:226.0f/255.0f blue:226.0f/255.0f alpha:1.0];
+            [parent addSubview:self.imgView1];
             break;
         case 2:
-            NSLog(@"TEST2");
+            self.imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.98, standardSize*0.485)];
+            self.imgView1.backgroundColor = [UIColor colorWithRed:226.0f/255.0f green:226.0f/255.0f blue:226.0f/255.0f alpha:1.0];
+            [parent addSubview:self.imgView1];
+            
+            self.imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.485, standardSize*0.485)];
+            self.imgView2.backgroundColor = [UIColor colorWithRed:226.0f/255.0f green:226.0f/255.0f blue:226.0f/255.0f alpha:1.0];
+            [parent addSubview:self.imgView2];
+            
+            self.imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(standardSize*0.505, standardSize*0.505, standardSize*0.485, standardSize*0.485)];
+            self.imgView3.backgroundColor = [UIColor colorWithRed:226.0f/255.0f green:226.0f/255.0f blue:226.0f/255.0f alpha:1.0];
+            [parent addSubview:self.imgView3];
             break;
         case 3:
-            NSLog(@"TEST3");
+            self.imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.485)];
+            self.imgView1.backgroundColor = [UIColor colorWithRed:226.0f/255.0f green:226.0f/255.0f blue:226.0f/255.0f alpha:1.0];
+            [parent addSubview:self.imgView1];
+            
+            self.imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.485)];
+            self.imgView2.backgroundColor = [UIColor colorWithRed:226.0f/255.0f green:226.0f/255.0f blue:226.0f/255.0f alpha:1.0];
+            [parent addSubview:self.imgView2];
+            
+            self.imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.98, standardSize*0.485)];
+            self.imgView3.backgroundColor = [UIColor colorWithRed:226.0f/255.0f green:226.0f/255.0f blue:226.0f/255.0f alpha:1.0];
+            [parent addSubview:self.imgView3];
             break;
+
         case 4:
-            NSLog(@"TEST4");
+            self.imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.98)];
+            self.imgView1.backgroundColor = [UIColor colorWithRed:226.0f/255.0f green:226.0f/255.0f blue:226.0f/255.0f alpha:1.0];
+            [parent addSubview:self.imgView1];
+            
+            self.imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.485)];
+            self.imgView2.backgroundColor = [UIColor colorWithRed:226.0f/255.0f green:226.0f/255.0f blue:226.0f/255.0f alpha:1.0];
+            [parent addSubview:self.imgView2];
+            
+            self.imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(standardSize*0.505, standardSize*0.505, standardSize*0.485, standardSize*0.485)];
+            self.imgView3.backgroundColor = [UIColor colorWithRed:226.0f/255.0f green:226.0f/255.0f blue:226.0f/255.0f alpha:1.0];
+            [parent addSubview:self.imgView3];
             break;
+
         case 5:
-            NSLog(@"TEST5");
+            self.imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.485)];
+            self.imgView1.backgroundColor = [UIColor colorWithRed:226.0f/255.0f green:226.0f/255.0f blue:226.0f/255.0f alpha:1.0];
+            [parent addSubview:self.imgView1];
+            
+            self.imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.98)];
+            self.imgView2.backgroundColor = [UIColor colorWithRed:226.0f/255.0f green:226.0f/255.0f blue:226.0f/255.0f alpha:1.0];
+            [parent addSubview:self.imgView2];
+            
+            self.imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.485, standardSize*0.485)];
+            self.imgView3.backgroundColor = [UIColor colorWithRed:226.0f/255.0f green:226.0f/255.0f blue:226.0f/255.0f alpha:1.0];
+            [parent addSubview:self.imgView3];
             break;
+
     }
     
 }
