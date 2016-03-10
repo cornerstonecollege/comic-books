@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TabBarController.h
 //  comic-books
 //
 //  Created by CICCC1 on 2016-03-08.
@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface TabBarController : UITabBarController
 
+@property (nonatomic, strong) UIView *commonView;
 
 @end
 
