@@ -27,6 +27,7 @@
 		1C7006451C910482000E2898 /* PAINP___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006311C910482000E2898 /* PAINP___.TTF */; };
 		1C7006461C910482000E2898 /* SERIO___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006321C910482000E2898 /* SERIO___.TTF */; };
 		1C7006471C910482000E2898 /* YIKES!__.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006331C910482000E2898 /* YIKES!__.TTF */; };
+		1C7006491C9121FB000E2898 /* soundfx.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006481C9121FB000E2898 /* soundfx.ttf */; };
 		1CE7C6161C8F8C220003A63D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7C6151C8F8C220003A63D /* main.m */; };
 		1CE7C6191C8F8C220003A63D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7C6181C8F8C220003A63D /* AppDelegate.m */; };
 		1CE7C61C1C8F8C220003A63D /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7C61B1C8F8C220003A63D /* TabBarController.m */; };
@@ -60,6 +61,7 @@
 		1C7006311C910482000E2898 /* PAINP___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PAINP___.TTF"; path = "fonts/PAINP___.TTF"; sourceTree = "<group>"; };
 		1C7006321C910482000E2898 /* SERIO___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SERIO___.TTF"; path = "fonts/SERIO___.TTF"; sourceTree = "<group>"; };
 		1C7006331C910482000E2898 /* YIKES!__.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "YIKES!__.TTF"; path = "fonts/YIKES!__.TTF"; sourceTree = "<group>"; };
+		1C7006481C9121FB000E2898 /* soundfx.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundfx.ttf; path = fonts/soundfx.ttf; sourceTree = "<group>"; };
 		1CE7C6111C8F8C220003A63D /* comic-books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "comic-books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CE7C6151C8F8C220003A63D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CE7C6171C8F8C220003A63D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		1C70061F1C910461000E2898 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				1C7006481C9121FB000E2898 /* soundfx.ttf */,
 				1C7006201C910482000E2898 /* Bangers.ttf */,
 				1C7006211C910482000E2898 /* Bonoci.ttf */,
 				1C7006221C910482000E2898 /* Chromium.ttf */,
@@ -245,6 +248,7 @@
 				1C7006391C910482000E2898 /* Homer_Simpson.ttf in Resources */,
 				68E439F11C91109000D56025 /* Main.storyboard in Resources */,
 				1C70063A1C910482000E2898 /* IdeaBursts.ttf in Resources */,
+				1C7006491C9121FB000E2898 /* soundfx.ttf in Resources */,
 				1C7006401C910482000E2898 /* KOMIKABB.ttf in Resources */,
 				1C70063C1C910482000E2898 /* Ka-Boing!.ttf in Resources */,
 				1C7006341C910482000E2898 /* Bangers.ttf in Resources */,

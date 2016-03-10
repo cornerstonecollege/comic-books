@@ -24,6 +24,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>soundfx.ttf</string>
 		<string>Ka-Boing!.ttf</string>
 		<string>YIKES!__.TTF</string>
 		<string>SERIO___.TTF</string>
