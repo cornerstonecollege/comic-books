@@ -28,6 +28,7 @@
     [self.commonView addSubview:imageView];
     
     [self createTab];
+    [self.firstVC tabBarClicked];
 }
 
 - (void)createTab
