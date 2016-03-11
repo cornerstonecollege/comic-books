@@ -232,13 +232,9 @@
                                                               self.view.bounds.size.height*0.25,
                                                               self.view.bounds.size.width*0.8,
                                                               self.view.bounds.size.height*0.25)];
-    [self.dialogView setBackgroundColor:[UIColor yellowColor]];
+    [self.dialogView setBackgroundColor: [UIColor colorWithRed:251.0f/255.0f green:251.0f/255.0f blue:185.0f/255.0f alpha:1.0]];
     [self.view addSubview:self.dialogView];
 }
-
-
-
-
 
 - (void)didReceiveMemoryWarning
 {
