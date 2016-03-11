@@ -18,6 +18,7 @@
 @property (nonatomic) UIImageView *imgView2;
 @property (nonatomic) UIImageView *imgView3;
 @property (nonatomic) UIImageView *imgView4;
+@property (nonatomic) CGFloat percentagePopup;
 
 @end
 
@@ -30,6 +31,7 @@
     self.commonView = ((TabBarController *)self.tabBarController).commonView;
     self.mainView = ((TabBarController *)self.tabBarController).mainView;
     [self.view addSubview:self.commonView];
+    self.percentagePopup = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 0.10 : 0.15;
 }
 
 - (void) tabBarClickedFromSomewhere:(BOOL)isInitialization;
@@ -60,7 +62,7 @@
     }
     
     float moveX = layoutView.frame.size.width / 2;
-    float moveY = tabBarTop - self.commonView.bounds.size.height*0.15 + layoutView.frame.size.height/2;
+    float moveY = tabBarTop - self.commonView.bounds.size.height*self.percentagePopup + layoutView.frame.size.height/2;
     [UIView animateWithDuration:0.5 animations:^{
         layoutView.center = CGPointMake(moveX, moveY);
     } completion:^(BOOL finished) {
@@ -70,7 +72,7 @@
         NSInteger cnt = 1;
         for (NSString * name in _layoutArray)
         {
-            [self addImageSize:CGRectMake(xPosition, self.commonView.bounds.size.height*0.15/4, 50, 50) name:name count:cnt time:time andParent:layoutView];
+            [self addImageSize:CGRectMake(xPosition, self.commonView.bounds.size.height*self.percentagePopup/4, 50, 50) name:name count:cnt time:time andParent:layoutView];
             xPosition += 100;
             time += 0.05;
             cnt +=1;
@@ -90,9 +92,9 @@
     if (!layoutView)
     {
         layoutView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,
-                                                   self.commonView.bounds.size.height*0.15 + self.commonView.bounds.size.height,
+                                                   self.commonView.frame.size.height - self.tabBarController.tabBar.frame.size.height - self.commonView.bounds.size.height*self.percentagePopup,
                                                    self.commonView.bounds.size.width,
-                                                   self.commonView.bounds.size.height*0.15)];
+                                                   self.commonView.bounds.size.height*self.percentagePopup)];
         [self.commonView addSubview:layoutView];
     }
     
@@ -159,6 +161,30 @@
             [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.98) parent:parent andImageView:self.imgView2];
             [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView3];
             break;
+        case 6:
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView1];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView2];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView3];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView4];
+            break;
+        case 7:
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.98, standardSize*0.485) parent:parent andImageView:self.imgView1];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.32, standardSize*0.485) parent:parent andImageView:self.imgView2];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.34, standardSize*0.505, standardSize*0.32, standardSize*0.485) parent:parent andImageView:self.imgView3];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.67, standardSize*0.505, standardSize*0.32, standardSize*0.485) parent:parent andImageView:self.imgView4];
+            break;
+        case 8:
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.98) parent:parent andImageView:self.imgView1];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.32) parent:parent andImageView:self.imgView2];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.34, standardSize*0.485, standardSize*0.32) parent:parent andImageView:self.imgView3];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.67, standardSize*0.485, standardSize*0.32) parent:parent andImageView:self.imgView4];
+            break;
+        case 9:
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.3, standardSize*0.485) parent:parent andImageView:self.imgView1];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.32, standardSize*0.01, standardSize*0.67, standardSize*0.485) parent:parent andImageView:self.imgView2];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.67, standardSize*0.485) parent:parent andImageView:self.imgView3];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.69, standardSize*0.505, standardSize*0.3, standardSize*0.485) parent:parent andImageView:self.imgView4];
+            break;
     }
     
 }
@@ -176,6 +202,15 @@
     image = [[UIImageView alloc] initWithFrame:frame];
     image.backgroundColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
     [parent addSubview:image];
+    
+    UILabel *plusLabel = [[UILabel alloc]init];
+    plusLabel.text = @"+";
+    plusLabel.font=[UIFont fontWithName:@"Helvetica" size:50 ];
+    plusLabel.textAlignment = NSTextAlignmentCenter;
+    [plusLabel sizeToFit];
+    plusLabel.textColor = [UIColor lightGrayColor];
+    plusLabel.center = image.center;
+    [parent addSubview:plusLabel];
 }
 
 - (void)didReceiveMemoryWarning

@@ -37,13 +37,13 @@
 - (void) createMainView
 {
     self.mainView = [[UIView alloc] initWithFrame:CGRectMake(self.commonView.bounds.size.width*0.01,
-                                                             self.commonView.bounds.size.height*0.15,
+                                                             self.commonView.bounds.size.height*0.09,
                                                              self.commonView.bounds.size.width*0.98,
                                                              self.commonView.bounds.size.width*0.98)];
     self.mainView.backgroundColor = [UIColor whiteColor];
     [self.commonView addSubview:self.mainView];
     
-    self.mainView.center = CGPointMake(self.mainView.center.x ,(self.commonView.frame.size.height - (self.commonView.bounds.size.height*0.15 + self.tabBarController.tabBar.frame.size.height)) / 2);
+    //self.mainView.center = CGPointMake(self.mainView.center.x ,(self.commonView.frame.size.height - (self.commonView.bounds.size.height*0.13 + self.tabBarController.tabBar.frame.size.height)) / 2);
 }
 
 - (void)createTab
