@@ -14,6 +14,7 @@
 @property (nonatomic) NSArray *layoutArray;
 @property (nonatomic, weak) UIView *commonView;
 @property (nonatomic, weak) UIView *mainView;
+@property (nonatomic) UIView *dialogView;
 @property (nonatomic) UIImageView *imgView1;
 @property (nonatomic) UIImageView *imgView2;
 @property (nonatomic) UIImageView *imgView3;
@@ -115,7 +116,6 @@
     UITapGestureRecognizer *tap =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [imageView addGestureRecognizer:tap];
-    //[tap release];
     
     [parent addSubview:imageView];
     
@@ -134,8 +134,8 @@
 
 - (void)createLayouts:(UIView*)parent andType:(NSInteger)number
 {
+    [self.dialogView removeFromSuperview];
     float standardSize = parent.frame.size.width;
-    
     switch(number)
     {
         case 1:
@@ -210,8 +210,30 @@
     [plusLabel sizeToFit];
     plusLabel.textColor = [UIColor lightGrayColor];
     plusLabel.center = image.center;
+    
+    plusLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGesture =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelTap)];
+    [plusLabel addGestureRecognizer:tapGesture];
+    
     [parent addSubview:plusLabel];
 }
+
+- (void)labelTap
+{
+    NSLog(@"TAP");
+    [self.dialogView removeFromSuperview];
+    self.dialogView = [[UIView alloc]initWithFrame:CGRectMake(self.view.bounds.size.width*0.1,
+                                                              self.view.bounds.size.height*0.25,
+                                                              self.view.bounds.size.width*0.8,
+                                                              self.view.bounds.size.height*0.25)];
+    [self.dialogView setBackgroundColor:[UIColor yellowColor]];
+    [self.view addSubview:self.dialogView];
+}
+
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
