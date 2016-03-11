@@ -11,6 +11,7 @@
 @interface TabBarController : UITabBarController
 
 @property (nonatomic, strong) UIView *commonView;
+@property (nonatomic, strong) UIView *mainView;
 
 @end
 

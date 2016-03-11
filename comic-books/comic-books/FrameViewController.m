@@ -13,7 +13,7 @@
 
 @property (nonatomic) NSArray *layoutArray;
 @property (nonatomic, weak) UIView *commonView;
-@property (nonatomic) UIView *mainView;
+@property (nonatomic, weak) UIView *mainView;
 @property (nonatomic) UIImageView *imgView1;
 @property (nonatomic) UIImageView *imgView2;
 @property (nonatomic) UIImageView *imgView3;
@@ -28,16 +28,16 @@
     [super viewDidLoad];
     
     self.commonView = ((TabBarController *)self.tabBarController).commonView;
+    self.mainView = ((TabBarController *)self.tabBarController).mainView;
     [self.view addSubview:self.commonView];
 }
 
-- (void) tabBarClicked
+- (void) tabBarClickedFromSomewhere:(BOOL)isInitialization;
 {
     // claim the view to itself
     [self.view addSubview:self.commonView];
     
-    
-    _layoutArray = @[@"w1.png", @"w2.png", @"w3.png", @"w4.png", @"w5.png", @"w1.png", @"w2.png", @"w3.png", @"w4.png"];
+    self.layoutArray = @[@"w1.png", @"w2.png", @"w3.png", @"w4.png", @"w5.png", @"w1.png", @"w2.png", @"w3.png", @"w4.png"];
     
     CGPoint point = CGPointMake(self.commonView.center.x, self.commonView.center.y);
     CGFloat tabBarTop = [[[self tabBarController] tabBar] frame].origin.y;
@@ -48,26 +48,19 @@
         point = CGPointMake(self.commonView.center.x, self.commonView.center.y - obj.tabBar.frame.size.height);
     }
     
-    UIScrollView *layoutView =
-    [[UIScrollView alloc] initWithFrame:CGRectMake(0,
-                                                   self.commonView.bounds.size.height*0.15 + self.commonView.bounds.size.height,
-                                                   self.commonView.bounds.size.width,
-                                                   self.commonView.bounds.size.height*0.15)];
-    layoutView.backgroundColor = [UIColor colorWithRed:224.0f/255.0f green:245.0f/255.0f blue:249.0f/255.0f alpha:1.0];
-    layoutView.contentSize = CGSizeMake(_layoutArray.count*100, self.commonView.bounds.size.height*0.15);
+    UIScrollView *layoutView = [self createScrollViewBottom];
     
-    float moveX = layoutView.frame.size.width / 2;
-    float moveY = tabBarTop - self.commonView.bounds.size.height*0.15 + layoutView.frame.size.height/2;
-    
-    [self.commonView addSubview:layoutView];
-    
-    [self createMainView];
-    [self makeLayoutWithFrame:CGRectMake(self.mainView.frame.size.width * 0.01,
+    if (isInitialization)
+    {
+        [self makeLayoutWithFrame:CGRectMake(self.mainView.frame.size.width * 0.01,
                                          self.mainView.frame.size.height * 0.01,
                                          self.mainView.frame.size.width*0.98,
                                          self.mainView.frame.size.height*0.98) parent:self.mainView andImageView:self.imgView1];
-    [self createLayouts:self.mainView andType:[self.imgView1 tag]];
+        [self createLayouts:self.mainView andType:[self.imgView1 tag]];
+    }
     
+    float moveX = layoutView.frame.size.width / 2;
+    float moveY = tabBarTop - self.commonView.bounds.size.height*0.15 + layoutView.frame.size.height/2;
     [UIView animateWithDuration:0.5 animations:^{
         layoutView.center = CGPointMake(moveX, moveY);
     } completion:^(BOOL finished) {
@@ -83,6 +76,30 @@
             cnt +=1;
         }
     }];
+}
+
+- (UIScrollView *) createScrollViewBottom
+{
+    __block UIScrollView *layoutView = nil;
+    
+    [self.commonView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[UIScrollView class]])
+            layoutView = (UIScrollView *)obj;
+    }];
+    
+    if (!layoutView)
+    {
+        layoutView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,
+                                                   self.commonView.bounds.size.height*0.15 + self.commonView.bounds.size.height,
+                                                   self.commonView.bounds.size.width,
+                                                   self.commonView.bounds.size.height*0.15)];
+        [self.commonView addSubview:layoutView];
+    }
+    
+    layoutView.backgroundColor = [UIColor colorWithRed:224.0f/255.0f green:245.0f/255.0f blue:249.0f/255.0f alpha:1.0];
+    layoutView.contentSize = CGSizeMake(_layoutArray.count*100, self.commonView.bounds.size.height*0.15);
+    
+    return layoutView;
 }
 
 - (void) addImageSize:(CGRect)size name:(NSString *)name count:(NSInteger)cnt time:(NSTimeInterval)time andParent:(UIScrollView *)parent
@@ -109,22 +126,8 @@
 - (void)handleTap:(UITapGestureRecognizer *)recognizer  {
     UIImageView *imageView = (UIImageView *)recognizer.view;
     
-    [self createMainView];
-    
+    [self clearChildrenMainView];
     [self createLayouts:self.mainView andType:[imageView tag]];
-}
-
-- (void)createMainView
-{
-    self.mainView = [[UIView alloc] initWithFrame:CGRectMake(self.commonView.bounds.size.width*0.01,
-                                                         self.commonView.bounds.size.height*0.15,
-                                                         self.commonView.bounds.size.width*0.98,
-                                                         self.commonView.bounds.size.width*0.98)];
-    self.mainView.backgroundColor = [UIColor whiteColor];
-    self.mainView.tag = -1;
-    [self.commonView addSubview:self.mainView];
-    
-    self.mainView.center = CGPointMake(self.mainView.center.x ,(self.commonView.frame.size.height - (self.commonView.bounds.size.height*0.15 + self.tabBarController.tabBar.frame.size.height)) / 2);
 }
 
 - (void)createLayouts:(UIView*)parent andType:(NSInteger)number
@@ -160,15 +163,20 @@
     
 }
 
+- (void) clearChildrenMainView
+{
+    [self.mainView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+    {
+        [obj removeFromSuperview];
+    }];
+}
+
 - (void)makeLayoutWithFrame:(CGRect)frame parent:(UIView *)parent andImageView:(UIImageView *)image
 {
     image = [[UIImageView alloc] initWithFrame:frame];
     image.backgroundColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
     [parent addSubview:image];
-    
-    
 }
-
 
 - (void)didReceiveMemoryWarning
 {

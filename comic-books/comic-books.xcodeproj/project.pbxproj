@@ -38,6 +38,7 @@
 		68E439EB1C910D1E00D56025 /* FrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E439EA1C910D1E00D56025 /* FrameViewController.m */; };
 		68E439EE1C910D4700D56025 /* ExpressionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E439ED1C910D4700D56025 /* ExpressionViewController.m */; };
 		68E439F11C91109000D56025 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E439EF1C91109000D56025 /* Main.storyboard */; };
+		68FFB0131C923FA8004F543D /* SpeechBubbleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FFB0121C923FA8004F543D /* SpeechBubbleViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,8 @@
 		68E439EC1C910D4700D56025 /* ExpressionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressionViewController.h; sourceTree = "<group>"; };
 		68E439ED1C910D4700D56025 /* ExpressionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressionViewController.m; sourceTree = "<group>"; };
 		68E439F01C91109000D56025 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		68FFB0111C923FA8004F543D /* SpeechBubbleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechBubbleViewController.h; sourceTree = "<group>"; };
+		68FFB0121C923FA8004F543D /* SpeechBubbleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechBubbleViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +154,8 @@
 				68E439EA1C910D1E00D56025 /* FrameViewController.m */,
 				68E439EC1C910D4700D56025 /* ExpressionViewController.h */,
 				68E439ED1C910D4700D56025 /* ExpressionViewController.m */,
+				68FFB0111C923FA8004F543D /* SpeechBubbleViewController.h */,
+				68FFB0121C923FA8004F543D /* SpeechBubbleViewController.m */,
 				1CE7C6201C8F8C220003A63D /* Assets.xcassets */,
 				68E439EF1C91109000D56025 /* Main.storyboard */,
 				1CE7C6221C8F8C220003A63D /* LaunchScreen.storyboard */,
@@ -270,6 +275,7 @@
 			files = (
 				68E439EE1C910D4700D56025 /* ExpressionViewController.m in Sources */,
 				68E439EB1C910D1E00D56025 /* FrameViewController.m in Sources */,
+				68FFB0131C923FA8004F543D /* SpeechBubbleViewController.m in Sources */,
 				1CE7C61C1C8F8C220003A63D /* TabBarController.m in Sources */,
 				1CE7C6191C8F8C220003A63D /* AppDelegate.m in Sources */,
 				1CE7C6161C8F8C220003A63D /* main.m in Sources */,

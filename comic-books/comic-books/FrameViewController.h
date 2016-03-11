@@ -10,6 +10,6 @@
 
 @interface FrameViewController : UIViewController
 
-- (void) tabBarClicked;
+- (void) tabBarClickedFromSomewhere:(BOOL)isInitialization;
 
 @end

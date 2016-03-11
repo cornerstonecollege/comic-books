@@ -31,13 +31,13 @@
     self.commonView = ((TabBarController *)self.tabBarController).commonView;
     [self.view addSubview:self.commonView];
     
-    self.mainView = [self.commonView viewWithTag:-1];
+    self.mainView = [self.commonView viewWithTag:0];
 }
 
 - (void) doTests
 {
-    UIImageView *img = (UIImageView *) [self.mainView viewWithTag:0];
-    img.image = [UIImage imageNamed:@"heroes"];
+    //UIImageView *img = (UIImageView *) [self.mainView viewWithTag:0];
+    //img.image = [UIImage imageNamed:@"heroes"];
     
     UILabel *factLabel = [[UILabel alloc] init];
     [factLabel setFont:[UIFont fontWithName:@"Sound FX" size:100]];
@@ -57,6 +57,7 @@
     {
         // claim the view to itself
         [self setViews];
+        [self doTests];
     }
 }
 
