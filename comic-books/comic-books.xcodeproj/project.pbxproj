@@ -28,6 +28,8 @@
 		1C7006461C910482000E2898 /* SERIO___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006321C910482000E2898 /* SERIO___.TTF */; };
 		1C7006471C910482000E2898 /* YIKES!__.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006331C910482000E2898 /* YIKES!__.TTF */; };
 		1C7006491C9121FB000E2898 /* soundfx.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006481C9121FB000E2898 /* soundfx.ttf */; };
+		1CBE84491C93713300F8DA52 /* KomikaBubblesDark-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1CBE84481C93713300F8DA52 /* KomikaBubblesDark-regular.otf */; };
+		1CC98E2D1C926EB2007FCB34 /* SpeechBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC98E2C1C926EB2007FCB34 /* SpeechBubbleView.m */; };
 		1CE7C6161C8F8C220003A63D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7C6151C8F8C220003A63D /* main.m */; };
 		1CE7C6191C8F8C220003A63D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7C6181C8F8C220003A63D /* AppDelegate.m */; };
 		1CE7C61C1C8F8C220003A63D /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7C61B1C8F8C220003A63D /* TabBarController.m */; };
@@ -63,6 +65,9 @@
 		1C7006321C910482000E2898 /* SERIO___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SERIO___.TTF"; path = "fonts/SERIO___.TTF"; sourceTree = "<group>"; };
 		1C7006331C910482000E2898 /* YIKES!__.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "YIKES!__.TTF"; path = "fonts/YIKES!__.TTF"; sourceTree = "<group>"; };
 		1C7006481C9121FB000E2898 /* soundfx.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soundfx.ttf; path = fonts/soundfx.ttf; sourceTree = "<group>"; };
+		1CBE84481C93713300F8DA52 /* KomikaBubblesDark-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KomikaBubblesDark-regular.otf"; path = "fonts/KomikaBubblesDark-regular.otf"; sourceTree = "<group>"; };
+		1CC98E2B1C926EB2007FCB34 /* SpeechBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeechBubbleView.h; path = Views/SpeechBubbleView.h; sourceTree = "<group>"; };
+		1CC98E2C1C926EB2007FCB34 /* SpeechBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechBubbleView.m; path = Views/SpeechBubbleView.m; sourceTree = "<group>"; };
 		1CE7C6111C8F8C220003A63D /* comic-books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "comic-books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CE7C6151C8F8C220003A63D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CE7C6171C8F8C220003A63D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -99,6 +104,7 @@
 		1C70061F1C910461000E2898 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				1CBE84481C93713300F8DA52 /* KomikaBubblesDark-regular.otf */,
 				1C7006481C9121FB000E2898 /* soundfx.ttf */,
 				1C7006201C910482000E2898 /* Bangers.ttf */,
 				1C7006211C910482000E2898 /* Bonoci.ttf */,
@@ -124,6 +130,15 @@
 			name = fonts;
 			sourceTree = "<group>";
 		};
+		1CC98E2A1C926E82007FCB34 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1CC98E2B1C926EB2007FCB34 /* SpeechBubbleView.h */,
+				1CC98E2C1C926EB2007FCB34 /* SpeechBubbleView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		1CE7C6081C8F8C220003A63D = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +159,7 @@
 		1CE7C6131C8F8C220003A63D /* comic-books */ = {
 			isa = PBXGroup;
 			children = (
+				1CC98E2A1C926E82007FCB34 /* Views */,
 				1C70061F1C910461000E2898 /* fonts */,
 				1CE7C62B1C8FA7AF0003A63D /* Utilities */,
 				1CE7C6171C8F8C220003A63D /* AppDelegate.h */,
@@ -241,6 +257,7 @@
 			files = (
 				1C70063F1C910482000E2898 /* KMKDSPSH.ttf in Resources */,
 				1C7006431C910482000E2898 /* KOMTITBR.ttf in Resources */,
+				1CBE84491C93713300F8DA52 /* KomikaBubblesDark-regular.otf in Resources */,
 				1C7006421C910482000E2898 /* KOMIKSKT.ttf in Resources */,
 				1C7006411C910482000E2898 /* KOMIKND_.ttf in Resources */,
 				1CE7C6241C8F8C220003A63D /* LaunchScreen.storyboard in Resources */,
@@ -277,6 +294,7 @@
 				68E439EB1C910D1E00D56025 /* FrameViewController.m in Sources */,
 				68FFB0131C923FA8004F543D /* SpeechBubbleViewController.m in Sources */,
 				1CE7C61C1C8F8C220003A63D /* TabBarController.m in Sources */,
+				1CC98E2D1C926EB2007FCB34 /* SpeechBubbleView.m in Sources */,
 				1CE7C6191C8F8C220003A63D /* AppDelegate.m in Sources */,
 				1CE7C6161C8F8C220003A63D /* main.m in Sources */,
 				1CE7C62E1C8FA86E0003A63D /* ImageFilterHelper.m in Sources */,
