@@ -106,7 +106,7 @@
         }];
     }
     
-    layoutView.backgroundColor = [UIColor colorWithRed:224.0f/255.0f green:245.0f/255.0f blue:249.0f/255.0f alpha:1.0];
+    layoutView.backgroundColor = [UIColor colorWithRed:96.0f/255.0f green:96.0f/255.0f blue:96.0f/255.0f alpha:1.0];
     layoutView.contentSize = CGSizeMake(self.layoutArray.count*100, self.commonView.bounds.size.height*0.15);
     
     return layoutView;

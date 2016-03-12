@@ -75,6 +75,7 @@
     UILabel *label = [[UILabel alloc] init];
     label.tag = cnt;
     [label setFont:[UIFont fontWithName:@"Sound FX" size:100]];
+    label.textColor = [UIColor whiteColor];
     label.text = [NSString stringWithFormat:@"%c", character];
     [label sizeToFit];
     
@@ -133,7 +134,7 @@
         }];
     }
     
-    layoutView.backgroundColor = [UIColor colorWithRed:224.0f/255.0f green:245.0f/255.0f blue:249.0f/255.0f alpha:1.0];
+    layoutView.backgroundColor = [UIColor colorWithRed:96.0f/255.0f green:96.0f/255.0f blue:96.0f/255.0f alpha:1.0];
     layoutView.contentSize = CGSizeMake(strlen(self.soundFXArr)*100, self.commonView.bounds.size.height*0.15);
     
     return layoutView;
