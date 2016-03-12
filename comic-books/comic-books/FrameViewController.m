@@ -8,6 +8,7 @@
 
 #import "FrameViewController.h"
 #import "TabBarController.h"
+#import "QuartzCore/QuartzCore.h"
 
 @interface FrameViewController ()
 
@@ -71,7 +72,7 @@
         float xPosition = 50;
         float time = 0;
         NSInteger cnt = 1;
-        for (NSString * name in _layoutArray)
+        for (NSString * name in self.layoutArray)
         {
             [self addImageSize:CGRectMake(xPosition, self.commonView.bounds.size.height*self.percentagePopup/4, 50, 50) name:name count:cnt time:time andParent:layoutView];
             xPosition += 100;
@@ -106,7 +107,7 @@
     }
     
     layoutView.backgroundColor = [UIColor colorWithRed:224.0f/255.0f green:245.0f/255.0f blue:249.0f/255.0f alpha:1.0];
-    layoutView.contentSize = CGSizeMake(_layoutArray.count*100, self.commonView.bounds.size.height*0.15);
+    layoutView.contentSize = CGSizeMake(self.layoutArray.count*100, self.commonView.bounds.size.height*0.15);
     
     return layoutView;
 }
@@ -228,11 +229,28 @@
 {
     NSLog(@"TAP");
     [self.dialogView removeFromSuperview];
-    self.dialogView = [[UIView alloc]initWithFrame:CGRectMake(self.view.bounds.size.width*0.1,
+    self.dialogView = [[UIView alloc]initWithFrame:CGRectMake(self.view.bounds.size.width*0.2,
                                                               self.view.bounds.size.height*0.25,
-                                                              self.view.bounds.size.width*0.8,
-                                                              self.view.bounds.size.height*0.25)];
+                                                              self.view.bounds.size.width*0.6,
+                                                              self.view.bounds.size.height*0.15)];
     [self.dialogView setBackgroundColor: [UIColor colorWithRed:251.0f/255.0f green:251.0f/255.0f blue:185.0f/255.0f alpha:1.0]];
+    self.dialogView.layer.cornerRadius = 30;
+    self.dialogView.layer.masksToBounds = YES;
+    
+    UIImageView *cameraView = [[UIImageView alloc] initWithFrame:CGRectMake(self.dialogView.bounds.size.width*0.2,
+                                                                            self.dialogView.bounds.size.height*0.25,
+                                                                            self.dialogView.bounds.size.height*0.5,
+                                                                            self.dialogView.bounds.size.height*0.5)];
+    [cameraView setImage:[UIImage imageNamed:@"camera.png"]];
+    
+    UIImageView *galleryView = [[UIImageView alloc] initWithFrame:CGRectMake(self.dialogView.bounds.size.width*0.7,
+                                                                            self.dialogView.bounds.size.height*0.25,
+                                                                            self.dialogView.bounds.size.height*0.5,
+                                                                            self.dialogView.bounds.size.height*0.5)];
+    [galleryView setImage:[UIImage imageNamed:@"gallery.png"]];
+
+    [self.dialogView addSubview:cameraView];
+    [self.dialogView addSubview:galleryView];
     [self.view addSubview:self.dialogView];
 }
 
