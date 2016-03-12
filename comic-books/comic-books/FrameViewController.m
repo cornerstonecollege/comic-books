@@ -10,7 +10,7 @@
 #import "TabBarController.h"
 #import "QuartzCore/QuartzCore.h"
 
-@interface FrameViewController ()
+@interface FrameViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic) NSArray *layoutArray;
 @property (nonatomic, weak) UIView *commonView;
@@ -21,6 +21,7 @@
 @property (nonatomic) UIImageView *imgView3;
 @property (nonatomic) UIImageView *imgView4;
 @property (nonatomic) CGFloat percentagePopup;
+@property (nonatomic) NSInteger imgFlg;
 
 @end
 
@@ -59,7 +60,7 @@
         [self makeLayoutWithFrame:CGRectMake(self.mainView.frame.size.width * 0.01,
                                          self.mainView.frame.size.height * 0.01,
                                          self.mainView.frame.size.width*0.98,
-                                         self.mainView.frame.size.height*0.98) parent:self.mainView andImageView:self.imgView1];
+                                         self.mainView.frame.size.height*0.98) parent:self.mainView imageView:self.imgView1 andTag:1];
         [self createLayouts:self.mainView andType:[self.imgView1 tag]];
     }
     
@@ -145,51 +146,51 @@
     switch(number)
     {
         case 1:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.98, standardSize*0.98) parent:parent andImageView:self.imgView1];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.98, standardSize*0.98) parent:parent imageView:self.imgView1 andTag:1];
             break;
         case 2:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.98, standardSize*0.485) parent:parent andImageView:self.imgView1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView3];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.98, standardSize*0.485) parent:parent imageView:self.imgView1 andTag:1];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:parent imageView:self.imgView2 andTag:2];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:parent imageView:self.imgView3 andTag:3];
             break;
         case 3:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.98, standardSize*0.485) parent:parent andImageView:self.imgView3];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:parent imageView:self.imgView1 andTag:1];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:parent imageView:self.imgView2 andTag:2];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.98, standardSize*0.485) parent:parent imageView:self.imgView3 andTag:3];
             break;
         case 4:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.98) parent:parent andImageView:self.imgView1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView3];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.98) parent:parent imageView:self.imgView1 andTag:1];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:parent imageView:self.imgView2 andTag:2];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:parent imageView:self.imgView3 andTag:3];
             break;
         case 5:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.98) parent:parent andImageView:self.imgView2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView3];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:parent imageView:self.imgView1 andTag:1];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.98) parent:parent imageView:self.imgView2 andTag:2];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:parent imageView:self.imgView3 andTag:3];
             break;
         case 6:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView3];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:parent andImageView:self.imgView4];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:parent imageView:self.imgView1 andTag:1];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:parent imageView:self.imgView2 andTag:2];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:parent imageView:self.imgView3 andTag:3];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:parent imageView:self.imgView4 andTag:4];
             break;
         case 7:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.98, standardSize*0.485) parent:parent andImageView:self.imgView1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.32, standardSize*0.485) parent:parent andImageView:self.imgView2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.34, standardSize*0.505, standardSize*0.32, standardSize*0.485) parent:parent andImageView:self.imgView3];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.67, standardSize*0.505, standardSize*0.32, standardSize*0.485) parent:parent andImageView:self.imgView4];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.98, standardSize*0.485) parent:parent imageView:self.imgView1 andTag:1];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.32, standardSize*0.485) parent:parent imageView:self.imgView2 andTag:2];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.34, standardSize*0.505, standardSize*0.32, standardSize*0.485) parent:parent imageView:self.imgView3 andTag:3];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.67, standardSize*0.505, standardSize*0.32, standardSize*0.485) parent:parent imageView:self.imgView4 andTag:4];
             break;
         case 8:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.98) parent:parent andImageView:self.imgView1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.32) parent:parent andImageView:self.imgView2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.34, standardSize*0.485, standardSize*0.32) parent:parent andImageView:self.imgView3];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.67, standardSize*0.485, standardSize*0.32) parent:parent andImageView:self.imgView4];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.98) parent:parent imageView:self.imgView1 andTag:1];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.32) parent:parent imageView:self.imgView2 andTag:2];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.34, standardSize*0.485, standardSize*0.32) parent:parent imageView:self.imgView3 andTag:3];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.67, standardSize*0.485, standardSize*0.32) parent:parent imageView:self.imgView4 andTag:4];
             break;
         case 9:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.3, standardSize*0.485) parent:parent andImageView:self.imgView1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.32, standardSize*0.01, standardSize*0.67, standardSize*0.485) parent:parent andImageView:self.imgView2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.67, standardSize*0.485) parent:parent andImageView:self.imgView3];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.69, standardSize*0.505, standardSize*0.3, standardSize*0.485) parent:parent andImageView:self.imgView4];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.3, standardSize*0.485) parent:parent imageView:self.imgView1 andTag:1];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.32, standardSize*0.01, standardSize*0.67, standardSize*0.485) parent:parent imageView:self.imgView2 andTag:2];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.67, standardSize*0.485) parent:parent imageView:self.imgView3 andTag:3];
+            [self makeLayoutWithFrame:CGRectMake(standardSize*0.69, standardSize*0.505, standardSize*0.3, standardSize*0.485) parent:parent imageView:self.imgView4 andTag:4];
             break;
     }
     
@@ -203,7 +204,7 @@
     }];
 }
 
-- (void)makeLayoutWithFrame:(CGRect)frame parent:(UIView *)parent andImageView:(UIImageView *)image
+- (void)makeLayoutWithFrame:(CGRect)frame parent:(UIView *)parent imageView:(UIImageView *)image andTag:(NSInteger)tag
 {
     image = [[UIImageView alloc] initWithFrame:frame];
     image.backgroundColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
@@ -211,7 +212,8 @@
     
     UILabel *plusLabel = [[UILabel alloc]init];
     plusLabel.text = @"+";
-    plusLabel.font=[UIFont fontWithName:@"Helvetica" size:50 ];
+    plusLabel.tag = tag;
+    plusLabel.font=[UIFont fontWithName:@"Helvetica" size:50];
     plusLabel.textAlignment = NSTextAlignmentCenter;
     [plusLabel sizeToFit];
     plusLabel.textColor = [UIColor lightGrayColor];
@@ -219,39 +221,126 @@
     
     plusLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelTap)];
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelTap:)];
     [plusLabel addGestureRecognizer:tapGesture];
     
     [parent addSubview:plusLabel];
 }
 
-- (void)labelTap
+- (void)labelTap:(UITapGestureRecognizer*)tapGestureRecognizer
 {
-    NSLog(@"TAP");
+    UILabel *currentLabel = (UILabel *)tapGestureRecognizer.view;
+    switch (currentLabel.tag) {
+        case 1:
+            self.imgFlg = 1;
+            break;
+        case 2:
+            self.imgFlg = 2;
+            break;
+        case 3:
+            self.imgFlg = 3;
+            break;
+        case 4:
+            self.imgFlg = 4;
+            break;
+    }
+    
     [self.dialogView removeFromSuperview];
     self.dialogView = [[UIView alloc]initWithFrame:CGRectMake(self.view.bounds.size.width*0.2,
                                                               self.view.bounds.size.height*0.25,
                                                               self.view.bounds.size.width*0.6,
-                                                              self.view.bounds.size.height*0.15)];
-    [self.dialogView setBackgroundColor: [UIColor colorWithRed:251.0f/255.0f green:251.0f/255.0f blue:185.0f/255.0f alpha:1.0]];
-    self.dialogView.layer.cornerRadius = 30;
+                                                              self.view.bounds.size.height*0.3)];
+    [self.dialogView setBackgroundColor: [UIColor colorWithRed:96.0f/255.0f green:96.0f/255.0f blue:96.0f/255.0f alpha:1.0]];
+    self.dialogView.layer.cornerRadius = 25;
     self.dialogView.layer.masksToBounds = YES;
     
-    UIImageView *cameraView = [[UIImageView alloc] initWithFrame:CGRectMake(self.dialogView.bounds.size.width*0.2,
-                                                                            self.dialogView.bounds.size.height*0.25,
-                                                                            self.dialogView.bounds.size.height*0.5,
-                                                                            self.dialogView.bounds.size.height*0.5)];
-    [cameraView setImage:[UIImage imageNamed:@"camera.png"]];
+    [self createPopupImageWithSize:CGRectMake(self.dialogView.bounds.size.width*0.1,
+                                              self.dialogView.bounds.size.height*0.25,
+                                              self.dialogView.bounds.size.width*0.35,
+                                              self.dialogView.bounds.size.width*0.35) imageName:@"camera.png" andFunction:@selector(cameraTap)];
     
-    UIImageView *galleryView = [[UIImageView alloc] initWithFrame:CGRectMake(self.dialogView.bounds.size.width*0.7,
-                                                                            self.dialogView.bounds.size.height*0.25,
-                                                                            self.dialogView.bounds.size.height*0.5,
-                                                                            self.dialogView.bounds.size.height*0.5)];
-    [galleryView setImage:[UIImage imageNamed:@"gallery.png"]];
+    [self createPopupImageWithSize:CGRectMake(self.dialogView.bounds.size.width*0.55,
+                                              self.dialogView.bounds.size.height*0.25,
+                                              self.dialogView.bounds.size.width*0.35,
+                                              self.dialogView.bounds.size.width*0.35) imageName:@"gallery.png" andFunction:@selector(galleryTap)];
+    
+    UILabel *cancelLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.dialogView.bounds.size.width*0.5,
+                                                                   self.dialogView.bounds.size.height*0.80,
+                                                                   self.dialogView.bounds.size.width*0.5,
+                                                                   self.dialogView.bounds.size.height*0.15)];
+    cancelLabel.text = @"cancel";
+    cancelLabel.textColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
+    cancelLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
+    cancelLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *cancelGesture =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelTap)];
+    [cancelLabel addGestureRecognizer:cancelGesture];
 
-    [self.dialogView addSubview:cameraView];
-    [self.dialogView addSubview:galleryView];
+    //[self.dialogView addSubview:galleryView];
+    [self.dialogView addSubview:cancelLabel];
     [self.view addSubview:self.dialogView];
+}
+
+- (void)createPopupImageWithSize:(CGRect)size imageName:(NSString*)name andFunction:(nonnull SEL)function
+{
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:size];
+    [imageView setImage:[UIImage imageNamed:name]];
+    imageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:function];
+    [imageView addGestureRecognizer:tap];
+    [self.dialogView addSubview:imageView];
+}
+
+- (void)cameraTap
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker animated:YES completion:NULL];}
+
+- (void)galleryTap
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    [self.dialogView removeFromSuperview];
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    switch (self.imgFlg) {
+        case 1:
+            self.imgView1.image = chosenImage;
+            [self.mainView addSubview:self.imgView1];
+            NSLog(@"img1");
+            break;
+        case 2:
+            self.imgView2.image = chosenImage;
+            [self.mainView addSubview:self.imgView2];
+            break;
+        case 3:
+            self.imgView3.image = chosenImage;
+            [self.mainView addSubview:self.imgView3];
+            break;
+        case 4:
+            self.imgView4.image = chosenImage;
+            [self.mainView addSubview:self.imgView4];
+            break;
+    }
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)cancelTap
+{
+    [self.dialogView removeFromSuperview];
 }
 
 - (void)didReceiveMemoryWarning
