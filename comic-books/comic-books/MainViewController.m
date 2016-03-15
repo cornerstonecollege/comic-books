@@ -298,8 +298,20 @@
     [label addGestureRecognizer:pinch];
     UIRotationGestureRecognizer *rotation = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotation:)];
     [label addGestureRecognizer:rotation];
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    [label addGestureRecognizer:pan];
+    
+    //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapLabel:)];
+    //[label addGestureRecognizer:rotation];
     
     [self.mainView addSubview:label];
+}
+
+- (void) handlePan:(UIPanGestureRecognizer *)panGesture
+{
+    CGPoint translation = [panGesture locationInView:self.mainView];
+    
+    panGesture.view.center = CGPointMake(translation.x, translation.y);
 }
 
 - (void) handlePinch:(UIPinchGestureRecognizer *)pinchGesture
@@ -317,21 +329,6 @@
 {
      UILabel *label = (UILabel *)rotationGesture.view;
     [label setTransform:CGAffineTransformMakeRotation(rotationGesture.rotation)];
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    
-}
-
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    
-}
-
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    
 }
 
 - (void)didReceiveMemoryWarning
