@@ -64,7 +64,7 @@
     UIView *tabView = [[UIView alloc] initWithFrame:CGRectMake(0, self.mainView.frame.origin.y + self.mainView.frame.size.height, self.view.frame.size.width, [Utilities sizeFrame])];
     [self.view addSubview:tabView];
     
-    NSArray *arrayOfImages = @[@"layout",  @"stamp", @"speechBubble", @"stamp"];
+    NSArray *arrayOfImages = @[@"layout",  @"filterIcon", @"speechBubble", @"stamp"];
     SELECTION_TYPE typeItem[4] = { ST_FRAME, ST_FILTER , ST_SPEECH_BUBBLE, ST_STAMP };
     for (int i = 0; i < [arrayOfImages count]; i++)
     {
