@@ -316,9 +316,29 @@
 
 - (void) handlePan:(UIPanGestureRecognizer *)panGesture
 {
-    CGPoint translation = [panGesture locationInView:self.mainView];
+    CGPoint point = [panGesture locationInView:self.mainView];
     
-    panGesture.view.center = CGPointMake(translation.x, translation.y);
+    if (point.x < panGesture.view.frame.size.width / 2)
+    {
+        point.x = panGesture.view.frame.size.width / 2;
+    }
+    else if (point.x > self.mainView.frame.size.width - panGesture.view.frame.size.width / 2)
+    {
+        point.x = self.mainView.frame.size.width - panGesture.view.frame.size.width / 2;
+    }
+    
+    if (point.y <  panGesture.view.frame.size.height / 2)
+    {
+        point.y = panGesture.view.frame.size.height / 2;
+    }
+    else if (point.y > self.mainView.frame.size.height - panGesture.view.frame.size.height / 2)
+    {
+        point.y = self.mainView.frame.size.height - panGesture.view.frame.size.height / 2;
+    }
+    
+    
+    
+    panGesture.view.center = CGPointMake(point.x, point.y);
 }
 
 - (void) handlePinch:(UIPinchGestureRecognizer *)pinchGesture
