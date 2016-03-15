@@ -17,8 +17,13 @@
 - (UIImage *) crossPolynomialImageWithImage:(UIImage *)img;
 - (UIImage *) monochromeImageWithImage:(UIImage *)img;
 - (UIImage *) photoTonalImageWithImage:(UIImage *)img;
+
+// NO
 - (UIImage *) lineOverlayImageWithImage:(UIImage *)img;
+
+// best for comic book style
 - (UIImage *) CMYKHalftoneImageWithImage:(UIImage *)img andCenter:(CIVector *)center;
+
 - (UIImage *) dotScreenImageWithImage:(UIImage *)img andCenter:(CIVector *)center;
 - (UIImage *) hatchedScreenImageWithImage:(UIImage *)img andCenter:(CIVector *)center;
 - (UIImage *) hexPixellateImageWithImage:(UIImage *)img andCenter:(CIVector *)center;

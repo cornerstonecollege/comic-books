@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "Utilities.h"
 #import "SelectionView.h"
+#import "ImageFilterHelper.h"
 
 @interface MainViewController () <SelectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -268,7 +269,8 @@
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     [picker dismissViewControllerAnimated:YES completion:NULL];
     UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
-    imageView.image = chosenImage;
+    UIImage *editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:chosenImage andCenter:[CIVector vectorWithX:imageView.frame.size.width/2 Y:imageView.frame.size.height/2]];
+    imageView.image = editedImage;
 }
 
 - (void)cancelTap
