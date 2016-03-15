@@ -271,6 +271,11 @@
     UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
     UIImage *editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:chosenImage andCenter:[CIVector vectorWithX:imageView.frame.size.width/2 Y:imageView.frame.size.height/2]];
     imageView.image = editedImage;
+    
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+    {
+        imageView.transform = CGAffineTransformMakeRotation(M_PI_2);
+    }
 }
 
 - (void)cancelTap
