@@ -185,11 +185,6 @@
     [self createLayouts:self.mainView andType:typeFrame];
 }
 
-- (void)didTouchStamp:(char)codeStamp
-{
-    NSLog(@"%c", codeStamp);
-}
-
 - (void)plusTap:(UITapGestureRecognizer*)tapGestureRecognizer
 {
     [self handlePlusTapWithTag:tapGestureRecognizer.view.tag];
@@ -279,6 +274,39 @@
 - (void)cancelTap
 {
     [self.dialogView removeFromSuperview];
+}
+
+- (void)didTouchStamp:(char)codeStamp
+{
+    [self createLabelWithChar:codeStamp];
+}
+
+- (void) createLabelWithChar:(char)codeStamp
+{
+    UILabel *label = [[UILabel alloc] init];
+    [label setFont:[UIFont fontWithName:@"Sound FX" size:[Utilities sizeFrame]]];
+    label.textColor = [UIColor whiteColor];
+    label.text = [NSString stringWithFormat:@"%c", codeStamp];
+    [label sizeToFit];
+    CGFloat width = arc4random_uniform(self.mainView.frame.size.width - label.frame.size.width) + label.frame.size.width / 2;
+    CGFloat height = arc4random_uniform(self.mainView.frame.size.height - label.frame.size.height) + label.frame.size.height / 2;
+    label.center = CGPointMake(width, height);
+    [self.mainView addSubview:label];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    
 }
 
 - (void)didReceiveMemoryWarning
