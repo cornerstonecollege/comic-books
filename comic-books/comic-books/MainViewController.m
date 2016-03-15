@@ -291,7 +291,32 @@
     CGFloat width = arc4random_uniform(self.mainView.frame.size.width - label.frame.size.width) + label.frame.size.width / 2;
     CGFloat height = arc4random_uniform(self.mainView.frame.size.height - label.frame.size.height) + label.frame.size.height / 2;
     label.center = CGPointMake(width, height);
+    
+    label.userInteractionEnabled = YES;
+    UIPinchGestureRecognizer *pinch =
+    [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+    [label addGestureRecognizer:pinch];
+    UIRotationGestureRecognizer *rotation = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotation:)];
+    [label addGestureRecognizer:rotation];
+    
     [self.mainView addSubview:label];
+}
+
+- (void) handlePinch:(UIPinchGestureRecognizer *)pinchGesture
+{
+    UILabel *label = (UILabel *)pinchGesture.view;
+    CGFloat size = [Utilities sizeFrame]*pinchGesture.scale;
+    size = (size < [Utilities sizeFrame] / 1.5) ? [Utilities sizeFrame] / 1.5 : size;
+    size = (size > [Utilities sizeFrame] * 2) ? [Utilities sizeFrame] * 2 : size;
+    
+    [label setFont:[UIFont fontWithName:@"Sound FX" size:size]];
+    [label sizeToFit];
+}
+
+- (void) handleRotation:(UIRotationGestureRecognizer *)rotationGesture
+{
+     UILabel *label = (UILabel *)rotationGesture.view;
+    [label setTransform:CGAffineTransformMakeRotation(rotationGesture.rotation)];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
