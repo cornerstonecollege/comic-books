@@ -14,7 +14,7 @@
 @interface TabBarController ()
 
 @property (nonatomic) FrameViewController *firstVC;
-@property (nonatomic) ExpressionViewController *secondVC;
+@property (nonatomic) FrameViewController *secondVC;
 @property (nonatomic) SpeechBubbleViewController *thirdVC;
 
 @end
@@ -55,7 +55,7 @@
     [self.firstVC.tabBarItem setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor blackColor] }
                                            forState:UIControlStateNormal];
     
-    self.secondVC = [[ExpressionViewController alloc] init];
+    self.secondVC = [[FrameViewController alloc] init];
     self.secondVC.tabBarItem.image = [[UIImage imageNamed:@"stamp.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.secondVC.tabBarItem.title = @"Stamp";
     [self.secondVC.tabBarItem setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor blackColor] }
@@ -78,7 +78,7 @@
     }
     else if (item == self.secondVC.tabBarItem)
     {
-        [self.secondVC tabBarClicked];
+        [self.secondVC tabBarClickedFromSomewhere:YES];
     }
     else if (item == self.thirdVC.tabBarItem)
     {

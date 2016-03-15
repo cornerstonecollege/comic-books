@@ -57,11 +57,11 @@
     
     if (isInitialization)
     {
-        [self makeLayoutWithFrame:CGRectMake(self.mainView.frame.size.width * 0.01,
+        /*[self makeLayoutWithFrame:CGRectMake(self.mainView.frame.size.width * 0.01,
                                          self.mainView.frame.size.height * 0.01,
                                          self.mainView.frame.size.width*0.98,
-                                         self.mainView.frame.size.height*0.98) parent:self.mainView imageView:self.imgView1 andTag:1];
-        [self createLayouts:self.mainView andType:[self.imgView1 tag]];
+                                         self.mainView.frame.size.height*0.98) parent:self.mainView imageView:self.imgView1 andTag:1];*/
+        [self createLayouts:self.mainView andType:1];
     }
     
     float moveX = layoutView.frame.size.width / 2;
@@ -209,6 +209,7 @@
     image = [[UIImageView alloc] initWithFrame:frame];
     image.backgroundColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
     [parent addSubview:image];
+    //image.tag = 5;
     
     UILabel *plusLabel = [[UILabel alloc]init];
     plusLabel.text = @"+";
@@ -270,8 +271,9 @@
                                                                    self.dialogView.bounds.size.height*0.15)];
     cancelLabel.text = @"cancel";
     cancelLabel.textColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
-    cancelLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
+    cancelLabel.font = [UIFont fontWithName:@"Helvetica" size:25];
     cancelLabel.userInteractionEnabled = YES;
+    cancelLabel.textAlignment = NSTextAlignmentCenter;
     UITapGestureRecognizer *cancelGesture =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelTap)];
     [cancelLabel addGestureRecognizer:cancelGesture];
@@ -314,28 +316,33 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     [self.dialogView removeFromSuperview];
-    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+    [picker dismissViewControllerAnimated:YES completion:NULL];
     switch (self.imgFlg) {
         case 1:
             self.imgView1.image = chosenImage;
-            [self.mainView addSubview:self.imgView1];
+            self.imgView1.backgroundColor = [UIColor redColor];
+            //[self.mainView addSubview:self.imgView1];
             NSLog(@"img1");
             break;
         case 2:
             self.imgView2.image = chosenImage;
             [self.mainView addSubview:self.imgView2];
+            NSLog(@"img2");
             break;
         case 3:
             self.imgView3.image = chosenImage;
             [self.mainView addSubview:self.imgView3];
+            NSLog(@"img3");
             break;
         case 4:
             self.imgView4.image = chosenImage;
             [self.mainView addSubview:self.imgView4];
+            NSLog(@"img4");
             break;
     }
     
-    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
 }
 
 - (void)cancelTap
