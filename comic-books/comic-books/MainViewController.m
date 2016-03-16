@@ -235,8 +235,8 @@
     UIImage *editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:self.originalChosenImage andCenter:[CIVector vectorWithX:imageView.frame.size.width/2 Y:imageView.frame.size.height/2]];
     imageView.image = editedImage;
 
-    // there is a bug on ios
-    imageView.transform = CGAffineTransformMakeRotation(M_PI_2);
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+        imageView.transform = CGAffineTransformMakeRotation(M_PI_2);
 }
 
 - (void)cancelTap
