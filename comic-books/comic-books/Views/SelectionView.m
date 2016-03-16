@@ -12,6 +12,7 @@
 @interface SelectionView ()
 
 @property (nonatomic) NSArray *frameImagesArr;
+@property (nonatomic) char *speechBubbleArr;
 @property (nonatomic) char *soundFXArr;
 
 @end
@@ -35,6 +36,7 @@
 {
     self.frameImagesArr = @[@"layout1.png", @"layout2.png", @"layout3.png", @"layout4.png", @"layout5.png", @"layout6.png", @"layout7.png", @"layout8.png", @"layout9.png"];
     self.soundFXArr = "ABCEFGHIJKLMOQRSTUVXZabcdefhijmoqruvy359%#),}|]^";
+    self.speechBubbleArr = "ABCDEFGHIJKLMNOPQRST";
     self.backgroundColor = [Utilities speacialLighterGrayColor];
 }
 
@@ -49,17 +51,17 @@
         }
         case ST_FILTER:
         {
-            [self createSpeechBubbleLayout];
+            [self createFilterLayout];
             break;
         }
         case ST_SPEECH_BUBBLE:
         {
-            [self createFilterLayout];
+            [self createStampAndSpeechBubbleLayout];
             break;
         }
         case ST_STAMP:
         {
-            [self createStampLayout];
+            [self createStampAndSpeechBubbleLayout];
             break;
         }
         default:
@@ -102,13 +104,16 @@
     }];
 }
 
-- (void) createStampLayout
+- (void) createStampAndSpeechBubbleLayout
 {
     float xPosition = 50;
     float time = 0;
-    for (int i = 0; i < strlen(self.soundFXArr); i++)
+    
+    char *arr = self.type == ST_STAMP ? self.soundFXArr : self.speechBubbleArr;
+    
+    for (int i = 0; i < strlen(arr); i++)
     {
-        char character = self.soundFXArr[i];
+        char character = arr[i];
         
         [self addStampWithFrame:CGRectMake(xPosition, self.superview.bounds.size.height*[Utilities percentageScreen]/4, [Utilities sizeFrame] / 2, [Utilities sizeFrame] / 2) character:character count:i time:time andParent:self];
         xPosition +=  [Utilities sizeFrame];
@@ -119,7 +124,7 @@
     {
         UIView *lastObject = [self.subviews lastObject];
         
-        self.contentSize = CGSizeMake(lastObject.frame.origin.x + lastObject.frame.size.width + 20, self.superview.bounds.size.height*[Utilities percentageScreen]);
+        self.contentSize = CGSizeMake(lastObject.frame.origin.x + lastObject.frame.size.width + 10, self.superview.bounds.size.height*[Utilities percentageScreen]);
     }
 }
 
@@ -127,7 +132,10 @@
 {
     UILabel *label = [[UILabel alloc] init];
     label.tag = cnt;
-    [label setFont:[UIFont fontWithName:@"Sound FX" size:[Utilities sizeFrame]]];
+    
+    NSString *fontName = self.type == ST_STAMP ? @"Sound FX" : @"Komika Bubbles Dark";
+    
+    [label setFont:[UIFont fontWithName:fontName size:[Utilities sizeFrame]]];
     label.textColor = [UIColor whiteColor];
     label.text = [NSString stringWithFormat:@"%c", character];
     [label sizeToFit];
@@ -136,11 +144,11 @@
     if ([parent.subviews lastObject])
     {
         UIView *lastObject = [parent.subviews lastObject];
-        point = CGPointMake(lastObject.frame.origin.x + lastObject.frame.size.width + 20 + label.frame.size.width, frame.size.height);
+        point = CGPointMake(lastObject.frame.origin.x + lastObject.frame.size.width + 10 + label.frame.size.width, frame.size.height);
     }
     else
     {
-        point = CGPointMake(frame.origin.x + frame.size.width / 2, frame.origin.y + frame.size.height / 2);
+        point = CGPointMake(frame.origin.x + frame.size.width + 10, frame.origin.y + frame.size.height);
     }
     
     label.center = point;
@@ -155,10 +163,6 @@
     [UIView animateWithDuration:time animations:^{
         label.center = CGPointMake(label.frame.origin.x, label.frame.origin.y + label.frame.size.height / 2);
     }];
-}
-
-- (void) createSpeechBubbleLayout
-{
 }
 
 - (void) createFilterLayout
@@ -191,7 +195,8 @@
             {
                 if ([self.selectionDelegate respondsToSelector:@selector(didTouchSpeechBubble:)])
                 {
-                    [self.selectionDelegate didTouchSpeechBubble:recognizer.view.tag];
+                    UILabel *label = (UILabel *)recognizer.view;
+                    [self.selectionDelegate didTouchSpeechBubble:[label.text UTF8String][0]];
                 }
                 break;
             }

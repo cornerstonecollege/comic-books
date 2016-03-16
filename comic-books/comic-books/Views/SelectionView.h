@@ -11,9 +11,9 @@
 typedef NS_ENUM(NSUInteger, SELECTION_TYPE)
 {
     ST_FRAME = 0,
-    ST_SPEECH_BUBBLE = 1,
-    ST_STAMP = 2,
-    ST_FILTER = 3,
+    ST_FILTER = 1,
+    ST_SPEECH_BUBBLE = 2,
+    ST_STAMP = 3,
 };
 
 typedef NS_ENUM(NSUInteger, TYPE_FRAME)
@@ -45,7 +45,7 @@ typedef NS_ENUM(NSUInteger, TYPE_STYLE_FILTER)
 
 - (void) didTouchFrame:(TYPE_FRAME)typeFrame;
 - (void) didTouchStamp:(char)codeStamp;
-- (void) didTouchSpeechBubble:(TYPE_SPEECH_BUBBLE)typeBubble;
+- (void) didTouchSpeechBubble:(char)codeBubble;
 - (void) didTouchFilter:(TYPE_STYLE_FILTER)typeFilter;
 
 @end

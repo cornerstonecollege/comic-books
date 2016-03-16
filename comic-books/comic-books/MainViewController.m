@@ -56,7 +56,12 @@
     selectionStamp.selectionDelegate = self;
     selectionStamp.hidden = YES;
     
-    self.selectionArr = @[selectionFrame, selectionStamp];
+    SelectionView *selectionSpeechBubble = [[SelectionView alloc] initWithType:ST_SPEECH_BUBBLE andFrame:CGRectMake(0, self.view.frame.size.height - [Utilities sizeFrame], self.view.frame.size.width, [Utilities sizeFrame])];
+    [self.view addSubview:selectionSpeechBubble];
+    selectionSpeechBubble.selectionDelegate = self;
+    selectionSpeechBubble.hidden = YES;
+    
+    self.selectionArr = @[selectionFrame, selectionStamp, selectionSpeechBubble];
     
     [self createTabBar];
     [self createLayouts:self.mainView andType:1];
@@ -314,6 +319,11 @@
     //[label addGestureRecognizer:rotation];
     
     [self.mainView addSubview:label];
+}
+
+- (void)didTouchSpeechBubble:(char)codeBubble
+{
+    NSLog(@"%c", codeBubble);
 }
 
 - (void)didReceiveMemoryWarning
