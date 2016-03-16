@@ -12,6 +12,18 @@
 
 + (UIColor *) specialGrayColor;
 + (UIColor *) speacialLighterGrayColor;
+
++ (UIColor *) penelopeColor;
++ (UIColor *) citrusColor;
++ (UIColor *) oldVelvetColor;
++ (UIColor *) specialRedColor;
++ (UIColor *) toastedWheatColor;
++ (UIColor *) wrestlingColor;
++ (UIColor *) vitaminsColor;
++ (UIColor *) paleSunshineColor;
++ (UIColor *) shallowWatersColor;
++ (UIColor *) drifterColor;
+
 + (CGFloat) percentageScreen;
 + (CGFloat) sizeFrame;
 

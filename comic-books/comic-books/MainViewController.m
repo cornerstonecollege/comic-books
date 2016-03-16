@@ -313,9 +313,8 @@
     [label addGestureRecognizer:rotation];
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:[StampGestureHelper sharedInstance] action:@selector(handlePan:)];
     [label addGestureRecognizer:pan];
-    
-    //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapLabel:)];
-    //[label addGestureRecognizer:rotation];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:[StampGestureHelper sharedInstance] action:@selector(handleTap:)];
+    [label addGestureRecognizer:tap];
     
     [self.mainView addSubview:label];
 }

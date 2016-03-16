@@ -9,6 +9,12 @@
 #import "StampGestureHelper.h"
 #import "Utilities.h"
 
+@interface StampGestureHelper ()
+
+@property (nonatomic) NSArray *arrColors;
+
+@end
+
 @implementation StampGestureHelper
 
 + (instancetype) sharedInstance
@@ -31,7 +37,26 @@
 - (instancetype) initPrivate
 {
     self = [super init];
+    if(self)
+    {
+        _arrColors = @[[UIColor whiteColor], [Utilities penelopeColor], [Utilities citrusColor], [Utilities oldVelvetColor], [Utilities specialRedColor], [Utilities toastedWheatColor], [Utilities wrestlingColor], [Utilities vitaminsColor], [Utilities paleSunshineColor], [Utilities shallowWatersColor], [Utilities drifterColor]];
+    }
+    
     return self;
+}
+
+- (void) handleTap:(UITapGestureRecognizer *)tapGesture
+{
+    UILabel *label = (UILabel *)tapGesture.view;
+    for (int i = 0; i < [self.arrColors count]; i++)
+    {
+        if (label.textColor.CGColor == ((UIColor *)self.arrColors[i]).CGColor)
+        {
+            int j = i == [self.arrColors count] - 1 ? 0 : i + 1;
+            label.textColor = (UIColor *)self.arrColors[j];
+            break;
+        }
+    }
 }
 
 - (void) handleRotation:(UIRotationGestureRecognizer *)rotationGesture

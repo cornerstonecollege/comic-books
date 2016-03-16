@@ -15,5 +15,6 @@
 - (void) handlePan:(UIPanGestureRecognizer *)panGesture;
 - (void) handlePinch:(UIPinchGestureRecognizer *)pinchGesture;
 - (void) handleRotation:(UIRotationGestureRecognizer *)rotationGesture;
+- (void) handleTap:(UITapGestureRecognizer *)tapGesture;
 
 @end
