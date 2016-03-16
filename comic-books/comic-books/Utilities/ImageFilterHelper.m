@@ -118,7 +118,7 @@
 {
     CIFilter *filter = [CIFilter filterWithName:@"CICMYKHalftone"];
     [filter setValue:center forKey:@"inputCenter"];
-    [filter setValue:[NSNumber numberWithDouble:0.5] forKey:@"inputSharpness"];
+    [filter setValue:[NSNumber numberWithDouble:0.7] forKey:@"inputSharpness"];
     UIImage *imageResult = [self applyFilter:filter atImage:img];
     
     return imageResult;
@@ -128,7 +128,7 @@
 {
     CIFilter *filter = [CIFilter filterWithName:@"CIDotScreen"];
     [filter setValue:center forKey:@"inputCenter"];
-    [filter setValue:[NSNumber numberWithDouble:0.2] forKey:@"inputSharpness"];
+    [filter setValue:[NSNumber numberWithDouble:0.5] forKey:@"inputSharpness"];
     [filter setValue:[NSNumber numberWithDouble:M_PI/2] forKey:@"inputAngle"];
     UIImage *imageResult = [self applyFilter:filter atImage:img];
     
@@ -160,7 +160,7 @@
 {
     CIFilter *filter = [CIFilter filterWithName:@"CIPixellate"];
     [filter setValue:center forKey:@"inputCenter"];
-    [filter setValue:[NSNumber numberWithDouble:5.5] forKey:@"inputScale"];
+    [filter setValue:[NSNumber numberWithDouble:8.0] forKey:@"inputScale"];
     UIImage *imageResult = [self applyFilter:filter atImage:img];
     return imageResult;
 }

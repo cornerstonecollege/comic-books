@@ -224,7 +224,6 @@
 				TargetAttributes = {
 					1CE7C6101C8F8C220003A63D = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 8RL87T3XA4;
 					};
 				};
 			};
@@ -408,7 +407,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "comic-books/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.comic-books";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.comic-books1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -422,7 +421,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "comic-books/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.comic-books";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.comic-books1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

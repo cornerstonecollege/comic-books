@@ -17,6 +17,7 @@
 @property (nonatomic) UIView *tabView;
 @property (nonatomic) UIView *dialogView;
 @property (nonatomic) NSArray<SelectionView *> *selectionArr;
+@property (nonatomic) UIImage *originalChosenImage;
 
 @property (nonatomic) NSInteger imgFlag;
 
@@ -65,7 +66,7 @@
     UIView *tabView = [[UIView alloc] initWithFrame:CGRectMake(0, self.mainView.frame.origin.y + self.mainView.frame.size.height, self.view.frame.size.width, [Utilities sizeFrame])];
     [self.view addSubview:tabView];
     
-    NSArray *arrayOfImages = @[@"layout",  @"filterIcon", @"speechBubble", @"stamp"];
+    NSArray *arrayOfImages = @[@"layout_icon",  @"filter_icon", @"speech_bubble_icon", @"stamp_icon"];
     SELECTION_TYPE typeItem[4] = { ST_FRAME, ST_FILTER , ST_SPEECH_BUBBLE, ST_STAMP };
     for (int i = 0; i < [arrayOfImages count]; i++)
     {
@@ -266,10 +267,10 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     [self.dialogView removeFromSuperview];
-    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+    self.originalChosenImage = info[UIImagePickerControllerOriginalImage];
     [picker dismissViewControllerAnimated:YES completion:NULL];
     UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
-    UIImage *editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:chosenImage andCenter:[CIVector vectorWithX:imageView.frame.size.width/2 Y:imageView.frame.size.height/2]];
+    UIImage *editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:self.originalChosenImage andCenter:[CIVector vectorWithX:imageView.frame.size.width/2 Y:imageView.frame.size.height/2]];
     imageView.image = editedImage;
     
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)

@@ -24,10 +24,13 @@
 // best for comic book style
 - (UIImage *) CMYKHalftoneImageWithImage:(UIImage *)img andCenter:(CIVector *)center;
 
-- (UIImage *) dotScreenImageWithImage:(UIImage *)img andCenter:(CIVector *)center;
-- (UIImage *) hatchedScreenImageWithImage:(UIImage *)img andCenter:(CIVector *)center;
+// with color
 - (UIImage *) hexPixellateImageWithImage:(UIImage *)img andCenter:(CIVector *)center;
 - (UIImage *) pixellateImageWithImage:(UIImage *)img andCenter:(CIVector *)center;
 - (UIImage *) pointillizeImageWithImage:(UIImage *)img andCenter:(CIVector *)center;
+
+// only one way, black and white
+- (UIImage *) dotScreenImageWithImage:(UIImage *)img andCenter:(CIVector *)center;
+- (UIImage *) hatchedScreenImageWithImage:(UIImage *)img andCenter:(CIVector *)center;
 
 @end
