@@ -37,6 +37,11 @@ typedef NS_ENUM(NSUInteger, TYPE_SPEECH_BUBBLE)
 typedef NS_ENUM(NSUInteger, TYPE_STYLE_FILTER)
 {
     TSF_FILTER1 = 1,
+    TSF_FILTER2 = 2,
+    TSF_FILTER3 = 3,
+    TSF_FILTER4 = 4,
+    TSF_FILTER5 = 5,
+    TSF_FILTER6 = 6,
 };
 
 @protocol SelectionViewDelegate <NSObject>

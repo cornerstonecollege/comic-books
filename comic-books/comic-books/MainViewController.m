@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "Utilities.h"
 #import "SelectionView.h"
+#import "FrameHelper.h"
 #import "ImageFilterHelper.h"
 #import "StampGestureHelper.h"
 #import "SpeechBubbleView.h"
@@ -48,6 +49,10 @@
 {
     self.view.backgroundColor = [Utilities specialGrayColor];
     
+    SelectionView *selectionFilter = [[SelectionView alloc] initWithType:ST_FILTER andFrame:CGRectMake(0, self.view.frame.size.height - [Utilities sizeFrame], self.view.frame.size.width, [Utilities sizeFrame])];
+    selectionFilter.selectionDelegate = self;
+    [self.view addSubview:selectionFilter];
+    
     SelectionView *selectionFrame = [[SelectionView alloc] initWithType:ST_FRAME andFrame:CGRectMake(0, self.view.frame.size.height - [Utilities sizeFrame], self.view.frame.size.width, [Utilities sizeFrame])];
     selectionFrame.selectionDelegate = self;
     [self.view addSubview:selectionFrame];
@@ -62,10 +67,10 @@
     selectionSpeechBubble.selectionDelegate = self;
     selectionSpeechBubble.hidden = YES;
     
-    self.selectionArr = @[selectionFrame, selectionStamp, selectionSpeechBubble];
+    self.selectionArr = @[selectionFrame, selectionFilter, selectionStamp, selectionSpeechBubble];
     
     [self createTabBar];
-    [self createLayouts:self.mainView andType:1];
+    [[FrameHelper sharedInstance] createLayouts:self.mainView type:1 andViewController:self];
 }
 
 - (void) createTabBar
@@ -99,69 +104,17 @@
     }];
 }
 
-- (void)createLayouts:(UIView*)parent andType:(NSInteger)number
-{
-    [self.dialogView removeFromSuperview];
-    [self clearChildrenMainView];
-    float standardSize = parent.frame.size.width;
-    switch(number)
-    {
-        case 1:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.98, standardSize*0.98) parent:self.mainView andTag:1];
-            break;
-        case 2:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.98, standardSize*0.485) parent:self.mainView  andTag:1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:self.mainView  andTag:2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:self.mainView  andTag:3];
-            break;
-        case 3:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:self.mainView  andTag:1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:self.mainView  andTag:2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.98, standardSize*0.485) parent:self.mainView  andTag:3];
-            break;
-        case 4:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.98) parent:self.mainView  andTag:1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:self.mainView  andTag:2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:self.mainView  andTag:3];
-            break;
-        case 5:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:self.mainView  andTag:1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.98) parent:self.mainView  andTag:2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:self.mainView  andTag:3];
-            break;
-        case 6:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:self.mainView  andTag:1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.485) parent:self.mainView  andTag:2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:self.mainView  andTag:3];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.505, standardSize*0.485, standardSize*0.485) parent:self.mainView  andTag:4];
-            break;
-        case 7:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.98, standardSize*0.485) parent:self.mainView  andTag:1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.32, standardSize*0.485) parent:self.mainView  andTag:2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.34, standardSize*0.505, standardSize*0.32, standardSize*0.485) parent:self.mainView  andTag:3];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.67, standardSize*0.505, standardSize*0.32, standardSize*0.485) parent:self.mainView  andTag:4];
-            break;
-        case 8:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.485, standardSize*0.98) parent:self.mainView  andTag:1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.01, standardSize*0.485, standardSize*0.32) parent:self.mainView  andTag:2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.34, standardSize*0.485, standardSize*0.32) parent:self.mainView  andTag:3];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.505, standardSize*0.67, standardSize*0.485, standardSize*0.32) parent:self.mainView  andTag:4];
-            break;
-        case 9:
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.01, standardSize*0.3, standardSize*0.485) parent:self.mainView  andTag:1];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.32, standardSize*0.01, standardSize*0.67, standardSize*0.485) parent:self.mainView  andTag:2];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.01, standardSize*0.505, standardSize*0.67, standardSize*0.485) parent:self.mainView  andTag:3];
-            [self makeLayoutWithFrame:CGRectMake(standardSize*0.69, standardSize*0.505, standardSize*0.3, standardSize*0.485) parent:self.mainView  andTag:4];
-            break;
-    }
-}
-
 - (void) clearChildrenMainView
 {
     [self.mainView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
      {
          [obj removeFromSuperview];
      }];
+}
+
+- (void) dismissDialogView
+{
+    [self.dialogView removeFromSuperview];
 }
 
 - (void)makeLayoutWithFrame:(CGRect)frame parent:(UIView *)parent andTag:(NSInteger)tag
@@ -191,7 +144,7 @@
 
 - (void)didTouchFrame:(TYPE_FRAME)typeFrame
 {
-    [self createLayouts:self.mainView andType:typeFrame];
+    [[FrameHelper sharedInstance] createLayouts:self.mainView type:typeFrame andViewController:self];
 }
 
 - (void)plusTap:(UITapGestureRecognizer*)tapGestureRecognizer
@@ -277,6 +230,8 @@
     self.originalChosenImage = info[UIImagePickerControllerOriginalImage];
     [picker dismissViewControllerAnimated:YES completion:NULL];
     UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
+    
+    // customize images
     UIImage *editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:self.originalChosenImage andCenter:[CIVector vectorWithX:imageView.frame.size.width/2 Y:imageView.frame.size.height/2]];
     imageView.image = editedImage;
 

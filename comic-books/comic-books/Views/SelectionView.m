@@ -12,6 +12,7 @@
 @interface SelectionView ()
 
 @property (nonatomic) NSArray *frameImagesArr;
+@property (nonatomic) NSArray *filterArr;
 @property (nonatomic) char *speechBubbleArr;
 @property (nonatomic) char *soundFXArr;
 
@@ -35,6 +36,7 @@
 - (void) initializeVars
 {
     self.frameImagesArr = @[@"layout1.png", @"layout2.png", @"layout3.png", @"layout4.png", @"layout5.png", @"layout6.png", @"layout7.png", @"layout8.png", @"layout9.png"];
+    self.filterArr = @[@"temp1.png", @"temp2.png", @"temp3.png", @"temp1.png", @"temp2.png", @"temp3.png", @"temp1.png", @"temp2.png", @"temp3.png"];
     self.soundFXArr = "ABCEFGHIJKLMOQRSTUVXZabcdefhijmoqruvy359%#),}|]^";
     self.speechBubbleArr = "ABCDEFGHIJKLMNOPQRST";
     self.backgroundColor = [Utilities speacialLighterGrayColor];
@@ -46,12 +48,12 @@
     {
         case ST_FRAME:
         {
-            [self createFrameLayout];
+            [self createLayoutWithType];
             break;
         }
         case ST_FILTER:
         {
-            [self createFilterLayout];
+            [self createLayoutWithType];
             break;
         }
         case ST_SPEECH_BUBBLE:
@@ -64,17 +66,18 @@
             [self createStampAndSpeechBubbleLayout];
             break;
         }
-        default:
-            break;
     }
 }
 
-- (void) createFrameLayout
+- (void) createLayoutWithType
 {
     float xPosition = [Utilities sizeFrame] / 2;
     float time = 0;
     NSInteger cnt = 1;
-    for (NSString * name in self.frameImagesArr)
+    
+    NSArray *arr = self.type == ST_FRAME ? self.frameImagesArr : self.filterArr;
+    
+    for (NSString * name in arr)
     {
         [self addImageSize:CGRectMake(xPosition, self.superview.bounds.size.height*[Utilities percentageScreen]/4, [Utilities sizeFrame] / 2, [Utilities sizeFrame] / 2) name:name count:cnt time:time andParent:self];
         xPosition += [Utilities sizeFrame];
@@ -82,7 +85,7 @@
         cnt +=1;
     }
     
-    self.contentSize = CGSizeMake(self.frameImagesArr.count*[Utilities sizeFrame], self.superview.bounds.size.height*[Utilities percentageScreen]);
+    self.contentSize = CGSizeMake(arr.count*[Utilities sizeFrame], self.superview.bounds.size.height*[Utilities percentageScreen]);
 }
 
 - (void) addImageSize:(CGRect)size name:(NSString *)name count:(NSInteger)cnt time:(NSTimeInterval)time andParent:(UIScrollView *)parent
@@ -163,10 +166,6 @@
     [UIView animateWithDuration:time animations:^{
         label.center = CGPointMake(label.frame.origin.x, label.frame.origin.y + label.frame.size.height / 2);
     }];
-}
-
-- (void) createFilterLayout
-{
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)recognizer

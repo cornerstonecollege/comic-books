@@ -41,6 +41,8 @@
 		68AF283D1C976943009483A7 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AF283C1C976943009483A7 /* Utilities.m */; };
 		68AF28401C976CDC009483A7 /* SelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AF283F1C976CDC009483A7 /* SelectionView.m */; };
 		68E439F11C91109000D56025 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E439EF1C91109000D56025 /* Main.storyboard */; };
+		68FB2DD81C99FCEF0052BBD0 /* FrameHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FB2DD71C99FCEF0052BBD0 /* FrameHelper.m */; };
+		68FB2DDB1C9A0EC70052BBD0 /* FrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FB2DDA1C9A0EC70052BBD0 /* FrameView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +89,10 @@
 		68AF283E1C976CDC009483A7 /* SelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectionView.h; path = Views/SelectionView.h; sourceTree = "<group>"; };
 		68AF283F1C976CDC009483A7 /* SelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectionView.m; path = Views/SelectionView.m; sourceTree = "<group>"; };
 		68E439F01C91109000D56025 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		68FB2DD61C99FCEF0052BBD0 /* FrameHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrameHelper.h; path = Views/FrameHelper.h; sourceTree = "<group>"; };
+		68FB2DD71C99FCEF0052BBD0 /* FrameHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrameHelper.m; path = Views/FrameHelper.m; sourceTree = "<group>"; };
+		68FB2DD91C9A0EC70052BBD0 /* FrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrameView.h; path = Views/FrameView.h; sourceTree = "<group>"; };
+		68FB2DDA1C9A0EC70052BBD0 /* FrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrameView.m; path = Views/FrameView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +141,8 @@
 			children = (
 				1CC98E2B1C926EB2007FCB34 /* SpeechBubbleView.h */,
 				1CC98E2C1C926EB2007FCB34 /* SpeechBubbleView.m */,
+				68FB2DD91C9A0EC70052BBD0 /* FrameView.h */,
+				68FB2DDA1C9A0EC70052BBD0 /* FrameView.m */,
 				68AF283E1C976CDC009483A7 /* SelectionView.h */,
 				68AF283F1C976CDC009483A7 /* SelectionView.m */,
 			);
@@ -188,6 +196,8 @@
 		1CE7C62B1C8FA7AF0003A63D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				68FB2DD61C99FCEF0052BBD0 /* FrameHelper.h */,
+				68FB2DD71C99FCEF0052BBD0 /* FrameHelper.m */,
 				1CE7C62C1C8FA86E0003A63D /* ImageFilterHelper.h */,
 				1CE7C62D1C8FA86E0003A63D /* ImageFilterHelper.m */,
 				1CD9CCE41C98ED0C002C4E32 /* StampGestureHelper.h */,
@@ -297,6 +307,8 @@
 				1CD9CCE61C98ED0C002C4E32 /* StampGestureHelper.m in Sources */,
 				1CC98E2D1C926EB2007FCB34 /* SpeechBubbleView.m in Sources */,
 				1CE7C6191C8F8C220003A63D /* AppDelegate.m in Sources */,
+				68FB2DDB1C9A0EC70052BBD0 /* FrameView.m in Sources */,
+				68FB2DD81C99FCEF0052BBD0 /* FrameHelper.m in Sources */,
 				1CE7C6161C8F8C220003A63D /* main.m in Sources */,
 				1CE7C62E1C8FA86E0003A63D /* ImageFilterHelper.m in Sources */,
 			);

@@ -10,5 +10,8 @@
 
 @interface MainViewController : UIViewController
 
+- (void)makeLayoutWithFrame:(CGRect)frame parent:(UIView *)parent andTag:(NSInteger)tag;
+- (void) clearChildrenMainView;
+- (void) dismissDialogView;
 
 @end
