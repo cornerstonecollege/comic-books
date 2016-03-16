@@ -11,6 +11,7 @@
 #import "SelectionView.h"
 #import "ImageFilterHelper.h"
 #import "StampGestureHelper.h"
+#import "SpeechBubbleView.h"
 
 @interface MainViewController () <SelectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -278,11 +279,9 @@
     UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
     UIImage *editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:self.originalChosenImage andCenter:[CIVector vectorWithX:imageView.frame.size.width/2 Y:imageView.frame.size.height/2]];
     imageView.image = editedImage;
-    
-    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
-    {
-        imageView.transform = CGAffineTransformMakeRotation(M_PI_2);
-    }
+
+    // there is a bug on ios
+    imageView.transform = CGAffineTransformMakeRotation(M_PI_2);
 }
 
 - (void)cancelTap
@@ -323,7 +322,8 @@
 
 - (void)didTouchSpeechBubble:(char)codeBubble
 {
-    NSLog(@"%c", codeBubble);
+    SpeechBubbleView *speech = [[SpeechBubbleView alloc] initWithCode:codeBubble andParent:self.mainView];
+    [self.mainView addSubview:speech];
 }
 
 - (void)didReceiveMemoryWarning

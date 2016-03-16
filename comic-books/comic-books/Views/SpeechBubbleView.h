@@ -10,4 +10,10 @@
 
 @interface SpeechBubbleView : UIView
 
+- (instancetype)initWithCode:(char)codeStamp andParent:(UIView *)parentView;
+
+- (void) handlePinch:(UIPinchGestureRecognizer *)pinchGesture;
+- (void) handleRotation:(UIRotationGestureRecognizer *)rotationGesture;
+- (void) handlePan:(UIPanGestureRecognizer *)panGesture;
+
 @end
