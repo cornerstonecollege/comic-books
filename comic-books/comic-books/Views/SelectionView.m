@@ -47,6 +47,16 @@
             [self createFrameLayout];
             break;
         }
+        case ST_FILTER:
+        {
+            [self createSpeechBubbleLayout];
+            break;
+        }
+        case ST_SPEECH_BUBBLE:
+        {
+            [self createFilterLayout];
+            break;
+        }
         case ST_STAMP:
         {
             [self createStampLayout];
@@ -147,6 +157,14 @@
     }];
 }
 
+- (void) createSpeechBubbleLayout
+{
+}
+
+- (void) createFilterLayout
+{
+}
+
 - (void)handleTap:(UITapGestureRecognizer *)recognizer
 {
     if (self.selectionDelegate)
@@ -161,6 +179,22 @@
                 }
                 break;
             }
+            case ST_FILTER:
+            {
+                if ([self.selectionDelegate respondsToSelector:@selector(didTouchFilter:)])
+                {
+                    [self.selectionDelegate didTouchFilter:recognizer.view.tag];
+                }
+                break;
+            }
+            case ST_SPEECH_BUBBLE:
+            {
+                if ([self.selectionDelegate respondsToSelector:@selector(didTouchSpeechBubble:)])
+                {
+                    [self.selectionDelegate didTouchSpeechBubble:recognizer.view.tag];
+                }
+                break;
+            }
             case ST_STAMP:
             {
                 if ([self.selectionDelegate respondsToSelector:@selector(didTouchStamp:)])
@@ -170,9 +204,6 @@
                 }
                 break;
             }
-                
-            default:
-                break;
         }
     }
 }
