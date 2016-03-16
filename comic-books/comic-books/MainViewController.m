@@ -212,7 +212,8 @@
     picker.allowsEditing = YES;
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     
-    [self presentViewController:picker animated:YES completion:NULL];}
+    [self presentViewController:picker animated:YES completion:NULL];
+}
 
 - (void)galleryTap
 {
@@ -226,17 +227,16 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
-    [self.dialogView removeFromSuperview];
-    self.originalChosenImage = info[UIImagePickerControllerOriginalImage];
+    [self dismissDialogView];
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
     
+    self.originalChosenImage = info[UIImagePickerControllerEditedImage];
+    UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
     // customize images
     UIImage *editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:self.originalChosenImage andCenter:[CIVector vectorWithX:imageView.frame.size.width/2 Y:imageView.frame.size.height/2]];
     imageView.image = editedImage;
-
-    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
-        imageView.transform = CGAffineTransformMakeRotation(M_PI_2);
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.clipsToBounds = YES;
 }
 
 - (void)cancelTap
