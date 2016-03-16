@@ -30,6 +30,7 @@
 		1C7006491C9121FB000E2898 /* soundfx.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C7006481C9121FB000E2898 /* soundfx.ttf */; };
 		1CBE84491C93713300F8DA52 /* KomikaBubblesDark-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1CBE84481C93713300F8DA52 /* KomikaBubblesDark-regular.otf */; };
 		1CC98E2D1C926EB2007FCB34 /* SpeechBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC98E2C1C926EB2007FCB34 /* SpeechBubbleView.m */; };
+		1CD9CCE61C98ED0C002C4E32 /* StampGestureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD9CCE51C98ED0C002C4E32 /* StampGestureHelper.m */; };
 		1CE7C6161C8F8C220003A63D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7C6151C8F8C220003A63D /* main.m */; };
 		1CE7C6191C8F8C220003A63D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7C6181C8F8C220003A63D /* AppDelegate.m */; };
 		1CE7C6211C8F8C220003A63D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CE7C6201C8F8C220003A63D /* Assets.xcassets */; };
@@ -67,6 +68,8 @@
 		1CBE84481C93713300F8DA52 /* KomikaBubblesDark-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "KomikaBubblesDark-regular.otf"; path = "fonts/KomikaBubblesDark-regular.otf"; sourceTree = "<group>"; };
 		1CC98E2B1C926EB2007FCB34 /* SpeechBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeechBubbleView.h; path = Views/SpeechBubbleView.h; sourceTree = "<group>"; };
 		1CC98E2C1C926EB2007FCB34 /* SpeechBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechBubbleView.m; path = Views/SpeechBubbleView.m; sourceTree = "<group>"; };
+		1CD9CCE41C98ED0C002C4E32 /* StampGestureHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StampGestureHelper.h; path = Utilities/StampGestureHelper.h; sourceTree = "<group>"; };
+		1CD9CCE51C98ED0C002C4E32 /* StampGestureHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StampGestureHelper.m; path = Utilities/StampGestureHelper.m; sourceTree = "<group>"; };
 		1CE7C6111C8F8C220003A63D /* comic-books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "comic-books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CE7C6151C8F8C220003A63D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CE7C6171C8F8C220003A63D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 			children = (
 				1CE7C62C1C8FA86E0003A63D /* ImageFilterHelper.h */,
 				1CE7C62D1C8FA86E0003A63D /* ImageFilterHelper.m */,
+				1CD9CCE41C98ED0C002C4E32 /* StampGestureHelper.h */,
+				1CD9CCE51C98ED0C002C4E32 /* StampGestureHelper.m */,
 				68AF283B1C976943009483A7 /* Utilities.h */,
 				68AF283C1C976943009483A7 /* Utilities.m */,
 			);
@@ -224,6 +229,7 @@
 				TargetAttributes = {
 					1CE7C6101C8F8C220003A63D = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = SXSRVAX2S3;
 					};
 				};
 			};
@@ -288,6 +294,7 @@
 				68AF283D1C976943009483A7 /* Utilities.m in Sources */,
 				68AF28401C976CDC009483A7 /* SelectionView.m in Sources */,
 				68AF283A1C97682A009483A7 /* MainViewController.m in Sources */,
+				1CD9CCE61C98ED0C002C4E32 /* StampGestureHelper.m in Sources */,
 				1CC98E2D1C926EB2007FCB34 /* SpeechBubbleView.m in Sources */,
 				1CE7C6191C8F8C220003A63D /* AppDelegate.m in Sources */,
 				1CE7C6161C8F8C220003A63D /* main.m in Sources */,
@@ -407,7 +414,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "comic-books/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.comic-books1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.comic-books2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -421,7 +428,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "comic-books/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.comic-books1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.comic-books2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

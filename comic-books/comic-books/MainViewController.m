@@ -10,6 +10,7 @@
 #import "Utilities.h"
 #import "SelectionView.h"
 #import "ImageFilterHelper.h"
+#import "StampGestureHelper.h"
 
 @interface MainViewController () <SelectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -302,61 +303,17 @@
     
     label.userInteractionEnabled = YES;
     UIPinchGestureRecognizer *pinch =
-    [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+    [[UIPinchGestureRecognizer alloc] initWithTarget:[StampGestureHelper sharedInstance] action:@selector(handlePinch:)];
     [label addGestureRecognizer:pinch];
-    UIRotationGestureRecognizer *rotation = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotation:)];
+    UIRotationGestureRecognizer *rotation = [[UIRotationGestureRecognizer alloc] initWithTarget:[StampGestureHelper sharedInstance] action:@selector(handleRotation:)];
     [label addGestureRecognizer:rotation];
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:[StampGestureHelper sharedInstance] action:@selector(handlePan:)];
     [label addGestureRecognizer:pan];
     
     //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapLabel:)];
     //[label addGestureRecognizer:rotation];
     
     [self.mainView addSubview:label];
-}
-
-- (void) handlePan:(UIPanGestureRecognizer *)panGesture
-{
-    CGPoint point = [panGesture locationInView:self.mainView];
-    
-    if (point.x < panGesture.view.frame.size.width / 2)
-    {
-        point.x = panGesture.view.frame.size.width / 2;
-    }
-    else if (point.x > self.mainView.frame.size.width - panGesture.view.frame.size.width / 2)
-    {
-        point.x = self.mainView.frame.size.width - panGesture.view.frame.size.width / 2;
-    }
-    
-    if (point.y <  panGesture.view.frame.size.height / 2)
-    {
-        point.y = panGesture.view.frame.size.height / 2;
-    }
-    else if (point.y > self.mainView.frame.size.height - panGesture.view.frame.size.height / 2)
-    {
-        point.y = self.mainView.frame.size.height - panGesture.view.frame.size.height / 2;
-    }
-    
-    
-    
-    panGesture.view.center = CGPointMake(point.x, point.y);
-}
-
-- (void) handlePinch:(UIPinchGestureRecognizer *)pinchGesture
-{
-    UILabel *label = (UILabel *)pinchGesture.view;
-    CGFloat size = [Utilities sizeFrame]*pinchGesture.scale;
-    size = (size < [Utilities sizeFrame] / 1.5) ? [Utilities sizeFrame] / 1.5 : size;
-    size = (size > [Utilities sizeFrame] * 2) ? [Utilities sizeFrame] * 2 : size;
-    
-    [label setFont:[UIFont fontWithName:@"Sound FX" size:size]];
-    [label sizeToFit];
-}
-
-- (void) handleRotation:(UIRotationGestureRecognizer *)rotationGesture
-{
-     UILabel *label = (UILabel *)rotationGesture.view;
-    [label setTransform:CGAffineTransformMakeRotation(rotationGesture.rotation)];
 }
 
 - (void)didReceiveMemoryWarning
