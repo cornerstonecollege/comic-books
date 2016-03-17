@@ -74,6 +74,8 @@
     
     [label setFont:[UIFont fontWithName:@"Sound FX" size:size]];
     [label sizeToFit];
+    
+    label.center = [self getNewPointWithPoint:[pinchGesture locationInView:pinchGesture.view.superview] andView:pinchGesture.view];
 }
 
 - (void) handlePan:(UIPanGestureRecognizer *)panGesture
@@ -81,26 +83,32 @@
     // superview is self.mainView
     
     CGPoint point = [panGesture locationInView:panGesture.view.superview];
-    
-    if (point.x < panGesture.view.frame.size.width / 2)
-    {
-        point.x = panGesture.view.frame.size.width / 2;
-    }
-    else if (point.x > panGesture.view.superview.frame.size.width - panGesture.view.frame.size.width / 2)
-    {
-        point.x = panGesture.view.superview.frame.size.width - panGesture.view.frame.size.width / 2;
-    }
-    
-    if (point.y <  panGesture.view.frame.size.height / 2)
-    {
-        point.y = panGesture.view.frame.size.height / 2;
-    }
-    else if (point.y > panGesture.view.superview.frame.size.height - panGesture.view.frame.size.height / 2)
-    {
-        point.y = panGesture.view.superview.frame.size.height - panGesture.view.frame.size.height / 2;
-    }
+    point = [self getNewPointWithPoint:point andView:panGesture.view];
     
     panGesture.view.center = CGPointMake(point.x, point.y);
+}
+
+- (CGPoint) getNewPointWithPoint:(CGPoint)point andView:(UIView *)view
+{
+    if (point.x < view.frame.size.width / 2)
+    {
+        point.x = view.frame.size.width / 2;
+    }
+    else if (point.x > view.superview.frame.size.width - view.frame.size.width / 2)
+    {
+        point.x = view.superview.frame.size.width - view.frame.size.width / 2;
+    }
+    
+    if (point.y <  view.frame.size.height / 2.5)
+    {
+        point.y = view.frame.size.height / 2.5;
+    }
+    else if (point.y > view.superview.frame.size.height - view.frame.size.height / 2.5)
+    {
+        point.y = view.superview.frame.size.height - view.frame.size.height / 2.5;
+    }
+    
+    return point;
 }
 
 @end
