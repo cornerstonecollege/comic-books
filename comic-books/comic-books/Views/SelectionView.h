@@ -42,6 +42,9 @@ typedef NS_ENUM(NSUInteger, TYPE_STYLE_FILTER)
     TSF_FILTER4 = 4,
     TSF_FILTER5 = 5,
     TSF_FILTER6 = 6,
+    TSF_FILTER7 = 7,
+    TSF_FILTER8 = 8,
+    TSF_FILTER9 = 9,
 };
 
 @protocol SelectionViewDelegate <NSObject>

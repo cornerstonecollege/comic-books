@@ -13,6 +13,7 @@
 #import "StampGestureHelper.h"
 #import "DialogHelper.h"
 #import "SpeechBubbleView.h"
+#import "FilterView.h"
 
 @interface MainViewController ()
 
@@ -147,6 +148,12 @@
     [[FrameHelper sharedInstance] createLayouts:self.mainView type:typeFrame andViewController:self];
 }
 
+- (void)didTouchFilter:(TYPE_STYLE_FILTER)typeFilter
+{
+    UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
+    imageView.image = [FilterView imageFilterWithParent:self.mainView type:typeFilter andOriginalImage:self.originalChosenImage];
+}
+
 - (void)plusTap:(UITapGestureRecognizer*)tapGestureRecognizer
 {
     //[self handlePlusTapWithTag:tapGestureRecognizer.view.tag];
@@ -172,12 +179,23 @@
     
     self.originalChosenImage = info[UIImagePickerControllerEditedImage];
     UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
+    
+    
+    
+    
+    
     // customize images
     UIImage *editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:self.originalChosenImage andCenter:[CIVector vectorWithX:imageView.frame.size.width/2 Y:imageView.frame.size.height/2]];
+    
+    
+    
+    
+    
     imageView.image = editedImage;
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.clipsToBounds = YES;
 }
+
 - (void)didTouchStamp:(char)codeStamp
 {
     [self createLabelWithChar:codeStamp];
