@@ -18,9 +18,6 @@
 - (UIImage *) monochromeImageWithImage:(UIImage *)img;
 - (UIImage *) photoTonalImageWithImage:(UIImage *)img;
 
-// NO
-- (UIImage *) lineOverlayImageWithImage:(UIImage *)img;
-
 // best for comic book style
 - (UIImage *) CMYKHalftoneImageWithImage:(UIImage *)img andCenter:(CIVector *)center;
 

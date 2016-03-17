@@ -36,7 +36,10 @@
 - (void) initializeVars
 {
     self.frameImagesArr = @[@"layout1.png", @"layout2.png", @"layout3.png", @"layout4.png", @"layout5.png", @"layout6.png", @"layout7.png", @"layout8.png", @"layout9.png"];
-    self.filterArr = @[@"temp1.png", @"temp2.png", @"temp3.png", @"temp1.png", @"temp2.png", @"temp3.png", @"temp1.png", @"temp2.png", @"temp3.png"];
+    self.filterArr = @[@"temp1.png", @"temp2.png", @"temp3.png", @"temp4.png", @"temp5.png", @"temp6.png",
+                       @"temp1.png", @"temp2.png", @"temp3.png", @"temp4.png", @"temp5.png", @"temp6.png",
+                       @"temp1.png", @"temp2.png", @"temp3.png", @"temp4.png", @"temp5.png", @"temp6.png",
+                       @"temp1.png", @"temp2.png", @"temp3.png", @"temp4.png", @"temp5.png", @"temp6.png"];
     self.soundFXArr = "ABCEFGHIJKLMOQRSTUVXZabcdefhijmoqruvy359%#),}|]^";
     self.speechBubbleArr = "ABCDEFGHIJKLMNOPQRST";
     self.backgroundColor = [Utilities speacialLighterGrayColor];

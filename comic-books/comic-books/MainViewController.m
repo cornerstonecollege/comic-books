@@ -21,7 +21,7 @@
 @property (nonatomic) UIView *tabView;
 @property (nonatomic) NSArray<SelectionView *> *selectionArr;
 @property (nonatomic) UIImage *originalChosenImage;
-
+@property (nonatomic) NSArray *imagesArr;
 
 @end
 
@@ -124,6 +124,10 @@
     image.backgroundColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
     [parent addSubview:image];
     image.tag = -tag;
+    image.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageTap:)];
+    [image addGestureRecognizer:tap];
     
     UILabel *plusLabel = [[UILabel alloc]init];
     plusLabel.text = @"+";
@@ -142,6 +146,10 @@
     [parent addSubview:plusLabel];
 }
 
+- (void)handleImageTap:(UITapGestureRecognizer*)tapGestureRecognizer
+{
+    NSLog(@"TAP");
+}
 
 - (void)didTouchFrame:(TYPE_FRAME)typeFrame
 {
@@ -179,17 +187,9 @@
     
     self.originalChosenImage = info[UIImagePickerControllerEditedImage];
     UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
-    
-    
-    
-    
-    
+
     // customize images
     UIImage *editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:self.originalChosenImage andCenter:[CIVector vectorWithX:imageView.frame.size.width/2 Y:imageView.frame.size.height/2]];
-    
-    
-    
-    
     
     imageView.image = editedImage;
     imageView.contentMode = UIViewContentModeScaleAspectFill;
