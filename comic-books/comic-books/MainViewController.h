@@ -7,15 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SelectionView.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <SelectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-- (void) makeLayoutWithFrame:(CGRect)frame parent:(UIView *)parent andTag:(NSInteger)tag;
+@property (nonatomic) NSInteger imgFlag;
+@property (nonatomic) UIView * _Nonnull dialogView;
+
+- (void) makeLayoutWithFrame:(CGRect)frame parent:( UIView * _Nonnull)parent andTag:(NSInteger)tag;
 - (void) clearChildrenMainView;
 - (void) dismissDialogView;
 - (void) setImgFlag:(NSInteger)tag;
-- (void) createPopupImageWithSize:(CGRect)size imageName:(NSString*)name andFunction:(nonnull SEL)function;
-- (UIView *) getDlogView;
-- (void)setDlogView:(UIView *)view;
+- (void) createPopupImageWithSize:(CGRect)size imageName:(NSString * _Nonnull)name target:(_Nonnull id)target andFunction:(nonnull SEL)function;
 
 @end

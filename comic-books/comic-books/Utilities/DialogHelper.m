@@ -9,6 +9,12 @@
 #import "DialogHelper.h"
 #import "MainViewController.h"
 
+@interface DialogHelper ()
+
+@property (nonatomic, weak) MainViewController *mainVC;
+
+@end
+
 @implementation DialogHelper
 
 + (instancetype) sharedInstance
@@ -36,34 +42,37 @@
 
 - (void) handlePlusTapWithTag:(NSInteger)tag andViewController:(MainViewController *)mainVC
 {
+    if (!self.mainVC)
+    {
+        self.mainVC = mainVC;
+    }
     //self.imgFlag = -tag;
     [mainVC setImgFlag:-tag];
     
-    //[self.dialogView removeFromSuperview];
-    [mainVC.getDlogView removeFromSuperview];
-    [mainVC setDlogView:[[UIView alloc] initWithFrame:CGRectMake(mainVC.view.bounds.size.width*0.2,
+    [mainVC dismissDialogView];
+    [mainVC setDialogView:[[UIView alloc] initWithFrame:CGRectMake(mainVC.view.bounds.size.width*0.2,
                                                               mainVC.view.bounds.size.height*0.25,
                                                               mainVC.view.bounds.size.width*0.6,
                                                               mainVC.view.bounds.size.height*0.3)]];
      
-    [mainVC.getDlogView setBackgroundColor: [UIColor colorWithRed:96.0f/255.0f green:96.0f/255.0f blue:96.0f/255.0f alpha:1.0]];
-    mainVC.getDlogView.layer.cornerRadius = 25;
-    mainVC.getDlogView.layer.masksToBounds = YES;
+    mainVC.dialogView.backgroundColor = [UIColor colorWithRed:96.0f/255.0f green:96.0f/255.0f blue:96.0f/255.0f alpha:1.0];
+    mainVC.dialogView.layer.cornerRadius = 25;
+    mainVC.dialogView.layer.masksToBounds = YES;
     
-    [mainVC createPopupImageWithSize:CGRectMake(mainVC.getDlogView.bounds.size.width*0.1,
-                                              mainVC.getDlogView.bounds.size.height*0.25,
-                                              mainVC.getDlogView.bounds.size.width*0.35,
-                                                mainVC.getDlogView.bounds.size.width*0.35) imageName:@"camera.png" andFunction:@selector(cameraTap)];
+    [mainVC createPopupImageWithSize:CGRectMake(mainVC.dialogView.bounds.size.width*0.1,
+                                              mainVC.dialogView.bounds.size.height*0.25,
+                                              mainVC.dialogView.bounds.size.width*0.35,
+                                                mainVC.dialogView.bounds.size.width*0.35) imageName:@"camera.png" target:self andFunction:@selector(cameraTap)];
     
-    [mainVC createPopupImageWithSize:CGRectMake(mainVC.getDlogView.bounds.size.width*0.55,
-                                              mainVC.getDlogView.bounds.size.height*0.25,
-                                              mainVC.getDlogView.bounds.size.width*0.35,
-                                              mainVC.getDlogView.bounds.size.width*0.35) imageName:@"gallery.png" andFunction:@selector(galleryTap)];
+    [mainVC createPopupImageWithSize:CGRectMake(mainVC.dialogView.bounds.size.width*0.55,
+                                              mainVC.dialogView.bounds.size.height*0.25,
+                                              mainVC.dialogView.bounds.size.width*0.35,
+                                              mainVC.dialogView.bounds.size.width*0.35) imageName:@"gallery.png" target:self andFunction:@selector(galleryTap)];
     
-    UILabel *cancelLabel = [[UILabel alloc]initWithFrame:CGRectMake(mainVC.getDlogView.bounds.size.width*0.5,
-                                                                    mainVC.getDlogView.bounds.size.height*0.80,
-                                                                    mainVC.getDlogView.bounds.size.width*0.5,
-                                                                    mainVC.getDlogView.bounds.size.height*0.15)];
+    UILabel *cancelLabel = [[UILabel alloc]initWithFrame:CGRectMake(mainVC.dialogView.bounds.size.width*0.5,
+                                                                    mainVC.dialogView.bounds.size.height*0.80,
+                                                                    mainVC.dialogView.bounds.size.width*0.5,
+                                                                    mainVC.dialogView.bounds.size.height*0.15)];
     cancelLabel.text = @"cancel";
     cancelLabel.textColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
     cancelLabel.font = [UIFont fontWithName:@"Helvetica" size:25];
@@ -73,34 +82,33 @@
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelTap)];
     [cancelLabel addGestureRecognizer:cancelGesture];
     
-    //[self.dialogView addSubview:galleryView];
-    //[mainVC.getDlogView addSubview:cancelLabel];
-    //[mainVC.view addSubview:mainVC.getDlogView];
+    [self.mainVC.dialogView addSubview:cancelLabel];
+    [self.mainVC.view addSubview:self.mainVC.dialogView];
 }
 
 - (void)cameraTap
 {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    //picker.delegate = mainVC;
+    picker.delegate = self.mainVC;
     picker.allowsEditing = YES;
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     
-    //[mainVC presentViewController:picker animated:YES completion:NULL];
+    [self.mainVC presentViewController:picker animated:YES completion:NULL];
 }
 
 - (void)galleryTap
 {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    //picker.delegate = mainVC;
+    picker.delegate = self.mainVC;
     picker.allowsEditing = YES;
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
-    //[mainVC presentViewController:picker animated:YES completion:NULL];
+    [self.mainVC presentViewController:picker animated:YES completion:NULL];
 }
 
 - (void)cancelTap
 {
-    //[mainVC.getDlogView removeFromSuperview];
+    [self.mainVC dismissDialogView];
 }
 
 
