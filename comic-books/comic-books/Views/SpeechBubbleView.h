@@ -12,7 +12,6 @@
 
 - (instancetype)initWithCode:(char)codeBubble andParent:(UIView *)parentView;
 
-- (void) handlePinch:(UIPinchGestureRecognizer *)pinchGesture;
 - (void) handleRotation:(UIRotationGestureRecognizer *)rotationGesture;
 - (void) handlePan:(UIPanGestureRecognizer *)panGesture;
 

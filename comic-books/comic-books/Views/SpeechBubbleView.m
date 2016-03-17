@@ -44,6 +44,7 @@
     self.textView.font = [UIFont fontWithName:@"Bangers" size:18];
     [self.textView  setReturnKeyType: UIReturnKeyDone];
     self.textView.delegate = self;
+    self.textView.textAlignment = NSTextAlignmentCenter;
     
     [self addSubview:self.textView];
     
@@ -93,14 +94,12 @@ shouldChangeTextInRange: (NSRange) range
 - (void) addEvents
 {
     self.userInteractionEnabled = YES;
-    UIPinchGestureRecognizer *pinch =
-    [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
     UIRotationGestureRecognizer *rotation = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotation:)];
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
     doubleTap.numberOfTapsRequired = 2;
     
-    self.gestureRecognizers = @[pinch, pan, rotation, doubleTap];
+    self.gestureRecognizers = @[pan, rotation, doubleTap];
 }
 
 - (void) createSpeechBubbleWithCode:(char)codeStamp
@@ -121,17 +120,6 @@ shouldChangeTextInRange: (NSRange) range
     self.labelBack.text = [NSString stringWithFormat:@"%c", theChar];
 }
 
-- (void) handlePinch:(UIPinchGestureRecognizer *)pinchGesture
-{
-    CGFloat size = [Utilities sizeFrame]*pinchGesture.scale;
-    size = (size < [Utilities sizeFrame] / 1.2) ? [Utilities sizeFrame] / 1.2 : size;
-    size = (size > [Utilities sizeFrame] * 2.2) ? [Utilities sizeFrame] * 2.2 : size;
-    
-    [self.labelBack setFont:[UIFont fontWithName:@"Komika Bubbles Dark" size:size]];
-    [self.labelBack sizeToFit];
-    self.frame = CGRectMake(pinchGesture.view.frame.origin.x, pinchGesture.view.frame.origin.y, self.labelBack.frame.size.width, self.labelBack.frame.size.height);
-}
-
 - (void) handleRotation:(UIRotationGestureRecognizer *)rotationGesture
 {
     [self setTransform:CGAffineTransformMakeRotation(rotationGesture.rotation)];
@@ -143,7 +131,7 @@ shouldChangeTextInRange: (NSRange) range
     
     CGPoint point = [panGesture locationInView:self.superview];
     
-    if (point.x < self.frame.size.width / 2)
+    if (point.x < self.frame.size.width / 2 )
     {
         point.x = self.frame.size.width / 2;
     }
@@ -152,9 +140,9 @@ shouldChangeTextInRange: (NSRange) range
         point.x = self.superview.frame.size.width - self.frame.size.width / 2;
     }
     
-    if (point.y <  self.frame.size.height / 2)
+    if (point.y <  self.frame.size.height / 2 - 20)
     {
-        point.y = self.frame.size.height / 2;
+        point.y = self.frame.size.height / 2 - 20;
     }
     else if (point.y > self.superview.frame.size.height - self.frame.size.height / 2)
     {
@@ -169,25 +157,35 @@ shouldChangeTextInRange: (NSRange) range
     switch (tolower(code))
     {
         case 'b':
+        case 'p':
             return UIEdgeInsetsMake(50, 10, 0, 10);
-            break;
         case 'd':
             return UIEdgeInsetsMake(30, 10, 0, 10);
-            break;
         case 'e':
         case 'f':
         case 'g':
+        case 's':
             return UIEdgeInsetsMake(40, 10, 0, 10);
-            break;
         case 'h':
             return UIEdgeInsetsMake(30, 15, 0, 10);
-            break;
         case 'i':
             return UIEdgeInsetsMake(30, 10, 0, 10);
         case 'j':
             return UIEdgeInsetsMake(55, 25, 0, 15);
         case 'k':
-            return UIEdgeInsetsMake(55, 10, 0, 20);
+            return UIEdgeInsetsMake(55, 10, 0, 28);
+        case 'l':
+            return UIEdgeInsetsMake(30, 20, 0, 15);
+        case 'm':
+            return UIEdgeInsetsMake(40, 20, 0, 15);
+        case 'n':
+            return UIEdgeInsetsMake(45, 20, 0, 25);
+        case 'o':
+            return UIEdgeInsetsMake(40, 10, 0, 10);
+        case 'q':
+            return UIEdgeInsetsMake(50, 15, 0, 15);
+        case 't':
+            return UIEdgeInsetsMake(40, 15, 0, 15);
             
         default:
             return UIEdgeInsetsMake(30, 0, 0, 0);
@@ -225,10 +223,13 @@ shouldChangeTextInRange: (NSRange) range
     switch (tolower(code))
     {
         case 'b':
+        case 'n':
+        case 'p':
             return 2;
             break;
         case 'd':
         case 'i':
+        case 'q':
             return 4;
             break;
         case 'j':
