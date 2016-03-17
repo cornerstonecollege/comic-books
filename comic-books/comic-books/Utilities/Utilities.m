@@ -85,4 +85,13 @@
         return 100;
 }
 
++ (CGFloat)sizeIconWithParentSize:(CGFloat)size
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return size / 4 * 0.2;
+    else if ([[UIScreen mainScreen] bounds].size.height < 568)
+        return size / 4 * 0.3;
+    else
+        return size / 4 * 0.5;
+}
 @end

@@ -81,6 +81,8 @@
     for (int i = 0; i < [arrayOfImages count]; i++)
     {
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:arrayOfImages[i]]];
+        CGFloat size = [Utilities sizeIconWithParentSize:tabView.frame.size.width];
+        imageView.frame = CGRectMake(0, 0, size, size);
         imageView.center = CGPointMake(tabView.frame.size.width / [arrayOfImages count] * i + (tabView.frame.size.width / [arrayOfImages count] / 2), tabView.frame.size.height / 2);
         imageView.tag = typeItem[i];
         imageView.userInteractionEnabled = YES;
