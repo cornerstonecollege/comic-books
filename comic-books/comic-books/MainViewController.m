@@ -12,6 +12,7 @@
 #import "FrameHelper.h"
 #import "ImageFilterHelper.h"
 #import "StampGestureHelper.h"
+#import "DialogHelper.h"
 #import "SpeechBubbleView.h"
 
 @interface MainViewController () <SelectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -21,7 +22,6 @@
 @property (nonatomic) UIView *dialogView;
 @property (nonatomic) NSArray<SelectionView *> *selectionArr;
 @property (nonatomic) UIImage *originalChosenImage;
-
 @property (nonatomic) NSInteger imgFlag;
 
 @end
@@ -149,49 +149,51 @@
 
 - (void)plusTap:(UITapGestureRecognizer*)tapGestureRecognizer
 {
-    [self handlePlusTapWithTag:tapGestureRecognizer.view.tag];
+    //[self handlePlusTapWithTag:tapGestureRecognizer.view.tag];
+    [[DialogHelper sharedInstance] handlePlusTapWithTag:tapGestureRecognizer.view.tag andViewController:self];
+
 }
 
-- (void) handlePlusTapWithTag:(NSInteger)tag
-{
-    self.imgFlag = -tag;
-    
-    [self.dialogView removeFromSuperview];
-    self.dialogView = [[UIView alloc]initWithFrame:CGRectMake(self.view.bounds.size.width*0.2,
-                                                              self.view.bounds.size.height*0.25,
-                                                              self.view.bounds.size.width*0.6,
-                                                              self.view.bounds.size.height*0.3)];
-    [self.dialogView setBackgroundColor: [UIColor colorWithRed:96.0f/255.0f green:96.0f/255.0f blue:96.0f/255.0f alpha:1.0]];
-    self.dialogView.layer.cornerRadius = 25;
-    self.dialogView.layer.masksToBounds = YES;
-    
-    [self createPopupImageWithSize:CGRectMake(self.dialogView.bounds.size.width*0.1,
-                                              self.dialogView.bounds.size.height*0.25,
-                                              self.dialogView.bounds.size.width*0.35,
-                                              self.dialogView.bounds.size.width*0.35) imageName:@"camera.png" andFunction:@selector(cameraTap)];
-    
-    [self createPopupImageWithSize:CGRectMake(self.dialogView.bounds.size.width*0.55,
-                                              self.dialogView.bounds.size.height*0.25,
-                                              self.dialogView.bounds.size.width*0.35,
-                                              self.dialogView.bounds.size.width*0.35) imageName:@"gallery.png" andFunction:@selector(galleryTap)];
-    
-    UILabel *cancelLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.dialogView.bounds.size.width*0.5,
-                                                                    self.dialogView.bounds.size.height*0.80,
-                                                                    self.dialogView.bounds.size.width*0.5,
-                                                                    self.dialogView.bounds.size.height*0.15)];
-    cancelLabel.text = @"cancel";
-    cancelLabel.textColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
-    cancelLabel.font = [UIFont fontWithName:@"Helvetica" size:25];
-    cancelLabel.userInteractionEnabled = YES;
-    cancelLabel.textAlignment = NSTextAlignmentCenter;
-    UITapGestureRecognizer *cancelGesture =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelTap)];
-    [cancelLabel addGestureRecognizer:cancelGesture];
-    
-    //[self.dialogView addSubview:galleryView];
-    [self.dialogView addSubview:cancelLabel];
-    [self.view addSubview:self.dialogView];
-}
+//- (void) handlePlusTapWithTag:(NSInteger)tag
+//{
+//    self.imgFlag = -tag;
+//    
+//    [self.dialogView removeFromSuperview];
+//    self.dialogView = [[UIView alloc]initWithFrame:CGRectMake(self.view.bounds.size.width*0.2,
+//                                                              self.view.bounds.size.height*0.25,
+//                                                              self.view.bounds.size.width*0.6,
+//                                                              self.view.bounds.size.height*0.3)];
+//    [self.dialogView setBackgroundColor: [UIColor colorWithRed:96.0f/255.0f green:96.0f/255.0f blue:96.0f/255.0f alpha:1.0]];
+//    self.dialogView.layer.cornerRadius = 25;
+//    self.dialogView.layer.masksToBounds = YES;
+//    
+//    [self createPopupImageWithSize:CGRectMake(self.dialogView.bounds.size.width*0.1,
+//                                              self.dialogView.bounds.size.height*0.25,
+//                                              self.dialogView.bounds.size.width*0.35,
+//                                              self.dialogView.bounds.size.width*0.35) imageName:@"camera.png" andFunction:@selector(cameraTap)];
+//    
+//    [self createPopupImageWithSize:CGRectMake(self.dialogView.bounds.size.width*0.55,
+//                                              self.dialogView.bounds.size.height*0.25,
+//                                              self.dialogView.bounds.size.width*0.35,
+//                                              self.dialogView.bounds.size.width*0.35) imageName:@"gallery.png" andFunction:@selector(galleryTap)];
+//    
+//    UILabel *cancelLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.dialogView.bounds.size.width*0.5,
+//                                                                    self.dialogView.bounds.size.height*0.80,
+//                                                                    self.dialogView.bounds.size.width*0.5,
+//                                                                    self.dialogView.bounds.size.height*0.15)];
+//    cancelLabel.text = @"cancel";
+//    cancelLabel.textColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
+//    cancelLabel.font = [UIFont fontWithName:@"Helvetica" size:25];
+//    cancelLabel.userInteractionEnabled = YES;
+//    cancelLabel.textAlignment = NSTextAlignmentCenter;
+//    UITapGestureRecognizer *cancelGesture =
+//    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelTap)];
+//    [cancelLabel addGestureRecognizer:cancelGesture];
+//    
+//    //[self.dialogView addSubview:galleryView];
+//    [self.dialogView addSubview:cancelLabel];
+//    [self.view addSubview:self.dialogView];
+//}
 
 
 - (void)createPopupImageWithSize:(CGRect)size imageName:(NSString*)name andFunction:(nonnull SEL)function
@@ -224,6 +226,12 @@
     [self presentViewController:picker animated:YES completion:NULL];
 }
 
+- (void)cancelTap
+{
+    [self.dialogView removeFromSuperview];
+}
+
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     [self.dialogView removeFromSuperview];
@@ -238,12 +246,6 @@
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
         imageView.transform = CGAffineTransformMakeRotation(M_PI_2);
 }
-
-- (void)cancelTap
-{
-    [self.dialogView removeFromSuperview];
-}
-
 - (void)didTouchStamp:(char)codeStamp
 {
     [self createLabelWithChar:codeStamp];
@@ -283,6 +285,21 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)setImgFlag:(NSInteger)tag
+{
+    self.imgFlag = tag;
+}
+
+- (UIView*)getDlogView
+{
+    return self.dialogView;
+}
+
+- (void)setDlogView:(UIView*)view
+{
+    self.dialogView = view;
 }
 
 @end
