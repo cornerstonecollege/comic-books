@@ -41,6 +41,7 @@
                                                              self.view.bounds.size.width*0.98,
                                                              self.view.bounds.size.width*0.98)];
     self.mainView.backgroundColor = [UIColor whiteColor];
+    self.mainView.clipsToBounds = YES;
     [self.view addSubview:self.mainView];
 }
 

@@ -41,7 +41,8 @@
     self.textView.textContainerInset = [self UIEdgeInsetsWithCode:codeBubble];
     self.textView.textContainer.maximumNumberOfLines = [self maximumNumberOfLinesWithCode:codeBubble];
     self.textView.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
-    self.textView.font = [UIFont fontWithName:@"Bangers" size:18];
+    CGFloat size = codeBubble == '@' ? 28 : 18;
+    self.textView.font =  [UIFont fontWithName:@"Bangers" size:size];
     [self.textView  setReturnKeyType: UIReturnKeyDone];
     self.textView.delegate = self;
     self.textView.textAlignment = NSTextAlignmentCenter;
@@ -116,6 +117,10 @@ shouldChangeTextInRange: (NSRange) range
 - (void) handleDoubleTap:(UITapGestureRecognizer *)tapGesture
 {
     char theChar = [self.labelBack.text UTF8String][0];
+    
+    if (theChar == '@')
+        return;
+    
     theChar += islower(theChar) ? -32 : 32;
     self.labelBack.text = [NSString stringWithFormat:@"%c", theChar];
 }
@@ -131,7 +136,7 @@ shouldChangeTextInRange: (NSRange) range
     
     CGPoint point = [panGesture locationInView:self.superview];
     
-    if (point.x < self.frame.size.width / 2 )
+  /*  if (point.x < self.frame.size.width / 2 )
     {
         point.x = self.frame.size.width / 2;
     }
@@ -140,14 +145,14 @@ shouldChangeTextInRange: (NSRange) range
         point.x = self.superview.frame.size.width - self.frame.size.width / 2;
     }
     
-    if (point.y <  self.frame.size.height / 2 - 20)
+    if (point.y <  self.textView.contentSize.width / 2 - self.textView.textContainerInset.top + 10)
     {
-        point.y = self.frame.size.height / 2 - 20;
+        point.y = self.textView.contentSize.width / 2 - self.textView.textContainerInset.top + 10;
     }
-    else if (point.y > self.superview.frame.size.height - self.frame.size.height / 2)
+    else if (point.y > self.superview.frame.size.height - self.textView.contentSize.height / 2)
     {
-        point.y = self.superview.frame.size.height - self.frame.size.height / 2;
-    }
+        point.y = self.superview.frame.size.height - self.textView.contentSize.height / 2;
+    }*/
     
     self.center = CGPointMake(point.x, point.y);
 }
@@ -186,6 +191,8 @@ shouldChangeTextInRange: (NSRange) range
             return UIEdgeInsetsMake(50, 15, 0, 15);
         case 't':
             return UIEdgeInsetsMake(40, 15, 0, 15);
+        case '@':
+            return UIEdgeInsetsMake(50, 5, 0, 5);
             
         default:
             return UIEdgeInsetsMake(30, 0, 0, 0);
@@ -235,6 +242,8 @@ shouldChangeTextInRange: (NSRange) range
         case 'j':
             return 2;
             break;
+        case '@':
+            return 1;
         default:
             return 3;
             break;
