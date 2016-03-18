@@ -20,8 +20,11 @@
 @property (nonatomic) UIView *mainView;
 @property (nonatomic) UIView *tabView;
 @property (nonatomic) NSArray<SelectionView *> *selectionArr;
-@property (nonatomic) UIImage *originalChosenImage;
-@property (nonatomic) NSArray *imagesArr;
+@property (nonatomic) UIImage *originalChosenImage1;
+@property (nonatomic) UIImage *originalChosenImage2;
+@property (nonatomic) UIImage *originalChosenImage3;
+@property (nonatomic) UIImage *originalChosenImage4;
+@property (nonatomic) NSInteger indexImage;
 
 @end
 
@@ -148,7 +151,8 @@
 
 - (void)handleImageTap:(UITapGestureRecognizer*)tapGestureRecognizer
 {
-    NSLog(@"TAP");
+    UIView *view = tapGestureRecognizer.view; //cast pointer to the derived class if needed
+    self.indexImage = - (view.tag);
 }
 
 - (void)didTouchFrame:(TYPE_FRAME)typeFrame
@@ -159,7 +163,7 @@
 - (void)didTouchFilter:(TYPE_STYLE_FILTER)typeFilter
 {
     UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
-    imageView.image = [FilterView imageFilterWithParent:self.mainView type:typeFilter andOriginalImage:self.originalChosenImage];
+    imageView.image = [FilterView imageFilterWithParent:self.mainView type:typeFilter andOriginalImage:self.originalChosenImage1];
 }
 
 - (void)plusTap:(UITapGestureRecognizer*)tapGestureRecognizer
