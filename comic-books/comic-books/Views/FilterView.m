@@ -28,7 +28,7 @@
     {
         editedImage = [[ImageFilterHelper sharedInstance] pointillizeImageWithImage:originalImage andCenter:center];
     }
-    int rest = type % 4;
+    int rest = type % 6;
 
     // customize images
     switch (rest) {

@@ -85,7 +85,7 @@
 - (UIImage *) monochromeImageWithImage:(UIImage *)img
 {
     CIFilter *filter = [CIFilter filterWithName:@"CIColorMonochrome"];
-    CIColor *color = [CIColor colorWithRed:1.0 green:0.0 blue:0.0];
+    CIColor *color = [CIColor colorWithRed:1.0 green:1.0 blue:0.0];
     [filter setValue:color forKey:@"inputColor"];
     [filter setValue:[NSNumber numberWithDouble:1.0] forKey:@"inputIntensity"];
     UIImage *imageResult = [self applyFilter:filter atImage:img];

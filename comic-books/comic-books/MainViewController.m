@@ -24,7 +24,6 @@
 @property (nonatomic) UIImage *originalChosenImage2;
 @property (nonatomic) UIImage *originalChosenImage3;
 @property (nonatomic) UIImage *originalChosenImage4;
-@property (nonatomic) NSInteger indexImage;
 
 @end
 
@@ -153,7 +152,7 @@
 - (void)handleImageTap:(UITapGestureRecognizer*)tapGestureRecognizer
 {
     UIView *view = tapGestureRecognizer.view; //cast pointer to the derived class if needed
-    self.indexImage = - (view.tag);
+    self.imgFlag = view.tag;
 }
 
 - (void)didTouchFrame:(TYPE_FRAME)typeFrame
@@ -164,7 +163,46 @@
 - (void)didTouchFilter:(TYPE_STYLE_FILTER)typeFilter
 {
     UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
-    imageView.image = [FilterView imageFilterWithParent:self.mainView type:typeFilter andOriginalImage:self.originalChosenImage1];
+    UIImage * currentImage = [self currentImage];
+    imageView.image = [FilterView imageFilterWithParent:self.mainView type:typeFilter andOriginalImage:currentImage];
+}
+
+- (UIImage *)currentImage
+{
+    UIImage *currentImage= nil;
+    switch (labs(self.imgFlag)) {
+        case 1:
+            currentImage = self.originalChosenImage1;
+            break;
+        case 2:
+            currentImage = self.originalChosenImage2;
+            break;
+        case 3:
+            currentImage = self.originalChosenImage3;
+            break;
+        case 4:
+            currentImage = self.originalChosenImage4;
+            break;
+    }
+    return currentImage;
+}
+
+- (void) setCurrentImage:(UIImage *)img
+{
+    switch (labs(self.imgFlag)) {
+        case 1:
+            self.originalChosenImage1 = img;
+            break;
+        case 2:
+            self.originalChosenImage2 = img;
+            break;
+        case 3:
+            self.originalChosenImage3 = img;
+            break;
+        case 4:
+            self.originalChosenImage4 = img;
+            break;
+    }
 }
 
 - (void)plusTap:(UITapGestureRecognizer*)tapGestureRecognizer
@@ -190,11 +228,15 @@
     [self dismissDialogView];
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
-    self.originalChosenImage = info[UIImagePickerControllerEditedImage];
+    UIImage * currentImage = info[UIImagePickerControllerEditedImage];
+    [self setCurrentImage:currentImage];
+    
+    //self.originalChosenImage = info[UIImagePickerControllerEditedImage];
     UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
 
     // customize images
-    UIImage *editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:self.originalChosenImage andCenter:[CIVector vectorWithX:imageView.frame.size.width/2 Y:imageView.frame.size.height/2]];
+    //UIImage *editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:self.originalChosenImage andCenter:[CIVector vectorWithX:imageView.frame.size.width/2 Y:imageView.frame.size.height/2]];
+    UIImage *editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:currentImage andCenter:[CIVector vectorWithX:imageView.frame.size.width/2 Y:imageView.frame.size.height/2]];
     
     imageView.image = editedImage;
     imageView.contentMode = UIViewContentModeScaleAspectFill;
