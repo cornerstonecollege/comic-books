@@ -73,6 +73,18 @@
     
     [self createTabBar];
     [[FrameHelper sharedInstance] createLayouts:self.mainView type:1 andViewController:self];
+    
+    
+    
+    // prototype
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self
+               action:@selector(shareContent)
+     forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"Share" forState:UIControlStateNormal];
+    button.frame = CGRectMake(0, 0, self.view.bounds.size.width / 2, self.view.bounds.size.height*0.06);
+    button.center = CGPointMake(self.view.bounds.size.width / 2, self.view.bounds.size.height*0.05);
+    [self.view addSubview:button];
 }
 
 - (void) createTabBar
@@ -271,6 +283,15 @@
     [label addGestureRecognizer:tap];
     
     [self.mainView addSubview:label];
+}
+
+-(void)shareContent{
+    
+    NSString * message = @"Share Images";
+    UIImage * image = [UIImage imageNamed:@"share"];
+    NSArray * shareItems = @[message, image];
+    UIActivityViewController * avc = [[UIActivityViewController alloc] initWithActivityItems:shareItems applicationActivities:nil];
+    [self presentViewController:avc animated:YES completion:nil];
 }
 
 - (void)didTouchSpeechBubble:(char)codeBubble
