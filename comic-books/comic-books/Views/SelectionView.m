@@ -41,7 +41,7 @@
                        @"temp1.png", @"temp2.png", @"temp3.png", @"temp4.png", @"temp5.png", @"temp6.png",
                        @"temp1.png", @"temp2.png", @"temp3.png", @"temp4.png", @"temp5.png", @"temp6.png"];
     self.soundFXArr = "ABCEFGHIJKLMOQRSTUVXZabcdefhijmoqruvy359%#),}|]^";
-    self.speechBubbleArr = "ABCDEFGHIJKLMNOPQRST";
+    self.speechBubbleArr = "@ABCDEFGHIJKLMNOPQST";
     self.backgroundColor = [Utilities speacialLighterGrayColor];
 }
 
@@ -154,7 +154,8 @@
     }
     else
     {
-        point = CGPointMake(frame.origin.x + frame.size.width + 10, frame.origin.y + frame.size.height);
+        CGFloat space = self.type == ST_STAMP ? 0 : 20;
+        point = CGPointMake(frame.origin.x + frame.size.width + space, frame.origin.y + frame.size.height);
     }
     
     label.center = point;
