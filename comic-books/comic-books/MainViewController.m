@@ -39,7 +39,7 @@
 - (void) createMainView
 {
     self.mainView = [[UIView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width*0.01,
-                                                             self.view.bounds.size.height*0.09,
+                                                             self.view.bounds.size.height*0.1,
                                                              self.view.bounds.size.width*0.98,
                                                              self.view.bounds.size.width*0.98)];
     self.mainView.backgroundColor = [UIColor whiteColor];
@@ -74,17 +74,18 @@
     [self createTabBar];
     [[FrameHelper sharedInstance] createLayouts:self.mainView type:1 andViewController:self];
     
-    
-    
-    // prototype
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self
-               action:@selector(shareContent)
-     forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"Share" forState:UIControlStateNormal];
-    button.frame = CGRectMake(0, 0, self.view.bounds.size.width / 2, self.view.bounds.size.height*0.06);
-    button.center = CGPointMake(self.view.bounds.size.width / 2, self.view.bounds.size.height*0.05);
-    [self.view addSubview:button];
+    [self createShareButton];
+}
+
+- (void) createShareButton
+{
+    UINavigationBar *navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height*0.08)];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareContent)];
+    UINavigationItem *item = [[UINavigationItem alloc] init];
+    item.rightBarButtonItem = shareButton;
+    navBar.items = [NSArray arrayWithObject:item];
+    [self.view addSubview:navBar];
+    [self.view bringSubviewToFront:navBar];
 }
 
 - (void) createTabBar
@@ -247,7 +248,6 @@
     UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
 
     // customize images
-    //UIImage *editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:self.originalChosenImage andCenter:[CIVector vectorWithX:imageView.frame.size.width/2 Y:imageView.frame.size.height/2]];
     UIImage *editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:currentImage andCenter:[CIVector vectorWithX:imageView.frame.size.width/2 Y:imageView.frame.size.height/2]];
     
     imageView.image = editedImage;
@@ -285,13 +285,41 @@
     [self.mainView addSubview:label];
 }
 
--(void)shareContent{
-    
+-(void)shareContent
+{
     NSString * message = @"Share Images";
-    UIImage * image = [UIImage imageNamed:@"share"];
+    //UIImage * image = [UIImage imageNamed:@"share"];
+    
+    //[self.mainView removeFromSuperview];
+    for (UIView *subview in [self.mainView subviews]){
+        if ([subview isKindOfClass:[UILabel class]])
+        {
+            subview.hidden = YES;
+        }
+    }
+    
+    UIImage * image = [self imageWithView:self.mainView];
     NSArray * shareItems = @[message, image];
     UIActivityViewController * avc = [[UIActivityViewController alloc] initWithActivityItems:shareItems applicationActivities:nil];
-    [self presentViewController:avc animated:YES completion:nil];
+    
+    //if iPhone
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [self presentViewController:avc animated:YES completion:nil];
+    }
+    //if iPad
+    else {
+        // Change Rect to position Popover
+        avc.modalPresentationStyle = UIModalPresentationPopover;
+        avc.popoverPresentationController.sourceView = self.mainView;
+        [self presentViewController:avc animated:YES completion:nil];
+    }
+    
+    for (UIView *subview in [self.mainView subviews]){
+        if ([subview isKindOfClass:[UILabel class]])
+        {
+            subview.hidden = NO;
+        }
+    }
 }
 
 - (void)didTouchSpeechBubble:(char)codeBubble
@@ -303,6 +331,18 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (UIImage *) imageWithView:(UIView *)view
+{
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return img;
 }
 
 @end
