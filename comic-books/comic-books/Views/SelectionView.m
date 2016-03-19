@@ -82,7 +82,10 @@
     
     for (NSString * name in arr)
     {
-        [self addImageSize:CGRectMake(xPosition, self.superview.bounds.size.height*[Utilities percentageScreen]/4, [Utilities sizeFrame] / 2, [Utilities sizeFrame] / 2) name:name count:cnt time:time andParent:self];
+        [self addImageSize:CGRectMake(xPosition,
+                                      self.superview.bounds.size.height*[Utilities percentageScreen]/4,
+                                      [Utilities sizeFrame] / 2,
+                                      [Utilities sizeFrame] / 2) name:name count:cnt time:time andParent:self];
         xPosition += [Utilities sizeFrame];
         time += 0.05;
         cnt +=1;

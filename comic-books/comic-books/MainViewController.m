@@ -34,6 +34,7 @@
     [super viewDidLoad];
     [self createMainView];
     [self initializeView];
+    [self colorOptions];
 }
 
 - (void) createMainView
@@ -77,9 +78,28 @@
     [self createShareButton];
 }
 
+// TODO!!
+// create color customize buttons
+- (void) colorOptions
+{
+    for (int i=0; i < 10; i++)
+    {
+        UIButton *colorButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        colorButton.backgroundColor = [UIColor whiteColor];
+        [colorButton addTarget:self action:@selector(chooseColor)
+              forControlEvents:UIControlEventTouchUpInside];
+        [colorButton setTitle:@"" forState:UIControlStateNormal];
+        colorButton.frame = CGRectMake(self.view.bounds.size.width*0.98 / 10 * i + self.view.bounds.size.width*0.01,
+                                       self.mainView.frame.origin.y + self.mainView.frame.size.height + [Utilities sizeFrame],
+                                       self.view.bounds.size.width*0.98 / 10,
+                                       [Utilities colorSizeFrame]);
+        [self.view addSubview:colorButton];
+    }
+}
+
 - (void) createShareButton
 {
-    UINavigationBar *navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height*0.08)];
+    UINavigationBar *navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height*0.09)];
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareContent)];
     UINavigationItem *item = [[UINavigationItem alloc] init];
     item.rightBarButtonItem = shareButton;
@@ -90,7 +110,10 @@
 
 - (void) createTabBar
 {
-    UIView *tabView = [[UIView alloc] initWithFrame:CGRectMake(0, self.mainView.frame.origin.y + self.mainView.frame.size.height, self.view.frame.size.width, [Utilities sizeFrame])];
+    UIView *tabView = [[UIView alloc] initWithFrame:CGRectMake(0,
+                                                               self.mainView.frame.origin.y + self.mainView.frame.size.height,
+                                                               self.view.frame.size.width,
+                                                               [Utilities sizeFrame])];
     [self.view addSubview:tabView];
     
     NSArray *arrayOfImages = @[@"layout_icon",  @"filter_icon", @"speech_bubble_icon", @"stamp_icon"];
@@ -220,9 +243,7 @@
 
 - (void)plusTap:(UITapGestureRecognizer*)tapGestureRecognizer
 {
-    //[self handlePlusTapWithTag:tapGestureRecognizer.view.tag];
     [[DialogHelper sharedInstance] handlePlusTapWithTag:tapGestureRecognizer.view.tag andViewController:self];
-
 }
 
 - (void)createPopupImageWithSize:(CGRect)size imageName:(NSString*)name target:(id)target andFunction:(nonnull SEL)function
@@ -288,9 +309,6 @@
 -(void)shareContent
 {
     NSString * message = @"Share Images";
-    //UIImage * image = [UIImage imageNamed:@"share"];
-    
-    //[self.mainView removeFromSuperview];
     for (UIView *subview in [self.mainView subviews]){
         if ([subview isKindOfClass:[UILabel class]])
         {

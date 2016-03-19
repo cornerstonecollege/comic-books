@@ -80,9 +80,19 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         return 80;
     else if ([[UIScreen mainScreen] bounds].size.height < 568)
-        return 60;
+        return 50;
     else
         return 100;
+}
+
++ (CGFloat)colorSizeFrame
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return 20;
+    else if ([[UIScreen mainScreen] bounds].size.height < 568)
+        return 10;
+    else
+        return 30;
 }
 
 + (CGFloat)sizeIconWithParentSize:(CGFloat)size

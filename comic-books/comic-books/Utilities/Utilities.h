@@ -26,6 +26,7 @@
 
 + (CGFloat) percentageScreen;
 + (CGFloat) sizeFrame;
++ (CGFloat) colorSizeFrame;
 + (CGFloat) sizeIconWithParentSize:(CGFloat)size;
 
 @end
