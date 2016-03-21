@@ -33,12 +33,12 @@
     // customize images
     switch (rest) {
         case 0:
-            editedImage = [[ImageFilterHelper sharedInstance] photoTonalImageWithImage:editedImage];
+            editedImage = [[ImageFilterHelper sharedInstance] hueImageWithImage:editedImage];
             break;
         case 1:
             break;
         case 2:
-            editedImage = [[ImageFilterHelper sharedInstance] hueImageWithImage:editedImage];
+            editedImage = [[ImageFilterHelper sharedInstance] photoTonalImageWithImage:editedImage];
             break;
         case 3:
             editedImage = [[ImageFilterHelper sharedInstance] colorClampImageWithImage:editedImage];
