@@ -80,8 +80,6 @@
     float time = 0;
     NSInteger cnt = 1;
     
-    NSArray *arr = self.type == ST_FRAME ? self.frameImagesArr : self.filterArr;
-    
     if (self.type == ST_FRAME)
     {
         for (NSString * name in self.frameImagesArr)
@@ -94,6 +92,7 @@
             time += 0.05;
             cnt +=1;
         }
+        self.contentSize = CGSizeMake(self.frameImagesArr.count*[Utilities sizeFrame], self.superview.bounds.size.height*[Utilities percentageScreen]);
     }
     
     if (self.type == ST_FILTER) {
@@ -107,10 +106,8 @@
             time += 0.05;
             cnt +=1;
         }
+        self.contentSize = CGSizeMake(24*[Utilities sizeFrame], self.superview.bounds.size.height*[Utilities percentageScreen]);
     }
-    
-    self.contentSize = CGSizeMake(arr.count*[Utilities sizeFrame], self.superview.bounds.size.height*[Utilities percentageScreen]);
-    
 }
 
 - (void) addImageSize:(CGRect)size name:(NSString *)name count:(NSInteger)cnt time:(NSTimeInterval)time andParent:(UIScrollView *)parent
@@ -120,11 +117,15 @@
     
     UIImage *image = [[UIImage alloc]init];
     image = [UIImage imageNamed:name];
+    
     if (self.type == ST_FILTER) {
-        imageView.image = [FilterView imageFilterWithParent:self type:cnt+1 andOriginalImage:image];
+        imageView.image = [FilterView imageFilterWithParent:parent type:cnt andOriginalImage:image];
+    }
+    else
+    {
+        [imageView setImage:image];
     }
     //[imageView setImage:[UIImage imageNamed:name]];
-    [imageView setImage:image];
     
     imageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap =
