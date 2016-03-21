@@ -310,7 +310,7 @@
 {
     NSString * message = @"Share Images";
     for (UIView *subview in [self.mainView subviews]){
-        if ([subview isKindOfClass:[UILabel class]])
+        if ([subview isKindOfClass:[UILabel class]] && subview.tag)
         {
             subview.hidden = YES;
         }
@@ -333,7 +333,7 @@
     }
     
     for (UIView *subview in [self.mainView subviews]){
-        if ([subview isKindOfClass:[UILabel class]])
+        if ([subview isKindOfClass:[UILabel class]] && subview.tag)
         {
             subview.hidden = NO;
         }

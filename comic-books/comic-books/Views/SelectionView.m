@@ -8,6 +8,7 @@
 
 #import "SelectionView.h"
 #import "Utilities.h"
+#import "FilterView.h"
 
 @interface SelectionView ()
 
@@ -36,10 +37,11 @@
 - (void) initializeVars
 {
     self.frameImagesArr = @[@"layout1.png", @"layout2.png", @"layout3.png", @"layout4.png", @"layout5.png", @"layout6.png", @"layout7.png", @"layout8.png", @"layout9.png"];
-    self.filterArr = @[@"temp1.png", @"temp2.png", @"temp3.png", @"temp4.png", @"temp5.png", @"temp6.png",
-                       @"temp1.png", @"temp2.png", @"temp3.png", @"temp4.png", @"temp5.png", @"temp6.png",
-                       @"temp1.png", @"temp2.png", @"temp3.png", @"temp4.png", @"temp5.png", @"temp6.png",
-                       @"temp1.png", @"temp2.png", @"temp3.png", @"temp4.png", @"temp5.png", @"temp6.png"];
+    self.filterArr = @[@"filter.png"];
+    //self.filterArr = @[@"temp1.png", @"temp2.png", @"temp3.png", @"temp4.png", @"temp5.png", @"temp6.png",
+    //                   @"temp1.png", @"temp2.png", @"temp3.png", @"temp4.png", @"temp5.png", @"temp6.png",
+    //                   @"temp1.png", @"temp2.png", @"temp3.png", @"temp4.png", @"temp5.png", @"temp6.png",
+    //                   @"temp1.png", @"temp2.png", @"temp3.png", @"temp4.png", @"temp5.png", @"temp6.png"];
     self.soundFXArr = "ABCEFGHIJKLMOQRSTUVXZabcdefhijmoqruvy359%#),}|]^";
     self.speechBubbleArr = "@ABCDEFGHIJKLMNOPQST";
     self.backgroundColor = [Utilities speacialLighterGrayColor];
@@ -80,25 +82,49 @@
     
     NSArray *arr = self.type == ST_FRAME ? self.frameImagesArr : self.filterArr;
     
-    for (NSString * name in arr)
+    if (self.type == ST_FRAME)
     {
-        [self addImageSize:CGRectMake(xPosition,
-                                      self.superview.bounds.size.height*[Utilities percentageScreen]/4,
-                                      [Utilities sizeFrame] / 2,
-                                      [Utilities sizeFrame] / 2) name:name count:cnt time:time andParent:self];
-        xPosition += [Utilities sizeFrame];
-        time += 0.05;
-        cnt +=1;
+        for (NSString * name in self.frameImagesArr)
+        {
+            [self addImageSize:CGRectMake(xPosition,
+                                          self.superview.bounds.size.height*[Utilities percentageScreen]/4,
+                                          [Utilities sizeFrame] / 2,
+                                          [Utilities sizeFrame] / 2) name:name count:cnt time:time andParent:self];
+            xPosition += [Utilities sizeFrame];
+            time += 0.05;
+            cnt +=1;
+        }
+    }
+    
+    if (self.type == ST_FILTER) {
+        for (int i=0; i<24; i++)
+        {
+            [self addImageSize:CGRectMake(xPosition,
+                                          self.superview.bounds.size.height*[Utilities percentageScreen]/4,
+                                          [Utilities sizeFrame] / 2,
+                                          [Utilities sizeFrame] / 2) name:@"filter.png" count:cnt time:time andParent:self];
+            xPosition += [Utilities sizeFrame];
+            time += 0.05;
+            cnt +=1;
+        }
     }
     
     self.contentSize = CGSizeMake(arr.count*[Utilities sizeFrame], self.superview.bounds.size.height*[Utilities percentageScreen]);
+    
 }
 
 - (void) addImageSize:(CGRect)size name:(NSString *)name count:(NSInteger)cnt time:(NSTimeInterval)time andParent:(UIScrollView *)parent
 {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:size];
     imageView.tag = cnt;
-    [imageView setImage:[UIImage imageNamed:name]];
+    
+    UIImage *image = [[UIImage alloc]init];
+    image = [UIImage imageNamed:name];
+    if (self.type == ST_FILTER) {
+        imageView.image = [FilterView imageFilterWithParent:self type:cnt+1 andOriginalImage:image];
+    }
+    //[imageView setImage:[UIImage imageNamed:name]];
+    [imageView setImage:image];
     
     imageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap =
