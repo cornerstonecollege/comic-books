@@ -13,6 +13,11 @@
 + (UIColor *) specialGrayColor;
 + (UIColor *) speacialLighterGrayColor;
 
++ (UIColor *) heroGreenColor;
++ (UIColor *) heroYellowColor;
++ (UIColor *) heroGrayColor;
++ (UIColor *) heroRedColor;
+
 + (UIColor *) penelopeColor;
 + (UIColor *) citrusColor;
 + (UIColor *) oldVelvetColor;

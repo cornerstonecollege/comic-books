@@ -8,6 +8,7 @@
 
 #import "DialogHelper.h"
 #import "MainViewController.h"
+#import "Utilities.h"
 
 @interface DialogHelper ()
 
@@ -55,7 +56,7 @@
                                                               mainVC.view.bounds.size.width*0.6,
                                                               mainVC.view.bounds.size.height*0.3)]];
      
-    mainVC.dialogView.backgroundColor = [UIColor colorWithRed:96.0f/255.0f green:96.0f/255.0f blue:96.0f/255.0f alpha:1.0];
+    mainVC.dialogView.backgroundColor = [Utilities speacialLighterGrayColor];
     mainVC.dialogView.layer.cornerRadius = 25;
     mainVC.dialogView.layer.masksToBounds = YES;
     

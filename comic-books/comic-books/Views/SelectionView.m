@@ -44,7 +44,7 @@
     //                   @"temp1.png", @"temp2.png", @"temp3.png", @"temp4.png", @"temp5.png", @"temp6.png"];
     self.soundFXArr = "ABCEFGHIJKLMOQRSTUVXZabcdefhijmoqruvy359%#),}|]^";
     self.speechBubbleArr = "@ABCDEFGHIJKLMNOPQST";
-    self.backgroundColor = [Utilities speacialLighterGrayColor];
+    self.backgroundColor = [Utilities heroYellowColor];
 }
 
 - (void) initializeWithType:(SELECTION_TYPE)type
@@ -171,7 +171,7 @@
     NSString *fontName = self.type == ST_STAMP ? @"Sound FX" : @"Komika Bubbles Dark";
     
     [label setFont:[UIFont fontWithName:fontName size:[Utilities sizeFrame]]];
-    label.textColor = [UIColor whiteColor];
+    label.textColor = [Utilities speacialLighterGrayColor];
     label.text = [NSString stringWithFormat:@"%c", character];
     [label sizeToFit];
     

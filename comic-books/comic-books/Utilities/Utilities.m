@@ -20,6 +20,28 @@
     return [UIColor colorWithRed:96.0f/255.0f green:96.0f/255.0f blue:96.0f/255.0f alpha:1.0];
 }
 
++ (UIColor *) heroGreenColor
+{
+    return [UIColor colorWithRed:63.0f/255.0f green:159.0f/255.0f blue:68.0f/255.0f alpha:1.0];
+}
+
++ (UIColor *) heroYellowColor
+{
+    //return [UIColor colorWithRed:247.0f/255.0f green:219.0f/255.0f blue:81.0f/255.0f alpha:1.0];
+    return [UIColor colorWithRed:251.0f/255.0f green:236.0f/255.0f blue:162.0f/255.0f alpha:1.0];
+}
+
++ (UIColor *) heroGrayColor
+{
+    return [UIColor colorWithRed:223.0f/255.0f green:216.0f/255.0f blue:212.0f/255.0f alpha:1.0];
+}
+
++ (UIColor *)heroRedColor
+{
+    //return [UIColor colorWithRed:228.0f/255.0f green:61.0f/255.0f blue:29.0f/255.0f alpha:1.0];
+    return [UIColor colorWithRed:190.0f/255.0f green:95.0f/255.0f blue:99.0f/255.0f alpha:1.0];
+}
+
 + (UIColor *)penelopeColor
 {
     return [UIColor colorWithRed:192.0/255.0 green:24.0/255.0 blue:24.0/255.0 alpha:1.0];
