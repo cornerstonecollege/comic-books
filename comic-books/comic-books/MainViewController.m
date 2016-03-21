@@ -34,7 +34,6 @@
     [super viewDidLoad];
     [self createMainView];
     [self initializeView];
-    //[self colorOptions];
 }
 
 - (void) createMainView
@@ -76,25 +75,6 @@
     [[FrameHelper sharedInstance] createLayouts:self.mainView type:1 andViewController:self];
     
     [self createShareButton];
-}
-
-// TODO!!
-// create color customize buttons
-- (void) colorOptions
-{
-    for (int i=0; i < 10; i++)
-    {
-        UIButton *colorButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        colorButton.backgroundColor = [UIColor whiteColor];
-        [colorButton addTarget:self action:@selector(chooseColor)
-              forControlEvents:UIControlEventTouchUpInside];
-        [colorButton setTitle:@"" forState:UIControlStateNormal];
-        colorButton.frame = CGRectMake(self.view.bounds.size.width*0.98 / 10 * i + self.view.bounds.size.width*0.01,
-                                       self.mainView.frame.origin.y + self.mainView.frame.size.height + [Utilities sizeFrame],
-                                       self.view.bounds.size.width*0.98 / 10,
-                                       [Utilities colorSizeFrame]);
-        [self.view addSubview:colorButton];
-    }
 }
 
 - (void) createShareButton
@@ -199,8 +179,12 @@
 - (void)didTouchFilter:(TYPE_STYLE_FILTER)typeFilter
 {
     UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
-    UIImage * currentImage = [self currentImage];
-    imageView.image = [FilterView imageFilterWithParent:self.mainView type:typeFilter andOriginalImage:currentImage];
+    
+    if (self.imgFlag)
+    {
+        UIImage * currentImage = [self currentImage];
+        imageView.image = [FilterView imageFilterWithParent:self.mainView type:typeFilter andOriginalImage:currentImage];
+    }
 }
 
 - (UIImage *)currentImage
