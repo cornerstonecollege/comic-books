@@ -34,7 +34,7 @@
     [super viewDidLoad];
     [self createMainView];
     [self initializeView];
-    [self colorOptions];
+    //[self colorOptions];
 }
 
 - (void) createMainView
