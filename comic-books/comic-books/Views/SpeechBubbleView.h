@@ -10,7 +10,7 @@
 
 @interface SpeechBubbleView : UIView
 
-- (instancetype)initWithCode:(char)codeBubble andParent:(UIView *)parentView;
+- (instancetype) initWithCode:(char)codeBubble andParent:(UIView *)parentView;
 
 - (void) handleRotation:(UIRotationGestureRecognizer *)rotationGesture;
 - (void) handlePan:(UIPanGestureRecognizer *)panGesture;

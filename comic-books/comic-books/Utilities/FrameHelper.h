@@ -12,6 +12,6 @@
 @interface FrameHelper : NSObject
 
 + (instancetype) sharedInstance;
-- (void)createLayouts:(UIView*)parent type:(NSInteger)number andViewController:(MainViewController *)mainVC;
+- (void) createLayouts:(UIView*)parent type:(NSInteger)number andViewController:(MainViewController *)mainVC;
 
 @end

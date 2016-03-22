@@ -34,7 +34,7 @@
     return self;
 }
 
-- (void)createLayouts:(UIView*)parent type:(NSInteger)number andViewController:(MainViewController *)mainVC
+- (void) createLayouts:(UIView*)parent type:(NSInteger)number andViewController:(MainViewController *)mainVC
 {
     [mainVC dismissDialogView];
     [mainVC clearChildrenMainView];

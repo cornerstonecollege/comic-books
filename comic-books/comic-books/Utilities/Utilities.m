@@ -15,14 +15,24 @@
     return [UIColor colorWithRed:64.0/255.0 green:64.0/255.0 blue:64.0/255.0 alpha:1.0];
 }
 
-+ (UIColor *)speacialLighterGrayColor
++ (UIColor *) speacialLighterGrayColor
 {
     return [UIColor colorWithRed:96.0f/255.0f green:96.0f/255.0f blue:96.0f/255.0f alpha:1.0];
+}
+
++ (UIColor *) superLightGrayColor
+{
+    return [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
 }
 
 + (UIColor *) heroGreenColor
 {
     return [UIColor colorWithRed:63.0f/255.0f green:159.0f/255.0f blue:68.0f/255.0f alpha:1.0];
+}
+
++ (UIColor *) heroBlueColor
+{
+    return [UIColor colorWithRed:33.0f/255.0f green:127.0f/255.0f blue:190.0f/255.0f alpha:1.0];
 }
 
 + (UIColor *) heroYellowColor
@@ -36,68 +46,68 @@
     return [UIColor colorWithRed:223.0f/255.0f green:216.0f/255.0f blue:212.0f/255.0f alpha:1.0];
 }
 
-+ (UIColor *)heroRedColor
++ (UIColor *) heroRedColor
 {
     return [UIColor colorWithRed:228.0f/255.0f green:61.0f/255.0f blue:29.0f/255.0f alpha:1.0];
     //return [UIColor colorWithRed:190.0f/255.0f green:95.0f/255.0f blue:99.0f/255.0f alpha:1.0];
 }
 
-+ (UIColor *)penelopeColor
++ (UIColor *) penelopeColor
 {
     return [UIColor colorWithRed:192.0/255.0 green:24.0/255.0 blue:24.0/255.0 alpha:1.0];
 }
 
-+ (UIColor *)citrusColor
++ (UIColor *) citrusColor
 {
     return [UIColor colorWithRed:240.0/255.0 green:192.0/255.0 blue:72.0/255.0 alpha:1.0];
 }
 
-+ (UIColor *)oldVelvetColor
++ (UIColor *) oldVelvetColor
 {
     return [UIColor colorWithRed:48.0/255.0 green:24.0/255.0 blue:0.0/255.0 alpha:1.0];
 }
 
-+ (UIColor *)specialRedColor
++ (UIColor *) specialRedColor
 {
     return [UIColor colorWithRed:240.0/255.0 green:72.0/255.0 blue:72.0/255.0 alpha:1.0];
 }
 
-+ (UIColor *)toastedWheatColor
++ (UIColor *) toastedWheatColor
 {
     return [UIColor colorWithRed:216.0/255.0 green:192.0/255.0 blue:120.0/255.0 alpha:1.0];
 }
 
-+ (UIColor *)drifterColor
++ (UIColor *) drifterColor
 {
     return [UIColor colorWithRed:40.0/255.0 green:138.0/255.0 blue:143.0/255.0 alpha:1.0];
 }
 
-+ (UIColor *)shallowWatersColor
++ (UIColor *) shallowWatersColor
 {
     return [UIColor colorWithRed:126.0/255.0 green:174.0/255.0 blue:164.0/255.0 alpha:1.0];
 }
 
-+ (UIColor *)paleSunshineColor
++ (UIColor *) paleSunshineColor
 {
     return [UIColor colorWithRed:236.0/255.0 green:241.0/255.0 blue:140.0/255.0 alpha:1.0];
 }
 
-+ (UIColor *)vitaminsColor
++ (UIColor *) vitaminsColor
 {
     return [UIColor colorWithRed:255.0/255.0 green:136.0/255.0 blue:48.0/255.0 alpha:1.0];
 }
 
-+ (UIColor *)wrestlingColor
++ (UIColor *) wrestlingColor
 {
     return [UIColor colorWithRed:237.0/255.0 green:29.0/255.0 blue:29.0/255.0 alpha:1.0];
 }
 
-+ (CGFloat)percentageScreen
++ (CGFloat) percentageScreen
 {
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 0.10 : 0.15;
 }
 
-+ (CGFloat)sizeFrame
++ (CGFloat) sizeFrame
 {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         return 80;
@@ -107,7 +117,7 @@
         return 100;
 }
 
-+ (CGFloat)colorSizeFrame
++ (CGFloat) colorSizeFrame
 {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         return 20;
@@ -117,7 +127,7 @@
         return 30;
 }
 
-+ (CGFloat)sizeIconWithParentSize:(CGFloat)size
++ (CGFloat) sizeIconWithParentSize:(CGFloat)size
 {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         return size / 4 * 0.2;

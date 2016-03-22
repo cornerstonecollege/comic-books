@@ -41,7 +41,7 @@
     return self;
 }
 
-- (void)handlePlusTapWithTag:(NSInteger)tag andViewController:(MainViewController *)mainVC
+- (void) handlePlusTapWithTag:(NSInteger)tag andViewController:(MainViewController *)mainVC
 {
     if (!self.mainVC)
     {
@@ -65,7 +65,7 @@
     [self.mainVC.view addSubview:self.mainVC.dialogView];
 }
 
-- (void)handleLongPressStampWithViewController:(MainViewController *)mainVC
+- (void) handleLongPressStampWithViewController:(MainViewController *)mainVC
 {
     if (!self.mainVC)
     {
@@ -76,7 +76,7 @@
     [self.mainVC.view addSubview:self.mainVC.dialogView];
 }
 
-- (void)createDialogWithView:(MainViewController*)mainVC
+- (void) createDialogWithView:(MainViewController*)mainVC
 {
     [mainVC dismissDialogView];
     [mainVC setDialogView:[[UIView alloc] initWithFrame:CGRectMake(mainVC.view.bounds.size.width*0.2,
@@ -89,7 +89,7 @@
 
 }
 
-- (void)backlLabelWithView:(MainViewController*)mainVC
+- (void) backlLabelWithView:(MainViewController*)mainVC
 {
     UILabel *cancelLabel = [[UILabel alloc]initWithFrame:CGRectMake(mainVC.dialogView.bounds.size.width*0.5,
                                                                     mainVC.dialogView.bounds.size.height*0.80,
@@ -108,7 +108,7 @@
 
 }
 
-- (void)cameraTap
+- (void) cameraTap
 {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self.mainVC;
@@ -118,7 +118,7 @@
     [self.mainVC presentViewController:picker animated:YES completion:NULL];
 }
 
-- (void)galleryTap
+- (void) galleryTap
 {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self.mainVC;
@@ -128,7 +128,7 @@
     [self.mainVC presentViewController:picker animated:YES completion:NULL];
 }
 
-- (void)cancelTap
+- (void) cancelTap
 {
     [self.mainVC dismissDialogView];
 }

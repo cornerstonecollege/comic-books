@@ -18,7 +18,7 @@
 
 @implementation SpeechBubbleView
 
-- (instancetype)initWithCode:(char)codeBubble andParent:(UIView *)parentView
+- (instancetype) initWithCode:(char)codeBubble andParent:(UIView *)parentView
 {
     self = [super init];
     if (self)
@@ -66,7 +66,7 @@ shouldChangeTextInRange: (NSRange) range
     return YES;
 }
 
-- (void)setCircularExclusionPathWithCenter:(CGPoint)center radius:(CGFloat)radius textView:(UITextView *)textView
+- (void) setCircularExclusionPathWithCenter:(CGPoint)center radius:(CGFloat)radius textView:(UITextView *)textView
 {
     UIBezierPath *topHalf = [UIBezierPath bezierPath];
     [topHalf moveToPoint:CGPointMake(center.x - radius, center.y + radius)];
@@ -159,7 +159,7 @@ shouldChangeTextInRange: (NSRange) range
     self.center = CGPointMake(point.x, point.y);
 }
 
-- (void)handleLongPress:(UILongPressGestureRecognizer *)longGesture
+- (void) handleLongPress:(UILongPressGestureRecognizer *)longGesture
 {
     NSLog(@"DEBUG");
 }

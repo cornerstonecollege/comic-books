@@ -20,7 +20,7 @@
 
 @implementation SelectionView
 
-- (instancetype)initWithType:(SELECTION_TYPE)type andFrame:(CGRect)frame
+- (instancetype) initWithType:(SELECTION_TYPE)type andFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)
@@ -38,7 +38,7 @@
     self.frameImagesArr = @[@"layout1.png", @"layout2.png", @"layout3.png", @"layout4.png", @"layout5.png", @"layout6.png", @"layout7.png", @"layout8.png", @"layout9.png"];
     self.soundFXArr = "ABCEFGHIJKLMOQRSTUVXZabcdefhijmoqruvy359%#),}|]^";
     self.speechBubbleArr = "@ABCDEFGHIJKLMNOPQST";
-    self.backgroundColor = [Utilities heroYellowColor];
+    self.backgroundColor = [Utilities heroBlueColor];
 }
 
 - (void) initializeWithType:(SELECTION_TYPE)type
@@ -165,7 +165,7 @@
     NSString *fontName = self.type == ST_STAMP ? @"Sound FX" : @"Komika Bubbles Dark";
     
     [label setFont:[UIFont fontWithName:fontName size:[Utilities sizeFrame]]];
-    label.textColor = [Utilities heroRedColor];
+    label.textColor = [Utilities heroGrayColor];
     label.text = [NSString stringWithFormat:@"%c", character];
     [label sizeToFit];
     
@@ -195,7 +195,7 @@
     }];
 }
 
-- (void)handleTap:(UITapGestureRecognizer *)recognizer
+- (void) handleTap:(UITapGestureRecognizer *)recognizer
 {
     if (self.selectionDelegate)
     {

@@ -77,9 +77,13 @@
     [self createBarButton];
 }
 
+
 - (void) createBarButton
 {
-    UINavigationBar *navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height*0.12)];
+    UINavigationBar *navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0,
+                                                                               0,
+                                                                               self.view.bounds.size.width,
+                                                                               self.view.bounds.size.height*0.12)];
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareContent)];
     
     UINavigationItem *item = [[UINavigationItem alloc] init];
@@ -114,7 +118,7 @@
                                                                     self.dialogView.bounds.size.width*0.5,
                                                                     self.dialogView.bounds.size.height*0.15)];
     cancelLabel.text = @"Back";
-    cancelLabel.textColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
+    cancelLabel.textColor = [Utilities superLightGrayColor];
     cancelLabel.font = [UIFont fontWithName:@"Bangers" size:25];
     cancelLabel.userInteractionEnabled = YES;
     cancelLabel.textAlignment = NSTextAlignmentCenter;
@@ -126,6 +130,7 @@
     [self.view addSubview:self.dialogView];
 }
 
+// move
 - (void)createText
 {
     [self initTextViewWithSize:CGRectMake(self.dialogView.bounds.size.width*0.1,
@@ -147,10 +152,11 @@
                           text:@"Copylight@2016 CICCC ALL Rights Reserved" andFontSize:13];
 }
 
+// move
 - (void)initTextViewWithSize:(CGRect)size text:(NSString*)text andFontSize:(NSInteger)font
 {
     UITextView *textView = [[UITextView alloc]initWithFrame:size];
-    textView.textColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
+    textView.textColor = [Utilities specialGrayColor];
     textView.backgroundColor = [UIColor clearColor];
     textView.text = text;
     textView.font = [UIFont fontWithName:@"Bangers" size:font];
@@ -316,8 +322,8 @@
     [self.dialogView addSubview:imageView];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{    
     [self dismissDialogView];
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
@@ -369,6 +375,7 @@
     [self.mainView addSubview:label];
 }
 
+// move
 -(void)shareContent
 {
     NSString * message = @"Share Images";

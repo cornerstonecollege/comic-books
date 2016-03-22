@@ -14,7 +14,7 @@
 + (instancetype) sharedInstance;
 - (void) handlePlusTapWithTag:(NSInteger)tag andViewController:(MainViewController *)mainVC;
 - (void) handleLongPressStampWithViewController:(MainViewController *)mainVC;
-- (void)createDialogWithView:(MainViewController*)mainVC;
-- (void)backlLabelWithView:(MainViewController*)mainVC;
+- (void) createDialogWithView:(MainViewController*)mainVC;
+- (void) backlLabelWithView:(MainViewController*)mainVC;
 
 @end
