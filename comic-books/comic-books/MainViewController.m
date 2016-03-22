@@ -106,7 +106,7 @@
     self.dialogView.layer.cornerRadius = 25;
     self.dialogView.layer.masksToBounds = YES;
     
-    //[self createText];
+    [self createText];
     
     
     UILabel *cancelLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.dialogView.bounds.size.width*0.5,
@@ -126,25 +126,37 @@
     [self.view addSubview:self.dialogView];
 }
 
-//- (void)createText
-//{
-//    UITextView * textView = [self initTextViewWithSize:CGRectMake(self.dialogView.bounds.size.width*0.1,
-//                                                      self.dialogView.bounds.size.height*0.1,
-//                                                      self.dialogView.bounds.size.width*0.8,
-//                                                      self.dialogView.bounds.size.height*0.7)];
-//    textView.text = @"Luiz Peres\nHiroshi Tokutomi\nSreekanth Jagadeesan\nTomoko Tamura\nShawn Kyler";
-//    
-//    [self.dialogView addSubview:textView];
-//}
+- (void)createText
+{
+    [self initTextViewWithSize:CGRectMake(self.dialogView.bounds.size.width*0.1,
+                                          self.dialogView.bounds.size.height*0.1,
+                                          self.dialogView.bounds.size.width*0.8,
+                                          self.dialogView.bounds.size.height*0.2)
+                          text:@"Created By" andFontSize:25];
+    
+    [self initTextViewWithSize:CGRectMake(self.dialogView.bounds.size.width*0.15,
+                                          self.dialogView.bounds.size.height*0.3,
+                                          self.dialogView.bounds.size.width*0.75,
+                                          self.dialogView.bounds.size.height*0.5)
+                          text:@"Luiz Peres\nHiroshi Tokutomi\nSreekanth Jagadeesan\nTomoko Tamura\nShawn Kyler" andFontSize:20];
+    
+    [self initTextViewWithSize:CGRectMake(self.dialogView.bounds.size.width*0.1,
+                                          self.dialogView.bounds.size.height*0.7,
+                                          self.dialogView.bounds.size.width*0.8,
+                                          self.dialogView.bounds.size.height*0.1)
+                          text:@"Copylight@2016 CICCC ALL Rights Reserved" andFontSize:10];
+}
 
-//- (UITextView *)initTextViewWithSize:(CGRect)size
-//{
-//    UITextView *textView = [[UITextView alloc]initWithFrame:size];
-//    textView.textColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
-//    textView.backgroundColor = [UIColor clearColor];
-//    
-//    return textView;
-//}
+- (void)initTextViewWithSize:(CGRect)size text:(NSString*)text andFontSize:(NSInteger)font
+{
+    UITextView *textView = [[UITextView alloc]initWithFrame:size];
+    textView.textColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
+    textView.backgroundColor = [UIColor clearColor];
+    textView.text = text;
+    [textView setFont:[UIFont systemFontOfSize:font]];
+    
+    [self.dialogView addSubview:textView];
+}
 
 - (void)cancelTap
 {
