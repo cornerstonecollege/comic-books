@@ -136,4 +136,25 @@
     else
         return size / 4 * 0.5;
 }
+
++ (CGFloat) sizeBarHeightSize
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return 70;
+    else if ([[UIScreen mainScreen] bounds].size.height < 568)
+        return 60;
+    else
+        return 60;
+}
+
++ (CGFloat) startPositionMainView
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return 80;
+    else if ([[UIScreen mainScreen] bounds].size.height < 568)
+        return 65;
+    else
+        return 100;
+}
+
 @end

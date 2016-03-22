@@ -37,9 +37,9 @@
 }
 
 - (void) createMainView
-{
+{    
     self.mainView = [[UIView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width*0.01,
-                                                             self.view.bounds.size.height*0.15,
+                                                             [Utilities startPositionMainView],
                                                              self.view.bounds.size.width*0.98,
                                                              self.view.bounds.size.width*0.98)];
     self.mainView.backgroundColor = [UIColor whiteColor];
@@ -83,7 +83,7 @@
     UINavigationBar *navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0,
                                                                                0,
                                                                                self.view.bounds.size.width,
-                                                                               self.view.bounds.size.height*0.12)];
+                                                                               [Utilities sizeBarHeightSize])];
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareContent)];
     
     UINavigationItem *item = [[UINavigationItem alloc] init];

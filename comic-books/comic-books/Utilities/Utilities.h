@@ -35,5 +35,7 @@
 + (CGFloat) sizeFrame;
 + (CGFloat) colorSizeFrame;
 + (CGFloat) sizeIconWithParentSize:(CGFloat)size;
++ (CGFloat) sizeBarHeightSize;
++ (CGFloat) startPositionMainView;
 
 @end
