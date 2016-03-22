@@ -80,12 +80,17 @@
 
 - (void) handlePan:(UIPanGestureRecognizer *)panGesture
 {
-    // superview is self.mainView
-    
     CGPoint point = [panGesture locationInView:panGesture.view.superview];
     point = [self getNewPointWithPoint:point andView:panGesture.view];
     
     panGesture.view.center = CGPointMake(point.x, point.y);
+}
+
+- (void) handleLongPress:(UILongPressGestureRecognizer *)longGesture
+{
+    UILabel *label = (UILabel *)longGesture.view;
+
+    [label removeFromSuperview];
 }
 
 - (CGPoint) getNewPointWithPoint:(CGPoint)point andView:(UIView *)view

@@ -16,5 +16,6 @@
 - (void) handlePinch:(UIPinchGestureRecognizer *)pinchGesture;
 - (void) handleRotation:(UIRotationGestureRecognizer *)rotationGesture;
 - (void) handleTap:(UITapGestureRecognizer *)tapGesture;
+- (void) handleLongPress:(UILongPressGestureRecognizer *)longGesture;
 
 @end

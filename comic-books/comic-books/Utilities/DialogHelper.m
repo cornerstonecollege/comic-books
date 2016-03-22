@@ -41,24 +41,15 @@
     return self;
 }
 
-- (void) handlePlusTapWithTag:(NSInteger)tag andViewController:(MainViewController *)mainVC
+- (void)handlePlusTapWithTag:(NSInteger)tag andViewController:(MainViewController *)mainVC
 {
     if (!self.mainVC)
     {
         self.mainVC = mainVC;
     }
-    //self.imgFlag = -tag;
     [mainVC setImgFlag:-tag];
     
-    [mainVC dismissDialogView];
-    [mainVC setDialogView:[[UIView alloc] initWithFrame:CGRectMake(mainVC.view.bounds.size.width*0.2,
-                                                              mainVC.view.bounds.size.height*0.25,
-                                                              mainVC.view.bounds.size.width*0.6,
-                                                              mainVC.view.bounds.size.height*0.3)]];
-     
-    mainVC.dialogView.backgroundColor = [Utilities speacialLighterGrayColor];
-    mainVC.dialogView.layer.cornerRadius = 25;
-    mainVC.dialogView.layer.masksToBounds = YES;
+    [self createDialogWithView:mainVC];
     
     [mainVC createPopupImageWithSize:CGRectMake(mainVC.dialogView.bounds.size.width*0.1,
                                               mainVC.dialogView.bounds.size.height*0.25,
@@ -70,13 +61,43 @@
                                               mainVC.dialogView.bounds.size.width*0.35,
                                               mainVC.dialogView.bounds.size.width*0.35) imageName:@"gallery.png" target:self andFunction:@selector(galleryTap)];
     
+    [self backlLabelWithView:mainVC];
+    [self.mainVC.view addSubview:self.mainVC.dialogView];
+}
+
+- (void)handleLongPressStampWithViewController:(MainViewController *)mainVC
+{
+    if (!self.mainVC)
+    {
+        self.mainVC = mainVC;
+    }
+    [self createDialogWithView:mainVC];
+    [self backlLabelWithView:mainVC];
+    [self.mainVC.view addSubview:self.mainVC.dialogView];
+}
+
+- (void)createDialogWithView:(MainViewController*)mainVC
+{
+    [mainVC dismissDialogView];
+    [mainVC setDialogView:[[UIView alloc] initWithFrame:CGRectMake(mainVC.view.bounds.size.width*0.2,
+                                                                   mainVC.view.bounds.size.height*0.25,
+                                                                   mainVC.view.bounds.size.width*0.6,
+                                                                   mainVC.view.bounds.size.height*0.3)]];
+    mainVC.dialogView.backgroundColor = [Utilities speacialLighterGrayColor];
+    mainVC.dialogView.layer.cornerRadius = 25;
+    mainVC.dialogView.layer.masksToBounds = YES;
+
+}
+
+- (void)backlLabelWithView:(MainViewController*)mainVC
+{
     UILabel *cancelLabel = [[UILabel alloc]initWithFrame:CGRectMake(mainVC.dialogView.bounds.size.width*0.5,
                                                                     mainVC.dialogView.bounds.size.height*0.80,
                                                                     mainVC.dialogView.bounds.size.width*0.5,
                                                                     mainVC.dialogView.bounds.size.height*0.15)];
-    cancelLabel.text = @"cancel";
+    cancelLabel.text = @"Back";
     cancelLabel.textColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
-    cancelLabel.font = [UIFont fontWithName:@"Helvetica" size:25];
+    cancelLabel.font = [UIFont fontWithName:@"Bangers" size:25];
     cancelLabel.userInteractionEnabled = YES;
     cancelLabel.textAlignment = NSTextAlignmentCenter;
     UITapGestureRecognizer *cancelGesture =
@@ -84,7 +105,7 @@
     [cancelLabel addGestureRecognizer:cancelGesture];
     
     [self.mainVC.dialogView addSubview:cancelLabel];
-    [self.mainVC.view addSubview:self.mainVC.dialogView];
+
 }
 
 - (void)cameraTap

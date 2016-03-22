@@ -39,7 +39,7 @@
 - (void) createMainView
 {
     self.mainView = [[UIView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width*0.01,
-                                                             self.view.bounds.size.height*0.1,
+                                                             self.view.bounds.size.height*0.15,
                                                              self.view.bounds.size.width*0.98,
                                                              self.view.bounds.size.width*0.98)];
     self.mainView.backgroundColor = [UIColor whiteColor];
@@ -74,18 +74,81 @@
     [self createTabBar];
     [[FrameHelper sharedInstance] createLayouts:self.mainView type:1 andViewController:self];
     
-    [self createShareButton];
+    [self createBarButton];
 }
 
-- (void) createShareButton
+- (void) createBarButton
 {
-    UINavigationBar *navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height*0.09)];
+    UINavigationBar *navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height*0.12)];
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareContent)];
+    
     UINavigationItem *item = [[UINavigationItem alloc] init];
     item.rightBarButtonItem = shareButton;
+    
+    UIButton* infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    [infoButton addTarget:self action:@selector(showInfoView) forControlEvents:UIControlEventTouchUpInside];
+    item.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+    
     navBar.items = [NSArray arrayWithObject:item];
+    
     [self.view addSubview:navBar];
     [self.view bringSubviewToFront:navBar];
+}
+
+- (void) showInfoView
+{
+    [self dismissDialogView];
+    [self setDialogView:[[UIView alloc] initWithFrame:CGRectMake(self.mainView.bounds.size.width*0.1,
+                                                                 self.view.bounds.size.height*0.15,
+                                                                 self.mainView.bounds.size.width*0.8,
+                                                                 self.mainView.bounds.size.height)]];
+    self.dialogView.backgroundColor = [Utilities speacialLighterGrayColor];
+    self.dialogView.layer.cornerRadius = 25;
+    self.dialogView.layer.masksToBounds = YES;
+    
+    //[self createText];
+    
+    
+    UILabel *cancelLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.dialogView.bounds.size.width*0.5,
+                                                                    self.dialogView.bounds.size.height*0.80,
+                                                                    self.dialogView.bounds.size.width*0.5,
+                                                                    self.dialogView.bounds.size.height*0.15)];
+    cancelLabel.text = @"Back";
+    cancelLabel.textColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
+    cancelLabel.font = [UIFont fontWithName:@"Bangers" size:25];
+    cancelLabel.userInteractionEnabled = YES;
+    cancelLabel.textAlignment = NSTextAlignmentCenter;
+    UITapGestureRecognizer *cancelGesture =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelTap)];
+    [cancelLabel addGestureRecognizer:cancelGesture];
+    
+    [self.dialogView addSubview:cancelLabel];
+    [self.view addSubview:self.dialogView];
+}
+
+//- (void)createText
+//{
+//    UITextView * textView = [self initTextViewWithSize:CGRectMake(self.dialogView.bounds.size.width*0.1,
+//                                                      self.dialogView.bounds.size.height*0.1,
+//                                                      self.dialogView.bounds.size.width*0.8,
+//                                                      self.dialogView.bounds.size.height*0.7)];
+//    textView.text = @"Luiz Peres\nHiroshi Tokutomi\nSreekanth Jagadeesan\nTomoko Tamura\nShawn Kyler";
+//    
+//    [self.dialogView addSubview:textView];
+//}
+
+//- (UITextView *)initTextViewWithSize:(CGRect)size
+//{
+//    UITextView *textView = [[UITextView alloc]initWithFrame:size];
+//    textView.textColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
+//    textView.backgroundColor = [UIColor clearColor];
+//    
+//    return textView;
+//}
+
+- (void)cancelTap
+{
+    [self dismissDialogView];
 }
 
 - (void) createTabBar
@@ -287,6 +350,10 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:[StampGestureHelper sharedInstance] action:@selector(handleTap:)];
     [label addGestureRecognizer:tap];
     
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:[StampGestureHelper sharedInstance] action:@selector(handleLongPress:)];
+    [longPress setMinimumPressDuration:0.5];
+    [label addGestureRecognizer:longPress];
+    
     [self.mainView addSubview:label];
 }
 
@@ -346,5 +413,6 @@
     
     return img;
 }
+
 
 @end

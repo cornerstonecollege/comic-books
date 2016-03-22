@@ -13,7 +13,6 @@
 @interface SelectionView ()
 
 @property (nonatomic) NSArray *frameImagesArr;
-//@property (nonatomic) NSArray *filterArr;
 @property (nonatomic) char *speechBubbleArr;
 @property (nonatomic) char *soundFXArr;
 

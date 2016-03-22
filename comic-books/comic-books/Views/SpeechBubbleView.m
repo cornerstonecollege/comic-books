@@ -55,7 +55,7 @@
     [self setCircularExclusionPathWithCenter:center radius:radius textView:self.textView];
 }
 
-- (BOOL) textView: (UITextView*) textView
+- (BOOL) textView:(UITextView*)textView
 shouldChangeTextInRange: (NSRange) range
   replacementText: (NSString*) text
 {
@@ -99,8 +99,10 @@ shouldChangeTextInRange: (NSRange) range
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
     doubleTap.numberOfTapsRequired = 2;
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    [longPress setMinimumPressDuration:0.5];
     
-    self.gestureRecognizers = @[pan, rotation, doubleTap];
+    self.gestureRecognizers = @[pan, rotation, doubleTap, longPress];
 }
 
 - (void) createSpeechBubbleWithCode:(char)codeStamp
@@ -155,6 +157,11 @@ shouldChangeTextInRange: (NSRange) range
     }*/
     
     self.center = CGPointMake(point.x, point.y);
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longGesture
+{
+    NSLog(@"DEBUG");
 }
 
 - (UIEdgeInsets) UIEdgeInsetsWithCode:(char)code
