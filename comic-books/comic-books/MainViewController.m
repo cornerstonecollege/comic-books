@@ -13,7 +13,7 @@
 #import "StampGestureHelper.h"
 #import "DialogHelper.h"
 #import "SpeechBubbleView.h"
-#import "FilterView.h"
+#import "FilterHelper.h"
 
 @interface MainViewController ()
 
@@ -144,7 +144,7 @@
                                           self.dialogView.bounds.size.height*0.7,
                                           self.dialogView.bounds.size.width*0.8,
                                           self.dialogView.bounds.size.height*0.1)
-                          text:@"Copylight@2016 CICCC ALL Rights Reserved" andFontSize:10];
+                          text:@"Copylight@2016 CICCC ALL Rights Reserved" andFontSize:13];
 }
 
 - (void)initTextViewWithSize:(CGRect)size text:(NSString*)text andFontSize:(NSInteger)font
@@ -153,7 +153,7 @@
     textView.textColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
     textView.backgroundColor = [UIColor clearColor];
     textView.text = text;
-    [textView setFont:[UIFont systemFontOfSize:font]];
+    textView.font = [UIFont fontWithName:@"Bangers" size:font];
     
     [self.dialogView addSubview:textView];
 }
@@ -258,7 +258,7 @@
     if (self.imgFlag)
     {
         UIImage * currentImage = [self currentImage];
-        imageView.image = [FilterView imageFilterWithParent:self.mainView type:typeFilter andOriginalImage:currentImage];
+        imageView.image = [FilterHelper imageFilterWithParent:self.mainView type:typeFilter andOriginalImage:currentImage];
     }
 }
 

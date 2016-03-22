@@ -2,11 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-<<<<<<< HEAD
       "filename" : "Chat-bubble.png",
-=======
-      "filename" : "bubble__.png",
->>>>>>> fe508d0f1373b6cd2ded55ffc51eaab1a0e8cb26
       "scale" : "1x"
     },
     {

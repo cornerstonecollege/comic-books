@@ -8,7 +8,7 @@
 
 #import "SelectionView.h"
 #import "Utilities.h"
-#import "FilterView.h"
+#import "FilterHelper.h"
 
 @interface SelectionView ()
 
@@ -113,7 +113,7 @@
     image = [UIImage imageNamed:name];
     
     if (self.type == ST_FILTER) {
-        imageView.image = [FilterView imageFilterWithParent:parent type:cnt andOriginalImage:image];
+        imageView.image = [FilterHelper imageFilterWithParent:parent type:cnt andOriginalImage:image];
     }
     else
     {

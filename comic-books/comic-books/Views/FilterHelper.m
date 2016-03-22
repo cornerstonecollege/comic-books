@@ -6,10 +6,10 @@
 //  Copyright © 2016 Ideia do Luiz. All rights reserved.
 //
 
-#import "FilterView.h"
+#import "FilterHelper.h"
 #import "ImageFilterHelper.h"
 
-@implementation FilterView
+@implementation FilterHelper
 
 + (UIImage *) imageFilterWithParent:(UIView *)mainView type:(NSInteger)type andOriginalImage:(UIImage*)originalImage
 {

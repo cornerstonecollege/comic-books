@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FilterView : UIView
+@interface FilterHelper : UIView
 
 + (UIImage *) imageFilterWithParent:(UIView *)mainView type:(NSInteger)type andOriginalImage:(UIImage*)originalImage;
 
