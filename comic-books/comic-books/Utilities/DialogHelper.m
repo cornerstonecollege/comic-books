@@ -96,7 +96,7 @@
                                                                     mainVC.dialogView.bounds.size.width*0.5,
                                                                     mainVC.dialogView.bounds.size.height*0.15)];
     cancelLabel.text = @"Back";
-    cancelLabel.textColor = [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
+    cancelLabel.textColor = [Utilities superLightGrayColor];
     cancelLabel.font = [UIFont fontWithName:@"Bangers" size:25];
     cancelLabel.userInteractionEnabled = YES;
     cancelLabel.textAlignment = NSTextAlignmentCenter;

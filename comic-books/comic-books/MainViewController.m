@@ -130,7 +130,6 @@
     [self.view addSubview:self.dialogView];
 }
 
-// move
 - (void)createText
 {
     [self initTextViewWithSize:CGRectMake(self.dialogView.bounds.size.width*0.1,
@@ -152,11 +151,10 @@
                           text:@"Copylight@2016 CICCC ALL Rights Reserved" andFontSize:13];
 }
 
-// move
 - (void)initTextViewWithSize:(CGRect)size text:(NSString*)text andFontSize:(NSInteger)font
 {
     UITextView *textView = [[UITextView alloc]initWithFrame:size];
-    textView.textColor = [Utilities specialGrayColor];
+    textView.textColor = [Utilities superLightGrayColor];
     textView.backgroundColor = [UIColor clearColor];
     textView.text = text;
     textView.font = [UIFont fontWithName:@"Bangers" size:font];
@@ -235,13 +233,22 @@
     plusLabel.font=[UIFont fontWithName:@"Helvetica" size:50];
     plusLabel.textAlignment = NSTextAlignmentCenter;
     [plusLabel sizeToFit];
-    plusLabel.textColor = [UIColor lightGrayColor];
+    plusLabel.textColor = [Utilities heroBlueColor];
     plusLabel.center = image.center;
     
     plusLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(plusTap:)];
     [plusLabel addGestureRecognizer:tapGesture];
+    
+    UIImageView *waterImageView = [[UIImageView alloc]init];
+    waterImageView.image = [UIImage imageNamed:@"water_mark"];
+    waterImageView.frame = CGRectMake(parent.bounds.size.width - waterImageView.image.size.width - parent.bounds.size.width*0.01,
+                                      parent.bounds.size.height - waterImageView.image.size.height - parent.bounds.size.width*0.01,
+                                      waterImageView.image.size.width,
+                                      waterImageView.image.size.height);
+    [parent addSubview:waterImageView];
+    waterImageView.layer.zPosition = 10;
     
     [parent addSubview:plusLabel];
 }

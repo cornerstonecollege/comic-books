@@ -95,7 +95,7 @@
 
 - (CGPoint) getNewPointWithPoint:(CGPoint)point andView:(UIView *)view
 {
-    if (point.x < view.frame.size.width / 2)
+    /*if (point.x < view.frame.size.width / 2)
     {
         point.x = view.frame.size.width / 2;
     }
@@ -111,7 +111,7 @@
     else if (point.y > view.superview.frame.size.height - view.frame.size.height / 2.5)
     {
         point.y = view.superview.frame.size.height - view.frame.size.height / 2.5;
-    }
+    }*/
     
     return point;
 }
