@@ -49,7 +49,19 @@
     }
     [mainVC setImgFlag:-tag];
     
+<<<<<<< HEAD
     [self createDialogWithView:mainVC];
+=======
+    [mainVC dismissDialogView];
+    [mainVC setDialogView:[[UIView alloc] initWithFrame:CGRectMake(mainVC.view.bounds.size.width*0.2,
+                                                              mainVC.view.bounds.size.height*0.25,
+                                                              mainVC.view.bounds.size.width*0.6,
+                                                              mainVC.view.bounds.size.height*0.3)]];
+     
+    mainVC.dialogView.backgroundColor = [Utilities heroGrayColor];
+    mainVC.dialogView.layer.cornerRadius = 25;
+    mainVC.dialogView.layer.masksToBounds = YES;
+>>>>>>> fe508d0f1373b6cd2ded55ffc51eaab1a0e8cb26
     
     [mainVC createPopupImageWithSize:CGRectMake(mainVC.dialogView.bounds.size.width*0.1,
                                               mainVC.dialogView.bounds.size.height*0.25,

@@ -165,7 +165,7 @@
     NSString *fontName = self.type == ST_STAMP ? @"Sound FX" : @"Komika Bubbles Dark";
     
     [label setFont:[UIFont fontWithName:fontName size:[Utilities sizeFrame]]];
-    label.textColor = [Utilities speacialLighterGrayColor];
+    label.textColor = [Utilities heroRedColor];
     label.text = [NSString stringWithFormat:@"%c", character];
     [label sizeToFit];
     

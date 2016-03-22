@@ -49,7 +49,7 @@
 
 - (void) initializeView
 {
-    self.view.backgroundColor = [Utilities heroRedColor];
+    self.view.backgroundColor = [Utilities specialGrayColor];
     
     SelectionView *selectionFilter = [[SelectionView alloc] initWithType:ST_FILTER andFrame:CGRectMake(0, self.view.frame.size.height - [Utilities sizeFrame], self.view.frame.size.width, [Utilities sizeFrame])];
     selectionFilter.selectionDelegate = self;
