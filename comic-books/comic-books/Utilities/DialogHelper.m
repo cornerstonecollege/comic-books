@@ -56,7 +56,7 @@
                                                               mainVC.view.bounds.size.width*0.6,
                                                               mainVC.view.bounds.size.height*0.3)]];
      
-    mainVC.dialogView.backgroundColor = [Utilities speacialLighterGrayColor];
+    mainVC.dialogView.backgroundColor = [Utilities heroGrayColor];
     mainVC.dialogView.layer.cornerRadius = 25;
     mainVC.dialogView.layer.masksToBounds = YES;
     
