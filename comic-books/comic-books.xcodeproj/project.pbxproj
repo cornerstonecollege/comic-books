@@ -37,6 +37,7 @@
 		1CE7C6241C8F8C220003A63D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CE7C6221C8F8C220003A63D /* LaunchScreen.storyboard */; };
 		1CE7C62E1C8FA86E0003A63D /* ImageFilterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7C62D1C8FA86E0003A63D /* ImageFilterHelper.m */; };
 		1CE7C6301C8FAACA0003A63D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE7C62F1C8FAACA0003A63D /* CoreImage.framework */; };
+		6875ABFC1CA21E32001A6B9C /* SpeechBubbleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6875ABFB1CA21E32001A6B9C /* SpeechBubbleUtilities.m */; };
 		68AF283A1C97682A009483A7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AF28391C97682A009483A7 /* MainViewController.m */; };
 		68AF283D1C976943009483A7 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AF283C1C976943009483A7 /* Utilities.m */; };
 		68AF28401C976CDC009483A7 /* SelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AF283F1C976CDC009483A7 /* SelectionView.m */; };
@@ -83,6 +84,8 @@
 		1CE7C62C1C8FA86E0003A63D /* ImageFilterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageFilterHelper.h; path = Utilities/ImageFilterHelper.h; sourceTree = "<group>"; };
 		1CE7C62D1C8FA86E0003A63D /* ImageFilterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageFilterHelper.m; path = Utilities/ImageFilterHelper.m; sourceTree = "<group>"; };
 		1CE7C62F1C8FAACA0003A63D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		6875ABFA1CA21E32001A6B9C /* SpeechBubbleUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeechBubbleUtilities.h; path = Utilities/SpeechBubbleUtilities.h; sourceTree = "<group>"; };
+		6875ABFB1CA21E32001A6B9C /* SpeechBubbleUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechBubbleUtilities.m; path = Utilities/SpeechBubbleUtilities.m; sourceTree = "<group>"; };
 		68AF28381C97682A009483A7 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		68AF28391C97682A009483A7 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		68AF283B1C976943009483A7 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = Utilities/Utilities.h; sourceTree = "<group>"; };
@@ -142,10 +145,10 @@
 		1CC98E2A1C926E82007FCB34 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1CC98E2B1C926EB2007FCB34 /* SpeechBubbleView.h */,
-				1CC98E2C1C926EB2007FCB34 /* SpeechBubbleView.m */,
 				68AF283E1C976CDC009483A7 /* SelectionView.h */,
 				68AF283F1C976CDC009483A7 /* SelectionView.m */,
+				1CC98E2B1C926EB2007FCB34 /* SpeechBubbleView.h */,
+				1CC98E2C1C926EB2007FCB34 /* SpeechBubbleView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -197,6 +200,8 @@
 		1CE7C62B1C8FA7AF0003A63D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				6875ABFA1CA21E32001A6B9C /* SpeechBubbleUtilities.h */,
+				6875ABFB1CA21E32001A6B9C /* SpeechBubbleUtilities.m */,
 				68FB2DE51C9A48870052BBD0 /* FilterHelper.h */,
 				68FB2DE61C9A48870052BBD0 /* FilterHelper.m */,
 				68FB2DDF1C9A2E6D0052BBD0 /* DialogHelper.h */,
@@ -316,6 +321,7 @@
 				68FB2DE31C9A2E6D0052BBD0 /* DialogHelper.m in Sources */,
 				1CE7C6191C8F8C220003A63D /* AppDelegate.m in Sources */,
 				1CE7C6161C8F8C220003A63D /* main.m in Sources */,
+				6875ABFC1CA21E32001A6B9C /* SpeechBubbleUtilities.m in Sources */,
 				1CE7C62E1C8FA86E0003A63D /* ImageFilterHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

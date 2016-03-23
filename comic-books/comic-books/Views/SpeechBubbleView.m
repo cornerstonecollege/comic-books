@@ -8,6 +8,7 @@
 
 #import "SpeechBubbleView.h"
 #import "Utilities.h"
+#import "SpeechBubbleUtilities.h"
 
 @interface SpeechBubbleView () <UITextViewDelegate>
 
@@ -234,39 +235,53 @@ shouldChangeTextInRange: (NSRange) range
     {
         case 'b':
         case 'p':
-            return UIEdgeInsetsMake(50, 10, 0, 10);
+            //return UIEdgeInsetsMake(50, 10, 0, 10);
+            return [SpeechBubbleUtilities sbSizeP];
         case 'd':
-            return UIEdgeInsetsMake(30, 10, 0, 10);
+            //return UIEdgeInsetsMake(30, 10, 0, 10);
+            return [SpeechBubbleUtilities sbSizeD];
         case 'e':
         case 'f':
         case 'g':
         case 's':
-            return UIEdgeInsetsMake(40, 10, 0, 10);
+            //return UIEdgeInsetsMake(40, 10, 0, 10);
+            return [SpeechBubbleUtilities sbSizeS];
         case 'h':
-            return UIEdgeInsetsMake(30, 15, 0, 10);
+            //return UIEdgeInsetsMake(30, 15, 0, 10);
+            return [SpeechBubbleUtilities sbSizeH];
         case 'i':
-            return UIEdgeInsetsMake(30, 10, 0, 10);
+            //return UIEdgeInsetsMake(30, 10, 0, 10);
+            return [SpeechBubbleUtilities sbSizeI];
         case 'j':
-            return UIEdgeInsetsMake(55, 25, 0, 15);
+            //return UIEdgeInsetsMake(55, 25, 0, 15);
+            return [SpeechBubbleUtilities sbSizeJ];
         case 'k':
-            return UIEdgeInsetsMake(55, 10, 0, 28);
+            //return UIEdgeInsetsMake(55, 10, 0, 28);
+            return [SpeechBubbleUtilities sbSizeK];
         case 'l':
-            return UIEdgeInsetsMake(30, 20, 0, 15);
+            //return UIEdgeInsetsMake(30, 20, 0, 15);
+            return [SpeechBubbleUtilities sbSizeL];
         case 'm':
-            return UIEdgeInsetsMake(40, 20, 0, 15);
+            //return UIEdgeInsetsMake(40, 20, 0, 15);
+            return [SpeechBubbleUtilities sbSizeM];
         case 'n':
-            return UIEdgeInsetsMake(45, 20, 0, 25);
+            //return UIEdgeInsetsMake(45, 20, 0, 25);
+            return [SpeechBubbleUtilities sbSizeN];
         case 'o':
-            return UIEdgeInsetsMake(40, 10, 0, 10);
+            //return UIEdgeInsetsMake(40, 10, 0, 10);
+            return [SpeechBubbleUtilities sbSizeO];
         case 'q':
-            return UIEdgeInsetsMake(50, 15, 0, 15);
+            //return UIEdgeInsetsMake(50, 15, 0, 15);
+            return [SpeechBubbleUtilities sbSizeQ];
         case 't':
-            return UIEdgeInsetsMake(40, 15, 0, 15);
+            //return UIEdgeInsetsMake(40, 15, 0, 15);
+            return [SpeechBubbleUtilities sbSizeT];
         case '@':
-            return UIEdgeInsetsMake(50, 5, 0, 5);
-            
+            //return UIEdgeInsetsMake(50, 5, 0, 5);
+            return [SpeechBubbleUtilities sbSizeFirst];
         default:
-            return UIEdgeInsetsMake(30, 0, 0, 0);
+            //return UIEdgeInsetsMake(30, 0, 0, 0);
+            return [SpeechBubbleUtilities sbSize];
             break;
     }
 }
@@ -300,15 +315,22 @@ shouldChangeTextInRange: (NSRange) range
 {
     switch (tolower(code))
     {
+        case 'a':
+            return 2;
+            break;
         case 'b':
         case 'n':
         case 'p':
             return 2;
             break;
         case 'd':
+            return 3;
+            break;
         case 'i':
+            return 3;
+            break;
         case 'q':
-            return 4;
+            return 3;
             break;
         case 'j':
             return 2;
