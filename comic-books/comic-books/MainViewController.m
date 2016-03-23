@@ -148,7 +148,7 @@
                                           self.dialogView.bounds.size.height*0.7,
                                           self.dialogView.bounds.size.width*0.8,
                                           self.dialogView.bounds.size.height*0.1)
-                          text:@"Copylight@2016 CICCC ALL Rights Reserved" andFontSize:13];
+                          text:@"Copyright@2016 CICCC ALL Rights Reserved" andFontSize:13];
 }
 
 - (void)initTextViewWithSize:(CGRect)size text:(NSString*)text andFontSize:(NSInteger)font

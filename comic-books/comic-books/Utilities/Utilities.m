@@ -25,6 +25,16 @@
     return [UIColor colorWithRed:244.0f/255.0f green:242.0f/255.0f blue:242.0f/255.0f alpha:1.0];
 }
 
++ (UIColor *) vilainGreenColor
+{
+    return [UIColor colorWithRed:168.0f/255.0f green:192.0f/255.0f blue:48.0f/255.0f alpha:1.0];
+}
+
++ (UIColor *) vilainPurpleColor
+{
+    return [UIColor colorWithRed:168.0f/255.0f green:24.0f/255.0f blue:96.0f/255.0f alpha:1.0];
+}
+
 + (UIColor *) heroGreenColor
 {
     return [UIColor colorWithRed:63.0f/255.0f green:159.0f/255.0f blue:68.0f/255.0f alpha:1.0];

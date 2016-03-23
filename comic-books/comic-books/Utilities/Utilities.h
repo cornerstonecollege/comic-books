@@ -14,6 +14,9 @@
 + (UIColor *) speacialLighterGrayColor;
 + (UIColor *) superLightGrayColor;
 
++ (UIColor *) vilainGreenColor;
++ (UIColor *) vilainPurpleColor;
+
 + (UIColor *) heroBlueColor;
 + (UIColor *) heroGreenColor;
 + (UIColor *) heroYellowColor;

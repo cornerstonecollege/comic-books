@@ -13,6 +13,7 @@
 
 @property (nonatomic) UILabel *labelBack;
 @property (nonatomic) UITextView *textView;
+@property (nonatomic) NSArray<UIColor *> *arrColors;
 
 @end
 
@@ -25,6 +26,7 @@
     {
         [self addEvents];
         self.backgroundColor = [UIColor clearColor];
+         _arrColors = @[[UIColor whiteColor], [Utilities penelopeColor], [Utilities heroBlueColor], [Utilities vitaminsColor], [Utilities vilainPurpleColor], [Utilities drifterColor]];
         [self createSpeechBubbleWithCode:codeBubble];
         self.frame = _labelBack.frame;
         [self setPositionWithParent:parentView];
@@ -53,6 +55,68 @@
     CGPoint center = [self centerWithCode:codeBubble];
     
     [self setCircularExclusionPathWithCenter:center radius:radius textView:self.textView];
+    [self setCustomKeyboardView];
+}
+
+- (void) setCustomKeyboardView
+{
+    UIToolbar* toolbar = [[UIToolbar alloc] init];
+    toolbar.barStyle = UIBarStyleDefault;
+    NSMutableArray *arr = [NSMutableArray array];
+    [arr addObject:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];
+    
+    [self addColorsToArray:arr];
+    
+    [arr addObject:[[UIBarButtonItem alloc]initWithTitle:@"Delete" style:UIBarButtonItemStyleDone target:self action:@selector(deleteView)]];
+    
+    [arr addObject:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];
+    
+    toolbar.items = arr;
+    [toolbar sizeToFit];
+    self.textView.inputAccessoryView = toolbar;
+}
+
+- (void) addColorsToArray:(NSMutableArray *)arr
+{
+    int count = 0;
+    for (UIColor *color in self.arrColors)
+    {
+        UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.titleLabel.text = @"    ";
+        button.layer.backgroundColor = color.CGColor;
+        [button sizeToFit];
+        button.tag = 10 + count;
+        [button addTarget:self action:@selector(changeColor:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIBarButtonItem *btnItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+        [arr addObject: btnItem];
+        
+        count++;
+    }
+}
+
+- (void) changeColor:(UIView *)sender
+{
+    UIColor *color = self.arrColors[sender.tag - 10];
+    self.labelBack.textColor = color;
+    
+    if (color.CGColor == [UIColor whiteColor].CGColor)
+    {
+        self.textView.textColor = [UIColor blackColor];
+    }
+    else if ([color isEqual:[Utilities vilainPurpleColor]])
+    {
+        self.textView.textColor = [Utilities vilainGreenColor];
+    }
+    else
+    {
+        self.textView.textColor = [Utilities superLightGrayColor];
+    }
+}
+
+- (void) deleteView
+{
+    [self removeFromSuperview];
 }
 
 - (BOOL) textView:(UITextView*)textView
