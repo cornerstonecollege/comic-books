@@ -16,13 +16,19 @@
     font-weight: normal;
 }
 
+@font-face {
+    font-family: Bangers;
+    src: url('https://cornerstonecollege.github.io/comic-books/fonts/Bangers.ttf')  format("opentype"); 
+    font-weight: normal;
+}
+
 body {
     margin-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 .headerColor {
     background-color: #FFFFFF;
-    font-family: Komika;
+    font-family: Bangers;
     font-weight: normal;
     z-index: 10;
     border-radius: 25px;
