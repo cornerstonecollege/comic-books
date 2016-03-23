@@ -20,13 +20,13 @@
         editedImage = [[ImageFilterHelper sharedInstance] CMYKHalftoneImageWithImage:originalImage andCenter:center];
     }else if (type >= 7 && 12 >= type)
     {
-        editedImage = [[ImageFilterHelper sharedInstance] hexPixellateImageWithImage:originalImage andCenter:center];
+        editedImage = [[ImageFilterHelper sharedInstance] comicImageWithImage:originalImage];
     }else if (type >= 13 && 18 >= type)
     {
-        editedImage = [[ImageFilterHelper sharedInstance] pixellateImageWithImage:originalImage andCenter:center];
+        editedImage = [[ImageFilterHelper sharedInstance] pointillizeImageWithImage:originalImage andCenter:center];
     }else if (type >= 19 && 24 >= type)
     {
-        editedImage = [[ImageFilterHelper sharedInstance] pointillizeImageWithImage:originalImage andCenter:center];
+        editedImage = [[ImageFilterHelper sharedInstance] edgesImageWithImage:originalImage];
     }
     int rest = type % 6;
 

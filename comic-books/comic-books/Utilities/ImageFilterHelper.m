@@ -150,7 +150,7 @@
 {
     CIFilter *filter = [CIFilter filterWithName:@"CIHexagonalPixellate"];
     [filter setValue:center forKey:@"inputCenter"];
-    [filter setValue:[NSNumber numberWithDouble:5.5] forKey:@"inputScale"];
+    //[filter setValue:[NSNumber numberWithDouble:5.5] forKey:@"inputScale"];
     UIImage *imageResult = [self applyFilter:filter atImage:img];
     
     return imageResult;
@@ -169,7 +169,24 @@
 {
     CIFilter *filter = [CIFilter filterWithName:@"CIPointillize"];
     [filter setValue:center forKey:@"inputCenter"];
-    [filter setValue:[NSNumber numberWithDouble:1.0] forKey:@"inputRadius"];
+    [filter setValue:[NSNumber numberWithDouble:3.0] forKey:@"inputRadius"];
+    UIImage *imageResult = [self applyFilter:filter atImage:img];
+    
+    return imageResult;
+}
+
+- (UIImage *) comicImageWithImage:(UIImage *)img
+{
+    CIFilter *filter = [CIFilter filterWithName:@"CIComicEffect"];
+    UIImage *imageResult = [self applyFilter:filter atImage:img];
+    
+    return imageResult;
+}
+
+- (UIImage *) edgesImageWithImage:(UIImage *)img
+{
+    CIFilter *filter = [CIFilter filterWithName:@"CIEdges"];
+    [filter setValue:[NSNumber numberWithDouble:50.0] forKey:@"inputIntensity"];
     UIImage *imageResult = [self applyFilter:filter atImage:img];
     
     return imageResult;

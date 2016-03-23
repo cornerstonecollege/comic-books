@@ -30,4 +30,7 @@
 - (UIImage *) dotScreenImageWithImage:(UIImage *)img andCenter:(CIVector *)center;
 - (UIImage *) hatchedScreenImageWithImage:(UIImage *)img andCenter:(CIVector *)center;
 
+- (UIImage *) comicImageWithImage:(UIImage *)img;
+- (UIImage *) edgesImageWithImage:(UIImage *)img;
+
 @end

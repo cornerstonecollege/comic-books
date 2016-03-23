@@ -17,18 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cornerston_icon" translatesAutoresizingMaskIntoConstraints="NO" id="hJx-7n-alx">
-                                <rect key="frame" x="166" y="159" width="268" height="282"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cornerston_icon" translatesAutoresizingMaskIntoConstraints="NO" id="vNq-o6-SpQ">
+                                <rect key="frame" x="180" y="189" width="240" height="221"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="268" id="RCr-y3-iMj"/>
+                                    <constraint firstAttribute="width" constant="240" id="2Ly-8N-bR7"/>
+                                    <constraint firstAttribute="height" constant="221" id="PIW-Jc-sho"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hJx-7n-alx" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="139" id="BXK-yR-dAw"/>
-                            <constraint firstItem="hJx-7n-alx" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="MYv-wW-1Pm"/>
-                            <constraint firstItem="hJx-7n-alx" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="vdd-dB-ln0"/>
+                            <constraint firstItem="vNq-o6-SpQ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="nW3-kz-fD2"/>
+                            <constraint firstItem="vNq-o6-SpQ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ouF-xg-Cab"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cornerston_icon" width="155" height="200"/>
+        <image name="cornerston_icon" width="200" height="200"/>
     </resources>
 </document>
