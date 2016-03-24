@@ -47,7 +47,6 @@
 
 + (UIColor *) heroYellowColor
 {
-    //return [UIColor colorWithRed:247.0f/255.0f green:219.0f/255.0f blue:81.0f/255.0f alpha:1.0];
     return [UIColor colorWithRed:251.0f/255.0f green:236.0f/255.0f blue:162.0f/255.0f alpha:1.0];
 }
 
@@ -59,7 +58,6 @@
 + (UIColor *) heroRedColor
 {
     return [UIColor colorWithRed:228.0f/255.0f green:61.0f/255.0f blue:29.0f/255.0f alpha:1.0];
-    //return [UIColor colorWithRed:190.0f/255.0f green:95.0f/255.0f blue:99.0f/255.0f alpha:1.0];
 }
 
 + (UIColor *) penelopeColor

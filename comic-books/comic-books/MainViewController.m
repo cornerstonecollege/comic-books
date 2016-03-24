@@ -30,7 +30,7 @@
 
 @implementation MainViewController
 
-- (void)viewDidLoad
+- (void) viewDidLoad
 {
     [super viewDidLoad];
     [self createMainView];
@@ -126,7 +126,7 @@
     [self.view addSubview:self.dialogView];
 }
 
-- (void)createText
+- (void) createText
 {
     [self initTextViewWithSize:CGRectMake(self.dialogView.bounds.size.width*0.1,
                                           self.dialogView.bounds.size.height*0.1,
@@ -147,7 +147,7 @@
                           text:@"Copyright@2016 CICCC ALL Rights Reserved" andFontSize:13];
 }
 
-- (void)initTextViewWithSize:(CGRect)size text:(NSString*)text andFontSize:(NSInteger)font
+- (void) initTextViewWithSize:(CGRect)size text:(NSString*)text andFontSize:(NSInteger)font
 {
     UITextView *textView = [[UITextView alloc]initWithFrame:size];
     textView.textColor = [Utilities superLightGrayColor];
@@ -159,7 +159,7 @@
     [self.dialogView addSubview:textView];
 }
 
-- (void)cancelTap
+- (void) cancelTap
 {
     [self dismissDialogView];
 }
@@ -250,13 +250,13 @@
     [parent addSubview:plusLabel];
 }
 
-- (void)handleImageTap:(UITapGestureRecognizer*)tapGestureRecognizer
+- (void) handleImageTap:(UITapGestureRecognizer*)tapGestureRecognizer
 {
     UIView *view = tapGestureRecognizer.view; //cast pointer to the derived class if needed
     self.imgFlag = view.tag;
 }
 
-- (void)didTouchFrame:(TYPE_FRAME)typeFrame
+- (void) didTouchFrame:(TYPE_FRAME)typeFrame
 {
     self.typeFrame = typeFrame;
     
@@ -304,7 +304,7 @@
 }
 
 
-- (UILabel *)createLabelWithSize:(CGRect)size text:(NSString *)text color:(UIColor *)color
+- (UILabel *) createLabelWithSize:(CGRect)size text:(NSString *)text color:(UIColor *)color
 {
     UILabel *label = [[UILabel alloc]initWithFrame:size];
     label.text = text;
@@ -314,7 +314,7 @@
     return label;
 }
 
-- (void)yesTap
+- (void) yesTap
 {
     [self dismissDialogView];
     self.originalChosenImage1 = nil;
@@ -324,7 +324,7 @@
     [[FrameHelper sharedInstance] createLayouts:self.mainView type:self.typeFrame andViewController:self];
 }
 
-- (void)didTouchFilter:(TYPE_STYLE_FILTER)typeFilter
+- (void) didTouchFilter:(TYPE_STYLE_FILTER)typeFilter
 {
     UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
     
@@ -337,7 +337,7 @@
     }
 }
 
-- (UIImage *)currentImage
+- (UIImage *) currentImage
 {
     UIImage *currentImage= nil;
     switch (labs(self.imgFlag)) {
@@ -375,12 +375,12 @@
     }
 }
 
-- (void)plusTap:(UITapGestureRecognizer*)tapGestureRecognizer
+- (void) plusTap:(UITapGestureRecognizer*)tapGestureRecognizer
 {
     [[DialogHelper sharedInstance] handlePlusTapWithTag:tapGestureRecognizer.view.tag andViewController:self];
 }
 
-- (void)createPopupImageWithSize:(CGRect)size imageName:(NSString*)name target:(id)target andFunction:(nonnull SEL)function
+- (void) createPopupImageWithSize:(CGRect)size imageName:(NSString*)name target:(id)target andFunction:(nonnull SEL)function
 {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:size];
     [imageView setImage:[UIImage imageNamed:name]];
@@ -391,7 +391,7 @@
     [self.dialogView addSubview:imageView];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {    
     [self dismissDialogView];
     [picker dismissViewControllerAnimated:YES completion:NULL];
@@ -399,7 +399,6 @@
     UIImage * currentImage = info[UIImagePickerControllerEditedImage];
     [self setCurrentImage:currentImage];
     
-    //self.originalChosenImage = info[UIImagePickerControllerEditedImage];
     UIImageView *imageView = (UIImageView*)[self.mainView viewWithTag:self.imgFlag];
 
     // customize images
@@ -410,7 +409,7 @@
     imageView.clipsToBounds = YES;
 }
 
-- (void)didTouchStamp:(char)codeStamp
+- (void) didTouchStamp:(char)codeStamp
 {
     [self createLabelWithChar:codeStamp];
 }
@@ -444,7 +443,7 @@
     [self.mainView addSubview:label];
 }
 
--(void)shareContent
+-(void) shareContent
 {
     NSString * message = @"Share Images";
     for (UIView *subview in [self.mainView subviews]){
@@ -478,13 +477,13 @@
     }
 }
 
-- (void)didTouchSpeechBubble:(char)codeBubble
+- (void) didTouchSpeechBubble:(char)codeBubble
 {
     SpeechBubbleView *speech = [[SpeechBubbleView alloc] initWithCode:codeBubble andParent:self.mainView];
     [self.mainView addSubview:speech];
 }
 
-- (void)didReceiveMemoryWarning
+- (void) didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
