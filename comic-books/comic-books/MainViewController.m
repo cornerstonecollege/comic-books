@@ -260,6 +260,11 @@
 {
     self.typeFrame = typeFrame;
     
+    if (self.typeFrame == labs(self.imgFlag))
+    {
+        return;
+    }
+    
     if (!self.originalChosenImage1 && !self.originalChosenImage2 && !self.originalChosenImage3 && !self.originalChosenImage4) {
         [[FrameHelper sharedInstance] createLayouts:self.mainView type:self.typeFrame andViewController:self];
         return;
