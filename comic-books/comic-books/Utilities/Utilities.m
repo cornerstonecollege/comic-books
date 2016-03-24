@@ -159,7 +159,7 @@
 {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         return 120;
-    else if ([[UIScreen mainScreen] bounds].size.height < 568)
+    else if ([[UIScreen mainScreen] bounds].size.height <= 568)
         return 65;
     else
         return 100;
