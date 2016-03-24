@@ -24,6 +24,7 @@
 @property (nonatomic) UIImage *originalChosenImage2;
 @property (nonatomic) UIImage *originalChosenImage3;
 @property (nonatomic) UIImage *originalChosenImage4;
+@property (nonatomic) NSUInteger typeFrame;
 
 @end
 
@@ -112,16 +113,11 @@
     
     [self createText];
     
-    
-    UILabel *cancelLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.dialogView.bounds.size.width*0.5,
-                                                                    self.dialogView.bounds.size.height*0.80,
-                                                                    self.dialogView.bounds.size.width*0.5,
-                                                                    self.dialogView.bounds.size.height*0.15)];
-    cancelLabel.text = @"Back";
-    cancelLabel.textColor = [Utilities superLightGrayColor];
+    UILabel *cancelLabel = [self createLabelWithSize:CGRectMake(self.dialogView.bounds.size.width*0.5,
+                                                                self.dialogView.bounds.size.height*0.80,
+                                                                self.dialogView.bounds.size.width*0.5,
+                                                                self.dialogView.bounds.size.height*0.15) text:@"Back" color:[Utilities superLightGrayColor]];
     cancelLabel.font = [UIFont fontWithName:@"Bangers" size:25];
-    cancelLabel.userInteractionEnabled = YES;
-    cancelLabel.textAlignment = NSTextAlignmentCenter;
     UITapGestureRecognizer *cancelGesture =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelTap)];
     [cancelLabel addGestureRecognizer:cancelGesture];
@@ -261,7 +257,65 @@
 
 - (void)didTouchFrame:(TYPE_FRAME)typeFrame
 {
-    [[FrameHelper sharedInstance] createLayouts:self.mainView type:typeFrame andViewController:self];
+    self.typeFrame = typeFrame;
+    
+    [self dismissDialogView];
+    [self setDialogView:[[UIView alloc] initWithFrame:CGRectMake(self.mainView.bounds.size.width*0.2,
+                                                                 self.mainView.bounds.size.height*0.25,
+                                                                 self.mainView.bounds.size.width*0.6,
+                                                                 self.mainView.bounds.size.height*0.8)]];
+    self.dialogView.backgroundColor = [Utilities speacialLighterGrayColor];
+    self.dialogView.layer.cornerRadius = 25;
+    self.dialogView.layer.masksToBounds = YES;
+    
+    [self initTextViewWithSize:CGRectMake(self.dialogView.bounds.size.width*0.1,
+                                          self.dialogView.bounds.size.height*0.1,
+                                          self.dialogView.bounds.size.width*0.8,
+                                          self.dialogView.bounds.size.height*0.8)
+                          text:@"Do you want to change the frame?\nThe pictures in this frame are deleted." andFontSize:25];
+    
+    UILabel *yesLabel = [self createLabelWithSize:CGRectMake(self.dialogView.bounds.size.width*0.6,
+                                                              self.dialogView.bounds.size.height*0.80,
+                                                              self.dialogView.bounds.size.width*0.3,
+                                                              self.dialogView.bounds.size.height*0.15) text:@"yes" color:[Utilities superLightGrayColor]];
+    yesLabel.font = [UIFont fontWithName:@"Bangers" size:25];
+    UITapGestureRecognizer *yesGesture =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(yesTap)];
+    [yesLabel addGestureRecognizer:yesGesture];
+    
+    UILabel *noLabel = [self createLabelWithSize:CGRectMake(self.dialogView.bounds.size.width*0.1,
+                                                            self.dialogView.bounds.size.height*0.80,
+                                                            self.dialogView.bounds.size.width*0.3,
+                                                            self.dialogView.bounds.size.height*0.15) text:@"No" color:[Utilities heroRedColor]];
+    noLabel.font = [UIFont fontWithName:@"Bangers" size:25];
+    UITapGestureRecognizer *noGesture =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelTap)];
+    [noLabel addGestureRecognizer:noGesture];
+
+    [self.dialogView addSubview:yesLabel];
+    [self.dialogView addSubview:noLabel];
+    [self.view addSubview:self.dialogView];
+}
+
+
+- (UILabel *)createLabelWithSize:(CGRect)size text:(NSString *)text color:(UIColor *)color
+{
+    UILabel *label = [[UILabel alloc]initWithFrame:size];
+    label.text = text;
+    label.textColor = color;
+    label.userInteractionEnabled = YES;
+    label.textAlignment = NSTextAlignmentCenter;
+    return label;
+}
+
+- (void)yesTap
+{
+    [self dismissDialogView];
+    self.originalChosenImage1 = nil;
+    self.originalChosenImage2 = nil;
+    self.originalChosenImage3 = nil;
+    self.originalChosenImage4 = nil;
+    [[FrameHelper sharedInstance] createLayouts:self.mainView type:self.typeFrame andViewController:self];
 }
 
 - (void)didTouchFilter:(TYPE_STYLE_FILTER)typeFilter
@@ -271,7 +325,9 @@
     if (self.imgFlag)
     {
         UIImage * currentImage = [self currentImage];
-        imageView.image = [FilterHelper imageFilterWithParent:self.mainView type:typeFilter andOriginalImage:currentImage];
+        if (currentImage != nil) {
+            imageView.image = [FilterHelper imageFilterWithParent:self.mainView type:typeFilter andOriginalImage:currentImage];
+        }
     }
 }
 
@@ -382,7 +438,6 @@
     [self.mainView addSubview:label];
 }
 
-// move
 -(void)shareContent
 {
     NSString * message = @"Share Images";
