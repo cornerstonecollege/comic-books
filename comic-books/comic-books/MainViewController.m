@@ -153,6 +153,7 @@
     textView.textColor = [Utilities superLightGrayColor];
     textView.backgroundColor = [UIColor clearColor];
     textView.text = text;
+    textView.editable = NO;
     textView.font = [UIFont fontWithName:@"Bangers" size:font];
     
     [self.dialogView addSubview:textView];
@@ -259,10 +260,15 @@
 {
     self.typeFrame = typeFrame;
     
+    if (!self.originalChosenImage1 && !self.originalChosenImage2 && !self.originalChosenImage3 && !self.originalChosenImage4) {
+        [[FrameHelper sharedInstance] createLayouts:self.mainView type:self.typeFrame andViewController:self];
+        return;
+    }
+    
     [self dismissDialogView];
-    [self setDialogView:[[UIView alloc] initWithFrame:CGRectMake(self.mainView.bounds.size.width*0.2,
-                                                                 self.mainView.bounds.size.height*0.25,
-                                                                 self.mainView.bounds.size.width*0.6,
+    [self setDialogView:[[UIView alloc] initWithFrame:CGRectMake(self.mainView.bounds.size.width*0.1,
+                                                                 self.mainView.bounds.size.height*0.35,
+                                                                 self.mainView.bounds.size.width*0.8,
                                                                  self.mainView.bounds.size.height*0.8)]];
     self.dialogView.backgroundColor = [Utilities speacialLighterGrayColor];
     self.dialogView.layer.cornerRadius = 25;
@@ -272,7 +278,7 @@
                                           self.dialogView.bounds.size.height*0.1,
                                           self.dialogView.bounds.size.width*0.8,
                                           self.dialogView.bounds.size.height*0.8)
-                          text:@"Do you want to change the frame?\nThe pictures in this frame are deleted." andFontSize:25];
+                          text:@"The pictures in this frame are going to be deleted.\nContinue?" andFontSize:25];
     
     UILabel *yesLabel = [self createLabelWithSize:CGRectMake(self.dialogView.bounds.size.width*0.6,
                                                               self.dialogView.bounds.size.height*0.80,
