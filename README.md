@@ -8,7 +8,7 @@ ComixGram for iOS transforms any image into a comic-like photo. Pick the image f
 
 | Screenshot 1                     | Screenshot 2                     |
 | :------------------------------: | :------------------------------: |
-| ![Screenshot 1](images/4s_2.png =640x960)   | ![Screenshot 2](images/6_1.png =640x960)  |
+| <img src="https://github.com/cornerstonecollege/comic-books/blob/master/images/4s_2.png" width="640">   | <img src="https://github.com/cornerstonecollege/comic-books/blob/master/images/6_1.png" width="640">   |
 
 ### Help
 Feel free to help the repository, sending your pull requests.
