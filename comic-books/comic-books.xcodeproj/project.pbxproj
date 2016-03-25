@@ -249,7 +249,6 @@
 				TargetAttributes = {
 					1CE7C6101C8F8C220003A63D = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = KVJHRMSUB6;
 					};
 				};
 			};
@@ -441,6 +440,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hiroshi.comics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -455,6 +455,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hiroshi.comics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
