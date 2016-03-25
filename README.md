@@ -2,6 +2,13 @@
 Share your life as a comic book!
 Get more information on the [project's webṕage](http://cornerstonecollege.github.io/comic-books/)
 
+### How to use it
+
+ComixGram for iOS transforms any image into a comic-like photo. Pick the image from your gallery or use the built-in camera feature to take a new picture and use it to apply the filters. After selecting the image, you will have the option to insert speech bubbles, special comic-book-like sound effects, change colours and rotate them. Next, locate the filters at the bottom of the screen and, with a single touch, choose the desired filter. Scroll right and left to locate more filters. Each filter contains certain values in order to adapt better to high and low definition images. Effects contain cartoon and comic book alike pictures.
+
+![Screenshot 1](images/4s_2.png)
+![Screenshot 2](images/6_1.png)
+
 ### Help
 Feel free to help the repository, sending your pull requests.
 
